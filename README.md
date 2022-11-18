@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Maker MetaDAO frontend
 
-## Getting Started
+## High level specs
 
-First, run the development server:
+- Access to MetaDAO farms
+- Ability to open and manage Maker vaults
+- Ability to delegate MKR
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Using the MetaDAO frontend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You have 3 options to utilize this frontent: you can download one of the [signed app releases](TBD), run the project locally or host a web version. 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Downloading the MetaDAO frontent app:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This app is an installer that allows you to access the core features of Maker metadaos, it will also allow you to configure your own RPC or local node to access your data. 
 
-## Learn More
+- Latest Release: v0.0.0
+    - Windows
+    - MacOS
+    - Ubuntu
 
-To learn more about Next.js, take a look at the following resources:
+Releases are bundled with [Electron](https://www.electronjs.org/) and display the current signature that represents the integrity of the source code.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The list of version signatures can be found [here](TBD). You can verify that your application is intact by checking your signature with the list of published signatures.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Running the project locally:
 
-## Deploy on Vercel
+To run the project locally:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Install Node in your computer
+2. Clone or download this repositoty
+3. Install dependencies
+  - `yarn` or `npm install` to install the dependencies
+4. Fill in the environment variables
+  - NEXT_PUBLIC_RPC_PROVIDER_ARBITRUM
+  - NEXT_PUBLIC_RPC_PROVIDER_MAINNET
+  - NEXT_PUBLIC_RPC_PROVIDER_OPTIMISM
+5. Execute `yarn dev` or `npm run dev` to start the project.
+6. Visit `http://localhost:3000`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Forking and managing your own metadao frontend.
+
+The Metadao frontend is customizable by editing the file `metadao.config.json`.
