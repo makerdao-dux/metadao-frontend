@@ -2,7 +2,6 @@ import { BigNumber, ethers } from 'ethers';
 import React, { createContext } from 'react';
 import { useAccount } from 'wagmi';
 import { contracts } from '@/eth-sdk/config';
-import IDaiBalance from '../types/IDaiBalance';
 import mainnetAbi from '@/abis/mainnet/dai.json';
 import optimismAbi from '@/abis/optimism/dai.json';
 import arbitrumAbi from '@/abis/arbitrumOne/dai.json';
@@ -49,7 +48,7 @@ const DaiBalanceContextProvider = (props: ContextProviderProps) => {
   const { address } = useAccount();
 
   // Fetches every network balance using the configured providers
-  const { data, mutate, error } = useSWR<IDaiBalance>(
+  const { data, mutate, error } = useSWR<TDaiBalance>(
     address ? `dai-balances-${address}` : null,
     async () => {
       const respMainnet = await contractMainnet.balanceOf(address);
