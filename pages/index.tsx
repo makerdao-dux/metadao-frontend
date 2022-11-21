@@ -1,5 +1,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Layout } from '../modules/layout/components/Layout';
+import DaiBalance from '@/modules/dai/components/DaiBalanceDisplay';
+import { Layout } from '@/modules/layout/components/Layout';
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
         <h1>Welcome to Maker</h1>
 
         <ConnectButton />
+
+        <DaiBalance />
       </main>
     </Layout>
   );

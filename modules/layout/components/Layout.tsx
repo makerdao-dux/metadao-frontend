@@ -1,12 +1,12 @@
-import React from "react";
-import Head from "next/head";
-import config from "../../config";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
+import React from 'react';
+import Head from 'next/head';
+import config from '../../config';
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 export function Layout({
   children,
-  metaDescription,
+  metaDescription
 }: {
   children: React.ReactNode;
   metaDescription?: string;
@@ -17,10 +17,7 @@ export function Layout({
         <title>
           {config.name} | {metaDescription || config.description}
         </title>
-        <meta
-          name="description"
-          content={metaDescription || config.description}
-        />
+        <meta name="description" content={metaDescription || config.description} />
         <link rel="icon" href={config.favicon} />
       </Head>
 

@@ -53,3 +53,4 @@ This project is built on top of [NextJS](https://nextjs.org/).
 - `yarn prettier` cleans the formatting of the code files. 
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `modules/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn app` builds and bundles a downlodable/executable version of the app.
+- `yarn eth-sdk` fetches the latest ABIs from the contracts defined at `eth-sdk/config.ts`
