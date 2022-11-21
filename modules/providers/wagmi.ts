@@ -1,8 +1,8 @@
-import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { chain, chainId, configureChains, createClient } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
-import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
-import config from "../config";
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { chain, chainId, configureChains, createClient } from 'wagmi';
+import { publicProvider } from 'wagmi/providers/public';
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+import config from '../config';
 
 // Returns the RPC for the network. If it's not configured return undefined
 function getRPCforChainId(id: number): string | undefined {
@@ -24,27 +24,27 @@ export const { chains, provider } = configureChains(
   [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum],
   [
     jsonRpcProvider({
-      rpc: (chain) => {
+      rpc: chain => {
         const rpc = getRPCforChainId(chain.id);
 
         return rpc
           ? {
-              http: rpc,
+              http: rpc
             }
           : null;
-      },
+      }
     }),
-    publicProvider(),
+    publicProvider()
   ]
 );
 
 const { connectors } = getDefaultWallets({
   appName: config.name,
-  chains,
+  chains
 });
 
 export const wagmiClient = createClient({
   autoConnect: true,
   connectors,
-  provider,
+  provider
 });

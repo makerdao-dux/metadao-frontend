@@ -1,4 +1,4 @@
-import config from "../../metadao.config.json";
+import config from '../../metadao.config.json';
 
 type Config = {
   name: string;
