@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { createServer } = require('http');
 const next = require('next');
-const autoUpdater = require("electron-updater");
+const { autoUpdater } = require('electron-updater');
 
 // Check that we are on dev or production
 const dev = process.env.NODE_ENV !== 'production';
@@ -70,11 +70,39 @@ function createWindow() {
   });
 }
 
+// Open a window and notify about the updates: See https://github.com/iffy/electron-updater-example/blob/master/main.js
+function sendStatusToWindow(text) {
+  log.info(text);
+  win.webContents.send('message', text);
+}
+
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+});
+autoUpdater.on('update-available', info => {
+  sendStatusToWindow('Update available.');
+});
+autoUpdater.on('update-not-available', info => {
+  sendStatusToWindow('Update not available.');
+});
+autoUpdater.on('error', err => {
+  sendStatusToWindow('Error in auto-updater. ' + err);
+});
+autoUpdater.on('download-progress', progressObj => {
+  let log_message = 'Download speed: ' + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')';
+  sendStatusToWindow(log_message);
+});
+autoUpdater.on('update-downloaded', info => {
+  sendStatusToWindow('Update downloaded');
+});
+
 // Once the app is ready, start the window
 app.on('ready', () => {
   createWindow();
   // Checks for app updates and notifies the user.
-  // For auto-updating to work on macOS, your code needs to be signed. For more information check this post: 
+  // For auto-updating to work on macOS, your code needs to be signed. For more information check this post:
   // https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/
   autoUpdater.checkForUpdatesAndNotify();
 });
