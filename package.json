@@ -10,9 +10,9 @@
     "prettier": "prettier --config .prettierrc --write pages/ modules/",
     "electron:build": "yarn build && yarn electron:package",
     "electron:package": "electron-builder build --config .electron-builder.config.js",
-    "electron:app": "electron scripts/index.js"
+    "electron:app": "electron scripts/electron.js"
   },
-  "main": "scripts/index.js",
+  "main": "scripts/electron.js",
   "dependencies": {
     "@dethcrypto/eth-sdk": "^0.3.3",
     "@rainbow-me/rainbowkit": "^0.8.0",

@@ -21,6 +21,6 @@
       "@/eth-sdk/*":  ["eth-sdk/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/electron.js"],
   "exclude": ["node_modules"]
 }

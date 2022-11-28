@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { createServer } = require('http');
 const next = require('next');
+const autoUpdater = require("electron-updater");
 
 // Check that we are on dev or production
 const dev = process.env.NODE_ENV !== 'production';
@@ -70,7 +71,13 @@ function createWindow() {
 }
 
 // Once the app is ready, start the window
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  // Checks for app updates and notifies the user.
+  // For auto-updating to work on macOS, your code needs to be signed. For more information check this post: 
+  // https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/
+  autoUpdater.checkForUpdatesAndNotify();
+});
 
 // Quit the app when closing all the windows
 app.on('window-all-closed', () => {
