@@ -83,6 +83,8 @@ This project is built on top of [NextJS](https://nextjs.org/).
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn electron:build` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
+- `yarn eth-sdk` fetches the latest ABIs from the contracts defined at `eth-sdk/config.ts`
+
 
 ## Building the downlodable application
 

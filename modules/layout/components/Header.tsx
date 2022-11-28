@@ -1,7 +1,7 @@
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Image from "next/image";
-import Link from "next/link";
-import config from "../../config";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import Image from 'next/image';
+import Link from 'next/link';
+import config from '../../config';
 
 export function Header() {
   return (
@@ -11,7 +11,7 @@ export function Header() {
           <div className="left">
             <h1>
               <Link href="/" title="Home page">
-                <div style={{ marginLeft: "5px" }}>
+                <div style={{ marginLeft: '5px' }}>
                   <Image src={config.logo} alt="logo" width={35} height={35} />
                 </div>
               </Link>
@@ -21,8 +21,8 @@ export function Header() {
             <div className="login-box">
               <ConnectButton
                 accountStatus={{
-                  smallScreen: "avatar",
-                  largeScreen: "full",
+                  smallScreen: 'avatar',
+                  largeScreen: 'full'
                 }}
               />
             </div>

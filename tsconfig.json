@@ -13,7 +13,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/modules/*": ["modules/*"],
+      "@/abis/*": ["eth-sdk/abis/*"],
+      "@/eth-sdk/*":  ["eth-sdk/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/index.js"],
   "exclude": ["node_modules"]

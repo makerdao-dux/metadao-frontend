@@ -1,5 +1,5 @@
-import Link from "next/link";
-import config from "../../config";
+import Link from 'next/link';
+import config from '../../config';
 
 export function Footer() {
   return (
@@ -9,9 +9,7 @@ export function Footer() {
           <Link href="/about">About</Link>
         </div>
       </div>
-      <div style={{ padding: "30px", textAlign: "center" }}>
-        2022 - {config.name}
-      </div>
+      <div style={{ padding: '30px', textAlign: 'center' }}>2022 - {config.name}</div>
       <style jsx>
         {`
           .footer {

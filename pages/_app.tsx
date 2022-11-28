@@ -6,12 +6,15 @@ import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import config from '../modules/config';
 
 import '@rainbow-me/rainbowkit/styles.css';
+import { DaiBalanceContextProvider } from '../modules/dai/context/DaiBalance.context';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={darkTheme()}>
-        <Component {...pageProps} />
+        <DaiBalanceContextProvider>
+          <Component {...pageProps} />
+        </DaiBalanceContextProvider>
         <style jsx global>{`
           :root {
             --gap: 16pt;
