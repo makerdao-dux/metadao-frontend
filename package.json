@@ -13,6 +13,14 @@
     "electron:app": "electron scripts/electron.js"
   },
   "main": "scripts/electron.js",
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "releaseType": "draft"
+      }
+    ]
+  },
   "dependencies": {
     "@dethcrypto/eth-sdk": "^0.3.3",
     "@rainbow-me/rainbowkit": "^0.8.0",
