@@ -7,13 +7,18 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --config .prettierrc --write pages/ modules/"
+    "prettier": "prettier --config .prettierrc --write pages/ modules/",
+    "electron:build": "yarn build && yarn electron:package",
+    "electron:package": "electron-builder build --config .electron-builder.config.js",
+    "electron:app": "electron scripts/index.js"
   },
+  "main": "scripts/index.js",
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.8.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "electron-serve": "^1.1.0",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
     "ethers": "^5.7.2",
@@ -24,5 +29,9 @@
     "styled-jsx": "^5.1.0",
     "typescript": "4.9.3",
     "wagmi": "^0.8.5"
+  },
+  "devDependencies": {
+    "electron": "^21.3.0",
+    "electron-builder": "^23.6.0"
   }
 }
