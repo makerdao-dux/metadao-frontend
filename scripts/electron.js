@@ -19,6 +19,21 @@ const handle = nextApp.getRequestHandler();
 let win;
 
 function createWindow() {
+  const windowWidth = 1024;
+  const windowHeight = 768;
+
+  // Initial load splash screen
+  var splash = new BrowserWindow({
+    width: windowWidth,
+    height: windowHeight,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true
+  });
+
+  splash.loadFile('splash.html');
+  splash.center();
+
   // Start nextjs
   nextApp.prepare().then(() => {
     const server = createServer((req, res) => {
@@ -48,13 +63,21 @@ function createWindow() {
 
       // Open a new desktop window
       win = new BrowserWindow({
-        height: 768,
-        width: 1024,
-        icon: '../pubic/images/logo.png'
+        height: windowHeight,
+        width: windowWidth,
+        icon: '../pubic/images/logo.png',
+        show: false
       });
 
       // and load the nextjs app
       win.loadURL('http://localhost:3000');
+
+      setTimeout(() => {
+        // Hide splash screen and open window
+        win.center();
+        splash.close();
+        win.show();
+      }, 2000);
 
       // Open devtools on development mode
       if (dev) {

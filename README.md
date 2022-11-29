@@ -90,11 +90,10 @@ This project is built on top of [NextJS](https://nextjs.org/).
 
 The MetaDAO frontend uses [electronJS builder](https://www.electron.build/) to create a downlodable/installable application for Windows, Linux and MacOS.
 
-To build the application yourself, run the command: `yarn electron:build`. You will need to update the file `.electron-builder.config.js` with the new app name, logo and other configurations. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
+To build the application yourself, run the command: `yarn electron:build`. You might need to update the file `package.json` with the new configuration. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
 
 Do not expect building the application for all platforms from one platform. To build on Mac you need to be on a MacOS (for example). In order to build automatically for all platforms you can use tooling and automation like Github Actions or Travis. [See more info](https://www.electron.build/multi-platform-build.html).
 
-To build the application run the command `yarn electorn:build`, this will build the application for your current operating system.
 This project is also configured with a Github Action that will build automatically the images for Windows, Mac and Linux when doing a new commit on the repo. For more information, check `.github/workflows/build.yml`, more information on how it works can be found [on this post](https://samuelmeuli.com/blog/2019-11-17-automating-the-release-of-electron-apps/).
 
 

@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier": "prettier --config .prettierrc --write pages/ modules/",
     "electron:build": "yarn build && yarn electron:package",
-    "electron:package": "electron-builder build --config .electron-builder.config.js",
+    "electron:package": "electron-builder build",
     "electron:app": "electron scripts/electron.js"
   },
   "main": "scripts/electron.js",
@@ -37,5 +37,17 @@
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",
     "ts-node": "^10.9.1"
-  }
+  },
+  "build": {
+		"appId": "com.makerdao.metadao",
+		"files": [
+			".next/**",
+      "scripts/**"
+		],
+		"linux": {
+			"category": "Finance"
+		},
+		"dmg": {
+			"icon": false
+		}
 }
