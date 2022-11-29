@@ -27,7 +27,20 @@ export default function App({ Component, pageProps }: AppProps) {
             scroll-behavior: smooth;
           }
 
+          @font-face {
+            font-family: 'FT Polar Trial';
+            src: url('/fonts/FTPolarTrial-Medium.woff2');
+            font-weight: normal;
+          }
+
+          @font-face {
+            font-family: 'FT Polar Trial';
+            src: url('/fonts/FTPolarTrial-Bold.woff2');
+            font-weight: bold;
+          }
+
           body {
+            font-family: 'FT Polar Trial', 'Helvetica Neue', sans-serif;
             margin: 0;
             padding: 0;
             color: var(--text-main-color);

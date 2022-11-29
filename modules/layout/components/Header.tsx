@@ -18,6 +18,23 @@ export function Header() {
             </h1>
           </div>
           <div className="right">
+            <div className="links">
+              <div className="link">
+                <Link href="/vaults" title="Vaults">
+                  Vaults
+                </Link>
+              </div>
+              <div className="link">
+                <Link href="/delegates" title="delegates">
+                  delegates
+                </Link>
+              </div>
+              <div className="link">
+                <Link href="/farms" title="farms">
+                  farms
+                </Link>
+              </div>
+            </div>
             <div className="login-box">
               <ConnectButton
                 accountStatus={{
@@ -33,6 +50,10 @@ export function Header() {
         {`
           .header-wrapper {
             text-transform: uppercase;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            left: 0;
           }
 
           .header {
@@ -87,11 +108,9 @@ export function Header() {
             h1 img {
               max-width: 100px;
             }
+
             .header .links {
               display: none;
-            }
-            .link {
-              font-size: 10px;
             }
 
             h1 {
