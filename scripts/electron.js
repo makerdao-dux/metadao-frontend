@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const { createServer } = require('http');
 const next = require('next');
 const { autoUpdater } = require('electron-updater');
@@ -7,9 +7,8 @@ const path = require('path');
 const dockIcon = path.join(__dirname, 'public', 'images', 'logo.png');
 const trayIcon = path.join(__dirname, 'public', 'images', 'logo.png');
 
-
 // Check that we are on dev or production
-const dev = process.env.NODE_ENV !== 'production';
+const dev = !app.isPackaged;
 
 const hostname = 'localhost';
 const port = 3000;
@@ -136,13 +135,40 @@ if (process.platform === 'darwin') {
   app.dock.setIcon(dockIcon);
 }
 
+function hideHelpMenu() {
+  const menu = Menu.getApplicationMenu(); // get default menu
+  menu.items
+    .filter(item => ['filemenu', 'editmenu', 'viewmenu', 'windowmenu', 'help'].includes(item.role))
+    .forEach(item => (item.visible = false)); // modify it
+  Menu.setApplicationMenu(menu); // set the modified menu
+}
+
 // Once the app is ready, start the window
 app.on('ready', () => {
   createWindow();
   // Checks for app updates and notifies the user.
   // For auto-updating to work on macOS, your code needs to be signed. For more information check this post:
   // https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/
-  autoUpdater.checkForUpdatesAndNotify();
+  hideHelpMenu();
+
+  setTimeout(() => {
+    autoUpdater.checkForUpdatesAndNotify().catch(_error => {});
+  }, 3000);
+});
+
+// Prevent multiple instances of the app
+if (!app.requestSingleInstanceLock()) {
+  app.quit();
+}
+
+app.on('second-instance', () => {
+  if (win) {
+    if (win.isMinimized()) {
+      win.restore();
+    }
+
+    win.show();
+  }
 });
 
 // Quit the app when closing all the windows
