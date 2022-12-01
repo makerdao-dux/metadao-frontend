@@ -34,7 +34,7 @@ async function launchApp() {
   const url = isDev
     ? 'http://localhost:8000/'
     : format({
-        pathname: path.join(__dirname, '../renderer/out/index.html'),
+        pathname: path.join(__dirname, 'renderer', 'out', 'index.html'),
         protocol: 'file:',
         slashes: true
       });
