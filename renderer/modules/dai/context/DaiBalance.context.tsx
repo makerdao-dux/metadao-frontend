@@ -1,10 +1,10 @@
 import { BigNumber, ethers } from 'ethers';
 import React, { createContext } from 'react';
 import { useAccount } from 'wagmi';
-import { contracts } from '@/eth-sdk/config';
-import mainnetAbi from '@/abis/mainnet/dai.json';
-import optimismAbi from '@/abis/optimism/dai.json';
-import arbitrumAbi from '@/abis/arbitrumOne/dai.json';
+import { contracts } from 'eth-sdk/config';
+import mainnetAbi from 'eth-sdk/abis/mainnet/dai.json';
+import optimismAbi from 'eth-sdk/abis/optimism/dai.json';
+import arbitrumAbi from 'eth-sdk/abis/arbitrumOne/dai.json';
 import useSWR from 'swr';
 
 type TDaiBalance = {

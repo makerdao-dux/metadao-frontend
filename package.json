@@ -3,23 +3,25 @@
   "version": "0.1.2",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev renderer",
+    "build": "next build renderer",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write pages/ modules/",
-    "electron:build": "yarn build && yarn electron:package",
-    "electron:package": "electron-builder build",
-    "electron:app": "electron scripts/electron.js"
+    "electron:build": "yarn build && next export renderer",
+    "electron:package": "yarn electron:build && electron-builder build",
+    "electron:app": "electron scripts/main.js"
   },
-  "main": "./scripts/electron.js",
+  "main": "scripts/main.js",
   "dependencies": {
     "@dethcrypto/eth-sdk": "^0.3.3",
     "@rainbow-me/rainbowkit": "^0.8.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "electron-is-dev": "^2.0.0",
+    "electron-next": "^3.1.5",
     "electron-serve": "^1.1.0",
     "electron-updater": "^5.3.0",
     "eslint": "8.27.0",
@@ -36,23 +38,29 @@
   },
   "devDependencies": {
     "electron": "^21.3.0",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^22.5.1",
     "ts-node": "^10.9.1"
   },
   "build": {
-		"appId": "com.makerdao.metadao",
-		"files": [
-			".next/**",
-      "scripts/**"
-		],
-		"linux": {
-			"category": "Finance"
-		},
-		"dmg": {
-			"icon": false
-		},
+    "productName": "Maker MetaDAO frontend",
+    "appId": "com.makerdao.metadao",
+    "files": [
+      "scripts",
+      "renderer/public/**/*",
+      "renderer/out"
+    ],
+    "linux": {
+      "category": "Finance"
+    },
+    "dmg": {
+      "icon": false
+    },
     "win": {
-      "icon": "public/images/logo.png" 
+      "icon": "renderer/public/images/logo.png",
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "Maker-MetaDAO-frontend-${version}-win.${ext}"
     }
   }
 }

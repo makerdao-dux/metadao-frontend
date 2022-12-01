@@ -81,7 +81,7 @@ This project is built on top of [NextJS](https://nextjs.org/).
 - `yarn build` builds a static distribution of the project that can be hosted on IPFS.
 - `yarn prettier` cleans the formatting of the code files.
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
-- `yarn electron:build` builds and bundles a downlodable/executable version of the app.
+- `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
 - `yarn eth-sdk` fetches the latest ABIs from the contracts defined at `eth-sdk/config.ts`
 
@@ -90,7 +90,7 @@ This project is built on top of [NextJS](https://nextjs.org/).
 
 The MetaDAO frontend uses [electronJS builder](https://www.electron.build/) to create a downlodable/installable application for Windows, Linux and MacOS.
 
-To build the application yourself, run the command: `yarn electron:build`. You might need to update the file `package.json` with the new configuration. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
+To build the application yourself, run the command: `yarn electron:package`. You might need to update the file `package.json` with the new configuration. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
 
 Do not expect building the application for all platforms from one platform. To build on Mac you need to be on a MacOS (for example). In order to build automatically for all platforms you can use tooling and automation like Github Actions or Travis. [See more info](https://www.electron.build/multi-platform-build.html).
 

@@ -1,31 +1,21 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
-const { createServer } = require('http');
-const next = require('next');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
-
-const dockIcon = path.join(__dirname, 'public', 'images', 'logo.png');
-const trayIcon = path.join(__dirname, 'public', 'images', 'logo.png');
+const prepareRenderer = require('electron-next');
+const { format } = require('url');
 
 // Check that we are on dev or production
-const dev = !app.isPackaged;
+const isDev = require('electron-is-dev');
 
-const hostname = 'localhost';
-const port = 3000;
+const logo = path.join(__dirname, 'renderer', 'public', 'images', 'logo.png');
 
-// Instantiate next.js app
-const nextApp = next({ dev, hostname, port });
-
-// handler to handle http requests to nextjs
-const handle = nextApp.getRequestHandler();
+const windowWidth = 1024;
+const windowHeight = 768;
 
 // Store the UI variable
 let win;
 
-function createWindow() {
-  const windowWidth = 1024;
-  const windowHeight = 768;
-
+async function launchApp() {
   // Initial load splash screen
   var splash = new BrowserWindow({
     width: windowWidth,
@@ -35,66 +25,40 @@ function createWindow() {
     alwaysOnTop: true
   });
 
-  splash.loadFile('splash.html');
+  splash.loadFile(path.join(__dirname, 'splash.html'));
   splash.center();
 
-  // Start nextjs
-  nextApp.prepare().then(() => {
-    const server = createServer((req, res) => {
-      // If the request is outside from electron, return 404.
-      if (req.headers['user-agent'].indexOf('Electron') === -1) {
-        res.writeHead(404);
-        res.end();
-        return;
-      }
+  // Start nextjs+
+  await prepareRenderer('./renderer');
 
-      res.setHeader('Access-Control-Request-Method', 'GET');
-
-      // Only allow GET methods
-      if (req.method !== 'GET') {
-        res.writeHead(405);
-        res.end('Method Not Allowed');
-        return;
-      }
-
-      // Let nextjs handle the rest of the requests
-      return handle(req, res);
-    });
-
-    // Listen to port 3000
-    server.listen(3000, error => {
-      if (error) throw error;
-
-      // Open a new desktop window
-      win = new BrowserWindow({
-        height: windowHeight,
-        width: windowWidth,
-        icon: '../pubic/images/logo.png',
-        show: false
+  const url = isDev
+    ? 'http://localhost:8000/'
+    : format({
+        pathname: path.join(__dirname, '../renderer/out/index.html'),
+        protocol: 'file:',
+        slashes: true
       });
 
-      // and load the nextjs app
-      win.loadURL('http://localhost:3000');
-
-      setTimeout(() => {
-        // Hide splash screen and open window
-        win.center();
-        splash.close();
-        win.show();
-      }, 2000);
-
-      // Open devtools on development mode
-      if (dev) {
-        win.webContents.openDevTools();
-      }
-
-      win.on('close', () => {
-        // Stop http server when user closes the window
-        win = null;
-        server.close();
-      });
-    });
+  win = new BrowserWindow({
+    height: windowHeight,
+    width: windowWidth,
+    icon: logo,
+    show: false,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
+
+  win.loadURL(url);
+
+  setTimeout(() => {
+    // Hide splash screen and open window
+    win.center();
+    splash.close();
+    win.show();
+  }, 2000);
 }
 
 // Open a window and notify about the updates: See https://github.com/iffy/electron-updater-example/blob/master/main.js
@@ -132,7 +96,7 @@ autoUpdater.on('update-downloaded', info => {
 
 // Set doc icon for macOs
 if (process.platform === 'darwin') {
-  app.dock.setIcon(dockIcon);
+  app.dock.setIcon(logo);
 }
 
 function hideHelpMenu() {
@@ -145,7 +109,7 @@ function hideHelpMenu() {
 
 // Once the app is ready, start the window
 app.on('ready', () => {
-  createWindow();
+  launchApp();
   // Checks for app updates and notifies the user.
   // For auto-updating to work on macOS, your code needs to be signed. For more information check this post:
   // https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/
@@ -181,7 +145,7 @@ app.on('window-all-closed', () => {
 // Reopen window when re-enabling app (only for mac)
 app.on('activate', () => {
   if (win === null) {
-    createWindow();
+    launchApp();
   }
 });
 

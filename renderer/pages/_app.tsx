@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 
 import { WagmiConfig } from 'wagmi';
-import { chains, wagmiClient } from '../modules/providers/wagmi';
+import { chains, wagmiClient } from '@/modules/providers/wagmi';
 import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import config from '../modules/config';
 
