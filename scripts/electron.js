@@ -4,8 +4,8 @@ const next = require('next');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 
-const dockIcon = path.join(__dirname, 'public', 'images', 'logo.png');
-const trayIcon = path.join(__dirname, 'public', 'images', 'logo.png');
+const dockIcon = path.join(__dirname, '..', '..', 'public', 'images', 'logo.png');
+const trayIcon = path.join(__dirname, '..', '..', 'public', 'images', 'logo.png');
 
 // Check that we are on dev or production
 const dev = !app.isPackaged;
@@ -69,7 +69,7 @@ function createWindow() {
       win = new BrowserWindow({
         height: windowHeight,
         width: windowWidth,
-        icon: '../pubic/images/logo.png',
+        icon: '../public/images/logo.png',
         show: false
       });
 
