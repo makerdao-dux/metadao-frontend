@@ -40,19 +40,22 @@
     "ts-node": "^10.9.1"
   },
   "build": {
-		"appId": "com.makerdao.metadao",
-		"files": [
-			".next/**",
+    "appId": "com.makerdao.metadao",
+    "files": [
+      ".next/**",
       "scripts/**"
-		],
-		"linux": {
-			"category": "Finance"
-		},
-		"dmg": {
-			"icon": false
-		},
+    ],
+    "extraResources": [
+      "public/**"
+    ],
+    "linux": {
+      "category": "Finance"
+    },
+    "dmg": {
+      "icon": false
+    },
     "win": {
-      "icon": "public/images/logo.png" 
+      "icon": "public/images/logo.png"
     }
   }
 }
