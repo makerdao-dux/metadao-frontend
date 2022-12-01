@@ -49,6 +49,9 @@
       "renderer/public/**/*",
       "renderer/out"
     ],
+    "extraResources": [
+      "renderer/public/**"
+    ],
     "linux": {
       "category": "Finance"
     },
