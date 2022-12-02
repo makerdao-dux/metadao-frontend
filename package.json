@@ -11,9 +11,9 @@
     "prettier": "prettier --config .prettierrc --write pages/ modules/",
     "electron:build": "yarn build && next export renderer",
     "electron:package": "yarn electron:build && electron-builder build",
-    "electron:app": "electron main.js"
+    "electron:app": "electron electron-app/main.js"
   },
-  "main": "main.js",
+  "main": "electron-app/main.js",
   "dependencies": {
     "@dethcrypto/eth-sdk": "^0.3.3",
     "@rainbow-me/rainbowkit": "^0.8.0",
@@ -47,8 +47,7 @@
     "files": [
       "renderer/public/**/*",
       "renderer/out",
-      "main.js",
-      "preload.js"
+      "electron-app/**/*"
     ],
     "linux": {
       "category": "Finance"
