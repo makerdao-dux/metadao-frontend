@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev renderer",
     "build": "next build renderer",
-    "start": "next start",
-    "lint": "next lint",
+    "start": "next start renderer",
+    "lint": "next lint renderer",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
     "electron:build": "yarn build && next export renderer",
