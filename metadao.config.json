@@ -1,10 +1,10 @@
-{ 
-    "name": "MetaDAO frontent",
-    "description": "Interact with MakerDAO features",
-    "palette": {
-        "text": "black",
-        "background": "white"
-    },
-    "logo": "/images/logo.png",
-    "favicon": "/images/logo.png"
+{
+  "name": "MetaDAO frontent",
+  "description": "Interact with MakerDAO features",
+  "palette": {
+    "text": "black",
+    "background": "white"
+  },
+  "logo": "/images/logo.png",
+  "favicon": "/images/logo.png"
 }
