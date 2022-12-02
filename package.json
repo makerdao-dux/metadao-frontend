@@ -6,10 +6,11 @@
     "dev": "next dev renderer",
     "build": "next build renderer",
     "start": "next start renderer",
+    "export": "next export renderer",
     "lint": "next lint renderer",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
-    "electron:build": "yarn build && next export renderer",
+    "electron:build": "yarn build && yarn export",
     "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "electron electron-app/main.js"
   },
