@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "electron-builder install-app-deps",
-    "prettier": "prettier --config .prettierrc --write pages/ modules/",
+    "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
     "electron:build": "yarn build && next export renderer",
     "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "electron electron-app/main.js"
@@ -20,8 +20,8 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "app-root-path": "^3.1.0",
     "electron-is-dev": "^2.0.0",
-    "electron-next": "^3.1.5",
     "electron-serve": "^1.1.0",
     "electron-updater": "^5.3.0",
     "eslint": "8.27.0",

@@ -1,13 +1,13 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
-const prepareRenderer = require('electron-next');
+const prepareRenderer = require('./electron-next');
 const { format } = require('url');
 
 // Check that we are on dev or production
 const isDev = require('electron-is-dev');
 
-const logo = path.join(__dirname, 'renderer', 'public', 'images', 'logo.png');
+const logo = path.join(__dirname, '..', 'renderer', 'public', 'images', 'logo.png');
 
 const windowWidth = 1024;
 const windowHeight = 768;
@@ -29,12 +29,12 @@ async function launchApp() {
   splash.center();
 
   // Start nextjs+
-  await prepareRenderer('./renderer');
+  await prepareRenderer(path.join(__dirname, '..', 'renderer'));
 
   const url = isDev
     ? 'http://localhost:8000/'
     : format({
-        pathname: path.join(__dirname, 'renderer', 'out', 'index.html'),
+        pathname: path.join(__dirname, '..', 'renderer', 'out', 'index.html'),
         protocol: 'file:',
         slashes: true
       });
