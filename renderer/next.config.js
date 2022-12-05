@@ -6,6 +6,7 @@ const nextConfig = {
   images : {
     unoptimized: true
   },
+  trailingSlash: true
   // webpack: (config) => {
   //   if (process.env.NODE_ENV === "production") {
   //     config.target = "electron-renderer";
