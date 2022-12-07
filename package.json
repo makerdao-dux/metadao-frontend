@@ -3,15 +3,14 @@
   "version": "0.1.2",
   "private": true,
   "scripts": {
-    "dev": "vite renderer --host",
-    "build": "tsc --project renderer/tsconfig.json && vite build renderer",
-    "preview": "vite preview renderer",
-    "start": "vite renderer --host",
+    "dev": "vite renderer --host --config vite.config.ts",
+    "build": "tsc --project renderer/tsconfig.json && vite build renderer --config vite.config.ts",
+    "preview": "vite preview renderer --config vite.config.ts",
+    "start": "vite renderer --host --config vite.config.ts",
     "postinstall": "electron-builder install-app-deps",
-    "prettier": "prettier --config .prettierrc --write renderer/src renderer/modules electron-app",
-    "electron:build": "yarn build",
-    "electron:package": "yarn electron:build && electron-builder build",
-    "electron:app": "electron electron-app/main.js",
+    "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
+    "electron:package": "tsc --project renderer/tsconfig.json && vite build renderer --config vite-electron.config.ts && electron-builder build",
+    "electron:app": "vite renderer --config vite-electron.config.ts",
     "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
   },
   "main": "electron-app/main.js",
@@ -45,15 +44,16 @@
     "electron-builder": "^23.6.0",
     "hardhat": "^2.12.3",
     "ts-node": "^10.9.1",
-    "vite": "^3.2.5"
+    "vite": "^3.2.5",
+    "vite-electron-plugin": "^0.5.2"
   },
   "build": {
     "productName": "Maker MetaDAO frontend",
     "appId": "com.makerdao.metadao",
     "files": [
       "renderer/public/**/*",
-      "renderer/out",
-      "electron-app/**/*"
+      "renderer/dist",
+      "electron-app"
     ],
     "linux": {
       "category": "Finance"

@@ -42,7 +42,7 @@ async function launchApp() {
     show: false,
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: false,
+      contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     }
   });
