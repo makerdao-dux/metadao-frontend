@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "vite renderer",
-    "build": "tsc && vite build renderer",
+    "build": "tsc --project renderer/tsconfig.json && vite build renderer",
     "preview": "vite preview renderer",
     "start": "next start renderer",
     "export": "next export renderer",
     "lint": "next lint renderer",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
-    "electron:build": "yarn build && yarn export",
+    "electron:build": "yarn build",
     "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "electron electron-app/main.js"
   },
