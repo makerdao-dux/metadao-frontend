@@ -8,12 +8,6 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-/renderer/out
-/renderer/.next
-
 # production
 /build
 /dist
