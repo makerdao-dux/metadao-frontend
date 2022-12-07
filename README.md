@@ -100,7 +100,7 @@ Once you optain the ipfs hash, you can introduce that in a decentralized name se
 1. Visit https://app.fleek.co/#/
 2. Import the project from Github.
 3. Choose a file hosting (IPFS or ICP)
-4. Configure the output directory: `renderer/dist`
+4. Configure the output directory: `renderer/dist`.
 
 You can now configure an ENS, HNS or custom domain through the Fleek interface, under the settings tab.
 
