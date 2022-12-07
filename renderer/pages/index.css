@@ -68,3 +68,37 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.main {
+  max-width: 1400px;
+  padding: 30px;
+  margin: 0 auto;
+}
+.page-bg {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  position: absolute;
+  left: calc((100% - 1882px) / 2);
+  top: -200px;
+  right: 0px;
+  z-index: -1;
+  background-color: white;
+  overflow: hidden;
+}

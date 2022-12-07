@@ -1,37 +1,37 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React from 'react';
 import config from '../../config';
-
+import { Link } from 'react-router-dom';
 export function Header(): React.ReactElement {
   return (
     <div>
-      <div className="header-wrapper" style={{position: 'fixed', top: '0', left: '0'}}>
-        <div className="header" style={{ display: 'flex'}}>
+      <div className="header-wrapper" style={{ position: 'fixed', top: '0', left: '0' }}>
+        <div className="header" style={{ display: 'flex' }}>
           <div className="left">
             <h1>
-              <a href="/" title="Home page">
+              <Link to="/" title="Home page">
                 <div style={{ marginLeft: '5px' }}>
                   <img src={config.logo} alt="logo" width={35} height={35} />
                 </div>
-              </a>
+              </Link>
             </h1>
           </div>
           <div className="right">
             <div className="links">
               <div className="link">
-                <a href="/vaults" title="Vaults">
+                <Link to="/vaults" title="Vaults">
                   Vaults
-                </a>
+                </Link>
               </div>
               <div className="link">
-                <a href="/delegates" title="delegates">
+                <Link to="/delegates" title="delegates">
                   delegates
-                </a>
+                </Link>
               </div>
               <div className="link">
-                <a href="/farms" title="farms">
+                <Link to="/farms" title="farms">
                   farms
-                </a>
+                </Link>
               </div>
             </div>
             <div className="login-box">
@@ -45,7 +45,6 @@ export function Header(): React.ReactElement {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
