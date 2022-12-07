@@ -72,7 +72,7 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
-- `yarn eth-sdk -p renderer/eth-sdk` fetches the latest ABIs from the contracts defined at `renderer/eth-sdk/config.ts`
+- `yarn eth-sdk -p src/eth-sdk` fetches the latest ABIs from the contracts defined at `src/eth-sdk/config.ts`
 - `yarn testnet:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH. 
 
 ### Deploying the application on a server
@@ -89,10 +89,10 @@ Once you optain the ipfs hash, you can introduce that in a decentralized name se
 1. Visit https://vercel.com/ and create an account
 2. Import the project from Github.
 3. Configure the list of environment variables, see [running the project locally](#running-the-project-locally) for a list of environment variables.
-4. Configure the custom commands to use the `renderer` subfolder.
+4. Configure the custom commands to use the `src` subfolder.
 
 - Build: `yarn build`
-- Output directory: `renderer/dist`
+- Output directory: `src/dist`
 - Development command : `yarn dev`
 
 #### Deploying on Fleek
@@ -100,7 +100,7 @@ Once you optain the ipfs hash, you can introduce that in a decentralized name se
 1. Visit https://app.fleek.co/#/
 2. Import the project from Github.
 3. Choose a file hosting (IPFS or ICP)
-4. Configure the output directory: `renderer/dist`.
+4. Configure the output directory: `src/dist`.
 
 You can now configure an ENS, HNS or custom domain through the Fleek interface, under the settings tab.
 

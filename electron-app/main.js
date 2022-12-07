@@ -6,7 +6,7 @@ const { format } = require('url');
 // Check that we are on dev or production
 const isDev = require('electron-is-dev');
 
-const logo = path.join(__dirname, '..', 'renderer', 'public', 'images', 'logo.png');
+const logo = path.join(__dirname, '..', 'src', 'public', 'images', 'logo.png');
 
 const windowWidth = 1024;
 const windowHeight = 768;
@@ -30,7 +30,7 @@ async function launchApp() {
   const url = isDev
     ? 'http://127.0.0.1:5173'
     : format({
-        pathname: path.join(__dirname, '..', 'renderer', 'dist', 'index.html'),
+        pathname: path.join(__dirname, '..', 'src', 'dist', 'index.html'),
         protocol: 'file:',
         slashes: true
       });
