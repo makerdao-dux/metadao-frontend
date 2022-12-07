@@ -11,7 +11,8 @@
     "prettier": "prettier --config .prettierrc --write renderer/src renderer/modules electron-app",
     "electron:build": "yarn build",
     "electron:package": "yarn electron:build && electron-builder build",
-    "electron:app": "electron electron-app/main.js"
+    "electron:app": "electron electron-app/main.js",
+    "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
   },
   "main": "electron-app/main.js",
   "dependencies": {
@@ -39,7 +40,10 @@
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",
     "ts-node": "^10.9.1",
-    "vite": "^3.2.5"
+    "vite": "^3.2.5",
+    "hardhat": "^2.12.3",
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "dotenv": "^16.0.3"
   },
   "build": {
     "productName": "Maker MetaDAO frontend",

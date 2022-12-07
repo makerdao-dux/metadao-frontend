@@ -73,6 +73,7 @@ This project is built on top of [NextJS](https://nextjs.org/).
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
 - `yarn eth-sdk -p renderer/eth-sdk` fetches the latest ABIs from the contracts defined at `renderer/eth-sdk/config.ts`
+- `yarn testnet:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH. 
 
 ### Deploying the application on a server
 
@@ -129,3 +130,11 @@ The electron script located at `electron-app/main.js` includes the package elect
 For auto-updating to work on macOS, your code needs to be signed. For more information check [this post](https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/).
 
 ---
+
+
+## Running on test mode.
+
+The application can be run locally on test mode. This is done by forking mainnet using Hardhat and Alchemy. 
+To configure the Alchemy environment variable, add `TESTNET_ALCHEMY_KEY` to your `.env` file. 
+
+The command to run the test network is : `yarn testnet:mainnet --address ADDRESS`. Is it needed to introduce an address that will receive the test tokens.
