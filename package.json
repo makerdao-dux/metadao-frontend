@@ -1,18 +1,17 @@
 {
   "name": "metadao-frontend",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
-    "dev": "next dev renderer",
-    "build": "next build renderer",
-    "start": "next start renderer",
-    "export": "next export renderer",
-    "lint": "next lint renderer",
+    "dev": "vite src --host --config vite.config.ts",
+    "build": "tsc --project src/tsconfig.json && vite build src --config vite.config.ts",
+    "preview": "vite preview src --config vite.config.ts",
+    "start": "vite src --host --config vite.config.ts",
     "postinstall": "electron-builder install-app-deps",
-    "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
-    "electron:build": "yarn build && yarn export",
+    "prettier": "prettier --config .prettierrc --write src/pages src/modules electron-app",
+    "electron:build": "yarn build --config vite-electron.config.ts",
     "electron:package": "yarn electron:build && electron-builder build",
-    "electron:app": "electron electron-app/main.js",
+    "electron:app": "vite src --config vite-electron.config.ts",
     "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
   },
   "main": "electron-app/main.js",
@@ -27,32 +26,35 @@
     "electron-serve": "^1.1.0",
     "electron-updater": "^5.3.0",
     "eslint": "8.27.0",
-    "eslint-config-next": "13.0.3",
     "ethers": "^5.7.2",
-    "next": "13.0.3",
     "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.4.4",
     "styled-jsx": "^5.1.0",
     "swr": "^1.3.0",
-    "typescript": "4.9.3",
     "wagmi": "^0.8.5"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@vitejs/plugin-react": "^2.2.0",
     "dotenv": "^16.0.3",
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",
     "hardhat": "^2.12.3",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "typescript": "4.9.3",
+    "vite": "^3.2.5",
+    "vite-electron-plugin": "^0.5.2"
   },
   "build": {
     "productName": "Maker MetaDAO frontend",
     "appId": "com.makerdao.metadao",
     "files": [
-      "renderer/public/**/*",
-      "renderer/out",
-      "electron-app/**/*"
+      "src/public/**/*",
+      "src/dist",
+      "electron-app"
     ],
     "linux": {
       "category": "Finance"
@@ -67,7 +69,7 @@
       "artifactName": "MetaDAO-Frontend-${version}-mac.${ext}"
     },
     "win": {
-      "icon": "renderer/public/images/logo.png",
+      "icon": "src/public/images/logo.png",
       "target": [
         "nsis"
       ],

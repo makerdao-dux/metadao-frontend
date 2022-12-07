@@ -8,13 +8,13 @@ import config from '../config';
 function getRPCforChainId(id: number): string | undefined {
   switch (id) {
     case chainId.mainnet:
-      return process.env.NEXT_PUBLIC_RPC_PROVIDER_MAINNET;
+      return import.meta.env.RPC_PROVIDER_MAINNET;
     case chainId.goerli:
-      return process.env.NEXT_PUBLIC_RPC_PROVIDER_GOERLI;
+      return import.meta.env.RPC_PROVIDER_GOERLI;
     case chainId.optimism:
-      return process.env.NEXT_PUBLIC_RPC_PROVIDER_OPTIMISM;
+      return import.meta.env.RPC_PROVIDER_OPTIMISM;
     case chainId.arbitrum:
-      return process.env.NEXT_PUBLIC_RPC_PROVIDER_ARBITRUM;
+      return import.meta.env.RPC_PROVIDER_ARBITRUM;
     default:
       return undefined;
   }

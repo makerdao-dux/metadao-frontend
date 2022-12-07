@@ -5,6 +5,6 @@
     "text": "black",
     "background": "white"
   },
-  "logo": "/images/logo.png",
-  "favicon": "/images/logo.png"
+  "logo": "./images/logo.png",
+  "favicon": "./images/logo.png"
 }

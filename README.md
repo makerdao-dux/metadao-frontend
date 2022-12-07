@@ -53,9 +53,9 @@ To run the project locally:
 
 4. Fill in the environment variables
 
-- NEXT_PUBLIC_RPC_PROVIDER_ARBITRUM
-- NEXT_PUBLIC_RPC_PROVIDER_MAINNET
-- NEXT_PUBLIC_RPC_PROVIDER_OPTIMISM
+- RPC_PROVIDER_ARBITRUM
+- RPC_PROVIDER_MAINNET
+- RPC_PROVIDER_OPTIMISM
 
 5. Execute `yarn dev` or `npm run dev` to start the project.
 6. Visit `http://localhost:3000`
@@ -64,7 +64,7 @@ To see more information about other available commands, check [Development Comma
 
 #### Development commands
 
-This project is built on top of [NextJS](https://nextjs.org/).
+This project is built on top of [ReactJS](https://reactjs.org/).
 
 - `yarn dev` starts the development server locally.
 - `yarn build` builds a static distribution of the project that can be hosted on IPFS.
@@ -72,7 +72,7 @@ This project is built on top of [NextJS](https://nextjs.org/).
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
-- `yarn eth-sdk -p renderer/eth-sdk` fetches the latest ABIs from the contracts defined at `renderer/eth-sdk/config.ts`
+- `yarn eth-sdk -p src/eth-sdk` fetches the latest ABIs from the contracts defined at `src/eth-sdk/config.ts`
 - `yarn testnet:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH. 
 
 ### Deploying the application on a server
@@ -89,24 +89,24 @@ Once you optain the ipfs hash, you can introduce that in a decentralized name se
 1. Visit https://vercel.com/ and create an account
 2. Import the project from Github.
 3. Configure the list of environment variables, see [running the project locally](#running-the-project-locally) for a list of environment variables.
-4. Configure the custom commands to use the `renderer` subfolder.
+4. Configure the custom commands to use the `src` subfolder.
 
-- Build: `next build renderer`
-- Output directory: `renderer/.next`
-- Development command : `next dev renderer --port $PORT`
+- Build: `yarn build`
+- Output directory: `src/dist`
+- Development command : `yarn dev`
 
 #### Deploying on Fleek
 
 1. Visit https://app.fleek.co/#/
 2. Import the project from Github.
 3. Choose a file hosting (IPFS or ICP)
-4. Configure the output directory: `renderer/out`
+4. Configure the output directory: `src/dist`.
 
 You can now configure an ENS, HNS or custom domain through the Fleek interface, under the settings tab.
 
 #### Configuring a decentralized DNS.
 
-If you hosted your website on IPFS you can point your decentralized domain name to it. Follow the next links for more information:
+If you hosted your website on IPFS you can point your decentralized domain name to it. Click on the following links for more information:
 
 - [ENS](https://docs.ipfs.tech/how-to/websites-on-ipfs/link-a-domain/) (.eth domains)
 - [Unstoppabble domains](https://docs.unstoppabledomains.com/d-websites/connect-ipfs/)
