@@ -39,3 +39,5 @@ yarn-error.log*
 next-env.d.ts
 
 electron
+hardhat/cache
+.env

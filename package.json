@@ -12,7 +12,8 @@
     "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
     "electron:build": "yarn build && yarn export",
     "electron:package": "yarn electron:build && electron-builder build",
-    "electron:app": "electron electron-app/main.js"
+    "electron:app": "electron electron-app/main.js",
+    "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
   },
   "main": "electron-app/main.js",
   "dependencies": {
@@ -38,8 +39,11 @@
     "wagmi": "^0.8.5"
   },
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "dotenv": "^16.0.3",
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",
+    "hardhat": "^2.12.3",
     "ts-node": "^10.9.1"
   },
   "build": {
