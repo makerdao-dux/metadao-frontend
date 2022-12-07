@@ -64,7 +64,7 @@ To see more information about other available commands, check [Development Comma
 
 #### Development commands
 
-This project is built on top of [NextJS](https://nextjs.org/).
+This project is built on top of [ReactJS](https://reactjs.org/).
 
 - `yarn dev` starts the development server locally.
 - `yarn build` builds a static distribution of the project that can be hosted on IPFS.
@@ -91,22 +91,22 @@ Once you optain the ipfs hash, you can introduce that in a decentralized name se
 3. Configure the list of environment variables, see [running the project locally](#running-the-project-locally) for a list of environment variables.
 4. Configure the custom commands to use the `renderer` subfolder.
 
-- Build: `next build renderer`
-- Output directory: `renderer/.next`
-- Development command : `next dev renderer --port $PORT`
+- Build: `yarn build`
+- Output directory: `renderer/dist`
+- Development command : `yarn dev`
 
 #### Deploying on Fleek
 
 1. Visit https://app.fleek.co/#/
 2. Import the project from Github.
 3. Choose a file hosting (IPFS or ICP)
-4. Configure the output directory: `renderer/out`
+4. Configure the output directory: `renderer/dist`
 
 You can now configure an ENS, HNS or custom domain through the Fleek interface, under the settings tab.
 
 #### Configuring a decentralized DNS.
 
-If you hosted your website on IPFS you can point your decentralized domain name to it. Follow the next links for more information:
+If you hosted your website on IPFS you can point your decentralized domain name to it. Click on the following links for more information:
 
 - [ENS](https://docs.ipfs.tech/how-to/websites-on-ipfs/link-a-domain/) (.eth domains)
 - [Unstoppabble domains](https://docs.unstoppabledomains.com/d-websites/connect-ipfs/)

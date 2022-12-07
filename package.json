@@ -9,7 +9,8 @@
     "start": "vite renderer --host --config vite.config.ts",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write renderer/pages renderer/modules electron-app",
-    "electron:package": "yarn build --config vite-electron.config.ts && electron-builder build",
+    "electron:build": "yarn build --config vite-electron.config.ts",
+    "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "vite renderer --config vite-electron.config.ts",
     "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
   },
