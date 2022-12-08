@@ -73,7 +73,7 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
 - `yarn eth-sdk -p src/eth-sdk` fetches the latest ABIs from the contracts defined at `src/eth-sdk/config.ts`
-- `yarn testnet:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH. 
+- `yarn testnet:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH.
 
 ### Deploying the application on a server
 
@@ -131,10 +131,22 @@ For auto-updating to work on macOS, your code needs to be signed. For more infor
 
 ---
 
-
 ## Running on test mode.
 
-The application can be run locally on test mode. This is done by forking mainnet using Hardhat and Alchemy. 
-To configure the Alchemy environment variable, add `TESTNET_ALCHEMY_KEY` to your `.env` file. 
+The application can be run locally on test mode. This is done by forking mainnet using Hardhat and Alchemy.
 
-The command to run the test network is : `yarn testnet:mainnet --address ADDRESS`. Is it needed to introduce an address that will receive the test tokens.
+1. Make sure you have set the following environmental variables in your `.env` file:
+
+`TESTNET_ALCHEMY_KEY=<my_key>` - Replace `<my_key>` with a valid API key which is used for forking mainnet with hardhat.
+
+`RPC_PROVIDER_HARDHAT=http://localhost:8545/` - This tells the provider which local URL to connect to.
+
+2. Run the command `yarn testnet:mainnet` to spin up the local hardhat testnet.
+
+3. Next, in a new terminal window, run the command `yarn hardhat:fund --address <my_address>` replacing `<my_address>` with the address you wish to connect your wallet to the app with. This task will send all the necessary tokens to interact with the app to your address.
+
+4. Run the app in development mode with `yarn dev`.
+
+5. Make sure your wallet is connected to the testnet. For example, if using MetaMask, go to the network settings and make sure the chain ID is set to `31337` and the RPC URL is set to `http://localhost:8545`.
+
+6. Click the address dropdown and select `Hardhat` from the list of networks to choose from. You should now see your testnet balance displayed.

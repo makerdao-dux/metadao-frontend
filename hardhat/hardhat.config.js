@@ -32,61 +32,63 @@ task('fund', 'Funds the specified wallet with MKR and ETH')
       params: [addressWithMKR]
     });
 
-    await hre.network.provider.request({
-        method: 'hardhat_impersonateAccount',
-        params: [addressWithstETH]
-      });
+    // await hre.network.provider.request({
+    //   method: 'hardhat_impersonateAccount',
+    //   params: [addressWithstETH]
+    // });
 
-    const ethSender = await ethers.getSigner(addressWithETH);
+    const [owner] = await ethers.getSigners();
     // Send 100 ETH to configured address
-    await ethSender.sendTransaction({
+    await owner.sendTransaction({
       to: address,
-      value: ethers.utils.parseEther('100')
+      value: ethers.utils.parseEther('234')
     });
 
     console.log(
-      'Test address ETH balance is now',
+      `Test address ${address} ETH balance is now:`,
       ethers.utils.formatEther(await ethers.provider.getBalance(address))
     );
 
     // Send MKR
-    const mkrSender = await ethers.getSigner(addressWithMKR);
+    // const mkrSender = await ethers.getSigner(addressWithMKR);
 
-    const mkrToken = new ethers.Contract(mkrAddress, ERC20_ABI, mkrSender);
+    // const mkrToken = new ethers.Contract(mkrAddress, ERC20_ABI, mkrSender);
 
-    await mkrToken.transfer(address, ethers.utils.parseEther('100'));
+    // await mkrToken.transfer(address, ethers.utils.parseEther('100'));
 
-    console.log(`Test account funded with 100 MKR`);
+    // console.log(`Test address ${address} funded with 100 MKR`);
 
     // Send DAI
-    const daiSender = await ethers.getSigner(addressWithDAI);
+    // const daiSender = await ethers.getSigner(addressWithDAI);
 
-    const daiToken = new ethers.Contract(daiAddress, ERC20_ABI, daiSender);
+    // const daiToken = new ethers.Contract(daiAddress, ERC20_ABI, daiSender);
 
-    await daiToken.transfer(address, ethers.utils.parseEther('10000'));
+    // await daiToken.transfer(address, ethers.utils.parseEther('10000'));
 
-    console.log(`Test account funded with 10000 DAI`);
+    // console.log(`Test address ${address} funded with 10000 DAI`);
 
-    // Send stETH
-    const stETHSender = await ethers.getSigner(addressWithstETH);
+    // // Send stETH
+    // const stETHSender = await ethers.getSigner(addressWithstETH);
 
-    const stETHToken = new ethers.Contract(stETHAddress, ERC20_ABI, stETHSender);
+    // const stETHToken = new ethers.Contract(stETHAddress, ERC20_ABI, stETHSender);
 
-    await stETHToken.transfer(address, ethers.utils.parseEther('100'));
+    // await stETHToken.transfer(address, ethers.utils.parseEther('100'));
 
-    console.log(`Test account funded with 100 stETH`);
+    // console.log(`Test address ${address} funded with 100 stETH`);
   });
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
+  defaultNetwork: 'mainnetfork',
   networks: {
-    hardhat: {
-      chainId: 1,
+    mainnetfork: {
+      url: 'http://127.0.0.1/',
+      chainId: 31337,
       forking: {
         url: `https://eth-mainnet.g.alchemy.com/v2/${process.env.TESTNET_ALCHEMY_KEY}`,
         blockNumber: 16132122,
-        chainId: 1
+        chainId: 31337
       },
       timeout: 2000000
     }

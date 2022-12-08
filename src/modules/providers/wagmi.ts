@@ -15,13 +15,15 @@ function getRPCforChainId(id: number): string | undefined {
       return import.meta.env.RPC_PROVIDER_OPTIMISM;
     case chainId.arbitrum:
       return import.meta.env.RPC_PROVIDER_ARBITRUM;
+    case chainId.hardhat:
+      return import.meta.env.RPC_PROVIDER_HARDHAT;
     default:
       return undefined;
   }
 }
 
 export const { chains, provider } = configureChains(
-  [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum],
+  [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
   [
     jsonRpcProvider({
       rpc: chain => {

@@ -12,7 +12,8 @@
     "electron:build": "yarn build --config vite-electron.config.ts",
     "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "vite src --config vite-electron.config.ts",
-    "testnet:mainnet": "npx hardhat node --network hardhat --config hardhat/mainnet.config.js & npx hardhat fund --config hardhat/mainnet.config.js"
+    "testnet:mainnet": "npx hardhat node --config hardhat/hardhat.config.js",
+    "hardhat:fund": "npx hardhat fund --network localhost --config hardhat/hardhat.config.js"
   },
   "main": "electron-app/main.js",
   "dependencies": {
@@ -27,7 +28,7 @@
     "electron-updater": "^5.3.0",
     "eslint": "8.27.0",
     "ethers": "^5.7.2",
-    "prettier": "^2.7.1",
+    "prettier": "^2.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-helmet": "^6.1.0",
