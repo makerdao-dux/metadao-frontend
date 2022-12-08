@@ -12,8 +12,12 @@
     "electron:build": "yarn build --config vite-electron.config.ts",
     "electron:package": "yarn electron:build && electron-builder build",
     "electron:app": "vite src --config vite-electron.config.ts",
-    "testnet:mainnet": "npx hardhat node --config hardhat/hardhat.config.js",
-    "hardhat:fund": "npx hardhat fund --network localhost --config hardhat/hardhat.config.js"
+    "hardhat:mainnet": "npx hardhat node --config hardhat/mainnet.config.js",
+    "hardhat:arbitrum": "npx hardhat node --config hardhat/arbitrum.config.js",
+    "hardhat:optimism": "npx hardhat node --config hardhat/optimism.config.js",
+    "hardhat:mainnet:fund": "npx hardhat fund --network localhost --config hardhat/mainnet.config.js",
+    "hardhat:arbitrum:fund": "npx hardhat fund --network localhost --config hardhat/arbitrum.config.js",
+    "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js"
   },
   "main": "electron-app/main.js",
   "dependencies": {

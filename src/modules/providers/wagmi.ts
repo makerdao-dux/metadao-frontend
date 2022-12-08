@@ -16,7 +16,7 @@ function getRPCforChainId(id: number): string | undefined {
     case chainId.arbitrum:
       return import.meta.env.RPC_PROVIDER_ARBITRUM;
     case chainId.hardhat:
-      return import.meta.env.RPC_PROVIDER_HARDHAT;
+      return "http://localhost:8545/";
     default:
       return undefined;
   }
