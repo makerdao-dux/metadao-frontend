@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'theme-ui';
 import { theme } from '../modules/ui/theme';
-// import './index.css';
 
 import { WagmiConfig } from 'wagmi';
 import { chains, wagmiClient } from '../modules/providers/wagmi';
@@ -15,6 +14,7 @@ import Home from './Home';
 import Vaults from './Vaults';
 import Delegates from './Delegates';
 import Farms from './Farms';
+import Config from './Config';
 
 const router = createHashRouter([
   {
@@ -35,6 +35,11 @@ const router = createHashRouter([
   {
     path: '/farms',
     element: <Farms />
+    //errorElement: <ErrorPage />,
+  },
+  {
+    path: '/config',
+    element: <Config />
     //errorElement: <ErrorPage />,
   }
 ]);

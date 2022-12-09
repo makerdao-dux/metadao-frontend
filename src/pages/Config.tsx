@@ -1,24 +1,21 @@
 import React from 'react';
 import { Layout } from '../modules/layout/components/Layout';
-import Decoration from '../modules/layout/components/Decoration';
+import { Heading, Input, Label, Button } from 'theme-ui';
 
 function Config(): React.ReactElement {
-  return (
-    <div className="App">
-      <Layout>
-        <main>
-          <div className="page-bg">
-            <Decoration />
-          </div>
+  const [rpcUrl, setRpcUrl] = React.useState('');
 
-          <div className="page-content">
-            <div className="title">
-              <h1>config</h1>
-            </div>
-          </div>
-        </main>
-      </Layout>
-    </div>
+  const updateRpcUrl = () => {
+    window.localStorage.setItem('rpcUrl', rpcUrl);
+  };
+
+  return (
+    <Layout>
+      <Heading>CONFIG</Heading>
+      <Label>RPC URL</Label>
+      <Input placeholder="Enter RPC URL" onChange={e => setRpcUrl(e.target.value)} value={rpcUrl} />
+      <Button onClick={updateRpcUrl}>Update</Button>
+    </Layout>
   );
 }
 
