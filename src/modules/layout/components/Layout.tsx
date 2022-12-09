@@ -26,10 +26,10 @@ export function Layout({
       <Box as="body" sx={{ variant: 'layout.body' }}>
         <Header />
         <Box as="main" sx={{ width: '100%', flex: '1 1 auto', variant: 'layout.main' }}>
-          {children}
           <Box sx={{ position: 'absolute' }}>
             <Decoration />
           </Box>
+          {children}
         </Box>
         <Footer />
       </Box>
