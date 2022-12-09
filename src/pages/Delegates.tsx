@@ -1,24 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from '../modules/layout/components/Layout';
-import Decoration from '../modules/layout/components/Decoration';
+import { Heading } from 'theme-ui';
 
 function Delegates(): React.ReactElement {
   return (
-    <div className="App">
-      <Layout>
-        <main>
-          <div className="page-bg">
-            <Decoration />
-          </div>
-
-          <div className="page-content">
-            <div className="title">
-              <h1>delegates</h1>
-            </div>
-          </div>
-        </main>
-      </Layout>
-    </div>
+    <Layout>
+      <Heading>DELEGATES</Heading>
+    </Layout>
   );
 }
 

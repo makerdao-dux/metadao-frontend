@@ -20,12 +20,12 @@ export function Header(): React.ReactElement {
         </Flex>
         <Flex sx={{ mr: 3 }}>
           <Link to="/delegates" title="delegates">
-            delegates
+            Delegates
           </Link>
         </Flex>
         <Flex>
           <Link to="/farms" title="farms">
-            farms
+            Farms
           </Link>
         </Flex>
       </Flex>
