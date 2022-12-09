@@ -25,6 +25,22 @@ export const theme: Theme = {
     tight: 1.05,
     loose: 1.2
   },
+  layout: {
+    body: {
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      padding: '0',
+      maxWidth: '100%',
+      margin: '0 auto'
+    },
+    main: {
+      maxWidth: '1400px',
+      padding: '30px',
+      margin: '0 auto'
+    }
+  },
   breakpoints: ['40em', '63em', '88em'],
   buttons: {
     primary: {

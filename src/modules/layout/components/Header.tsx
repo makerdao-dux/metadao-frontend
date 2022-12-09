@@ -2,6 +2,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React from 'react';
 import config from '../../config';
 import { Link } from 'react-router-dom';
+
 export function Header(): React.ReactElement {
   return (
     <div>
