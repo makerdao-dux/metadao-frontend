@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './Home';
-import './index.css';
+import { ThemeProvider } from 'theme-ui';
+import { theme } from '../modules/ui/theme';
+// import './index.css';
 
 import { WagmiConfig } from 'wagmi';
 import { chains, wagmiClient } from '../modules/providers/wagmi';
@@ -42,7 +43,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={darkTheme()}>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+          <RouterProvider router={router} />
+        </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   </React.StrictMode>

@@ -3,6 +3,8 @@ import config from '../../config';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Helmet } from 'react-helmet';
+import { Box } from 'theme-ui';
+import Decoration from './Decoration';
 
 export function Layout({
   children,
@@ -21,12 +23,16 @@ export function Layout({
         <link rel="icon" href={config.favicon} />
       </Helmet>
 
-      <div className="body">
+      <Box as="body" sx={{ variant: 'layout.body' }}>
         <Header />
-
-        <div className="main">{children}</div>
+        <Box as="main" sx={{ width: '100%', flex: '1 1 auto', variant: 'layout.main' }}>
+          <Box sx={{ position: 'absolute' }}>
+            <Decoration />
+          </Box>
+          {children}
+        </Box>
         <Footer />
-      </div>
+      </Box>
     </div>
   );
 }
