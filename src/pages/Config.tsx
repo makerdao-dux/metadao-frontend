@@ -6,6 +6,7 @@ function Config(): React.ReactElement {
   const [rpcUrl, setRpcUrl] = React.useState('');
 
   const updateRpcUrl = () => {
+    window.localStorage.removeItem('rpcUrl');
     window.localStorage.setItem('rpcUrl', rpcUrl);
   };
 

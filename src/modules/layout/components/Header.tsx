@@ -23,9 +23,14 @@ export function Header(): React.ReactElement {
             Delegates
           </Link>
         </Flex>
-        <Flex>
+        <Flex sx={{ mr: 3 }}>
           <Link to="/farms" title="farms">
             Farms
+          </Link>
+        </Flex>
+        <Flex>
+          <Link to="/config" title="config">
+            Config
           </Link>
         </Flex>
       </Flex>
