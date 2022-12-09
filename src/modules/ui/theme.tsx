@@ -2,9 +2,9 @@ import type { Theme } from 'theme-ui';
 
 export const theme: Theme = {
   fonts: {
-    body: 'Inter, Avenir, Helvetica, Arial, sans-serif;',
-    heading: 'Avenir, sans-serif',
-    monospace: 'Menlo, monospace'
+    body: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu',
+    heading: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu',
+    monospace: 'monospace'
   },
   colors: {
     text: '#000',
@@ -24,6 +24,13 @@ export const theme: Theme = {
     heading: 1.125,
     tight: 1.05,
     loose: 1.2
+  },
+  styles: {
+    root: {
+      fontFamily: 'body',
+      lineHeight: 'body',
+      fontWeight: 'body'
+    }
   },
   layout: {
     body: {
