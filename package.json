@@ -21,7 +21,6 @@
   },
   "main": "electron-app/main.js",
   "dependencies": {
-    "@dethcrypto/eth-sdk": "^0.3.3",
     "@rainbow-me/rainbowkit": "^0.8.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",

@@ -72,7 +72,6 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
-- `yarn eth-sdk -p src/eth-sdk` fetches the latest ABIs from the contracts defined at `src/eth-sdk/config.ts`
 - `yarn hardhat:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH.
 
 ### Deploying the application on a server

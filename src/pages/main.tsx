@@ -17,25 +17,25 @@ import Farms from './Farms';
 
 const router = createHashRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: '/',
+    element: <Home />
     //errorElement: <ErrorPage />,
   },
   {
-    path: "/vaults",
-    element: <Vaults />,
+    path: '/vaults',
+    element: <Vaults />
     //errorElement: <ErrorPage />,
   },
   {
-    path: "/delegates",
-    element: <Delegates />,
+    path: '/delegates',
+    element: <Delegates />
     //errorElement: <ErrorPage />,
   },
   {
-    path: "/farms",
-    element: <Farms />,
+    path: '/farms',
+    element: <Farms />
     //errorElement: <ErrorPage />,
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

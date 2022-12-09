@@ -10,7 +10,6 @@ export function Footer(): React.ReactElement {
         </div>
       </div>
       <div style={{ padding: '30px', textAlign: 'center' }}>2022 - {config.name}</div>
-      
     </div>
   );
 }

@@ -2,6 +2,7 @@
     "singleQuote": true,
     "arrowParens": "avoid",
     "printWidth": 110,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "tabWidth": 2
   }
   
