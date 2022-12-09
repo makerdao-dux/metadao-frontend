@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from 'theme-ui';
 import { theme } from '../modules/ui/theme';
-import './index.css';
+// import './index.css';
 
 import { WagmiConfig } from 'wagmi';
 import { chains, wagmiClient } from '../modules/providers/wagmi';
