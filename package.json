@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite src --host --config vite.config.ts",
     "build": "tsc --project src/tsconfig.json && vite build src --config vite.config.ts",
-    "preview": "vite preview src --config vite.config.ts",
+    "preview": "yarn build && vite preview src --config vite.config.ts",
     "start": "vite src --host --config vite.config.ts",
     "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write src/pages src/modules electron-app",
