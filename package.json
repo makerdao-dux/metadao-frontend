@@ -7,7 +7,6 @@
     "build": "tsc --project src/tsconfig.json && vite build src --config vite.config.ts",
     "preview": "yarn build && vite preview src --config vite.config.ts",
     "start": "vite src --host --config vite.config.ts",
-    "postinstall": "electron-builder install-app-deps",
     "prettier": "prettier --config .prettierrc --write src/pages src/modules electron-app",
     "electron:build": "yarn build --config vite-electron.config.ts",
     "electron:package": "yarn electron:build && electron-builder build",
@@ -17,7 +16,10 @@
     "hardhat:optimism": "npx hardhat node --config hardhat/optimism.config.js",
     "hardhat:mainnet:fund": "npx hardhat fund --network localhost --config hardhat/mainnet.config.js",
     "hardhat:arbitrum:fund": "npx hardhat fund --network localhost --config hardhat/arbitrum.config.js",
-    "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js"
+    "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js",
+    "storybook": "start-storybook -p 6006",
+    "postinstall": "electron-builder install-app-deps",
+    "build-storybook": "build-storybook"
   },
   "main": "electron-app/main.js",
   "dependencies": {
@@ -42,8 +44,17 @@
     "wagmi": "^0.8.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
     "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/builder-vite": "^0.2.5",
+    "@storybook/react": "^6.5.14",
+    "@storybook/testing-library": "^0.0.13",
     "@vitejs/plugin-react": "^2.2.0",
+    "babel-loader": "^8.3.0",
     "dotenv": "^16.0.3",
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",

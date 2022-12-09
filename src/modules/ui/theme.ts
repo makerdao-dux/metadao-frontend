@@ -63,7 +63,16 @@ export const theme: Theme = {
       '&:hover': {
         borderColor: '#646cff'
       }
-    }
+    },
+    secondary: {
+      variant: 'buttons.primary',
+      backgroundColor: 'green',
+      cursor: 'pointer',
+      transition: 'border-color 0.25s',
+      '&:hover': {
+        borderColor: 'green'
+      }
+    },
   },
   links: {
     nostyle: {

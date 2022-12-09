@@ -72,7 +72,9 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn electron:package` builds and bundles a downlodable/executable version of the app.
 - `yarn electron:app` launches the application in the electron wrapper.
-- `yarn hardhat:mainnet --address 0x0000` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`. It also seeds the addresses passed as parameter with test MKR, ETH and stETH.
+- `yarn hardhat:mainnet` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`.
+- `yarn hardhat:mainnet:fund  --address 0x0000` Funds the address passed as parameter with test MKR, ETH and stETH. For more information, please check [running a test network](#running-on-test-mode).
+- `yarn storybook`. Launches the react storybook, for more information check [theming](#theming).
 
 ### Deploying the application on a server
 
@@ -148,7 +150,6 @@ The application can be run locally on test mode. This is done by forking mainnet
 
 6. Click the address dropdown and select `Hardhat` from the list of networks to choose from. You should now see your testnet balance displayed.
 
-
 ### List of available commands
 
 - `hardhat:mainnet` Forks ethereum mainnet
@@ -157,3 +158,11 @@ The application can be run locally on test mode. This is done by forking mainnet
 - `hardhat:mainnet:fund` Sends funds on the ethereum fork
 - `hardhat:arbitrum:fund` Sends funds on the arbitrum fork
 - `hardhat:optimism:fund` Sends funds on the optimism fork
+
+## Theming
+
+This project is configured with [Theme UI](https://theme-ui.com/). Theme-UI allows to define a theme configuration that is used by the whole application. To edit the base theme, go to `modules/ui/theme.ts`.
+
+We try to use a modular approach of components, following a design system that allows us to create complex UIs by combining existing components.
+
+You can visualize a list of the available components by runnign our Storybook with the command: `yarn storybook`

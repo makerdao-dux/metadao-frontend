@@ -23,7 +23,7 @@ task('fund', 'Funds the specified wallet with MKR and ETH')
 
     // Tokens
     const daiAddress = '0xda10009cbd5d07dd0cecc66161fc93d7c9000da1';
-    const stETHAddress = '0xbb0b4642492b275F154e415fc52Dacc931103fD9';
+    const stETHAddress = '0x5979d7b546e38e414f7e9822514be443a4800529';
 
     await hre.network.provider.request({
       method: 'hardhat_impersonateAccount',
