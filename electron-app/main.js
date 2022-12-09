@@ -49,6 +49,10 @@ async function launchApp() {
 
   win.loadURL(url);
 
+  // testing local storage
+  const object = await mainWindow.webContents.executeJavaScript('localStorage.length');
+  console.log(`Localstorage length: ${object}`);
+
   setTimeout(() => {
     // Hide splash screen and open window
     win.center();
