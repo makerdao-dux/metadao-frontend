@@ -54,6 +54,9 @@ async function launchApp() {
     win.center();
     splash.close();
     win.show();
+    if (isDev) {
+      win.webContents.openDevTools();
+    }
   }, 2000);
 }
 
