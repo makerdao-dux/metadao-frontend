@@ -15,6 +15,7 @@ import Vaults from './Vaults';
 import Delegates from './Delegates';
 import Farms from './Farms';
 import Config from './Config';
+import { ConfigProvider } from '../modules/config/ConfigContext';
 
 const router = createHashRouter([
   {
@@ -46,12 +47,14 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={darkTheme()}>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <ConfigProvider>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains} theme={darkTheme()}>
+          <ThemeProvider theme={theme}>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ConfigProvider>
   </React.StrictMode>
 );
