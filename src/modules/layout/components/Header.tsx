@@ -1,10 +1,12 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import React from 'react';
-import config from '../../config';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Flex } from 'theme-ui';
+import { ConfigContext } from '../../config/context/ConfigContext';
 
 export function Header(): React.ReactElement {
+  const { config } = useContext(ConfigContext);
+
   return (
     <Flex sx={{ justifyContent: 'space-between', padding: 3 }}>
       <Link to="/" title="Home page">

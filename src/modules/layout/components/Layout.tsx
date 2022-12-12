@@ -1,10 +1,10 @@
-import React from 'react';
-import config from '../../config';
+import React, { useContext } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { Helmet } from 'react-helmet';
 import { Box } from 'theme-ui';
 import Decoration from './Decoration';
+import { ConfigContext } from '../../config/context/ConfigContext';
 
 export function Layout({
   children,
@@ -13,6 +13,7 @@ export function Layout({
   children: React.ReactNode;
   metaDescription?: string;
 }): React.ReactElement {
+  const { config } = useContext(ConfigContext);
   return (
     <div>
       <Helmet>

@@ -1,7 +1,8 @@
-import React from 'react';
-import config from '../../config';
+import React, { useContext } from 'react';
+import { ConfigContext } from '../../config/context/ConfigContext';
 
 export function Footer(): React.ReactElement {
+  const { config } = useContext(ConfigContext);
   return (
     <div>
       <div className="footer">
