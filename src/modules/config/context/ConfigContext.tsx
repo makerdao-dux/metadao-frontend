@@ -2,52 +2,8 @@ import React from 'react';
 import { SiteConfig } from '../types/site-config';
 import { UserConfig } from '../types/user-config';
 
-import metadaoConfig from '../../../../metadao.config.json';
-import { chainId } from 'wagmi';
 import { RPC } from '../types/rpc';
-
-// Default configuration used site-wide
-// It merges the default configuration with the one from the metadao.config.json
-// It stores all the RPCs the application will use, and also the user configured-ones
-const defaultConfig: SiteConfig = {
-  name: 'MetaDAO frontend',
-  description: 'Interact with MakerDAO features',
-  palette: {
-    text: 'black',
-    background: 'white'
-  },
-  logo: './images/logo.png',
-  favicon: './images/logo.png',
-  rpcs: [
-    {
-      chainId: chainId.mainnet,
-      url: import.meta.env.RPC_PROVIDER_MAINNET || ''
-    },
-    {
-      chainId: chainId.goerli,
-      url: import.meta.env.RPC_PROVIDER_GOERLI || ''
-    },
-    {
-      chainId: chainId.optimism,
-      url: import.meta.env.RPC_PROVIDER_OPTIMISM || ''
-    },
-    {
-      chainId: chainId.arbitrum,
-      url: import.meta.env.RPC_PROVIDER_ARBITRUM || ''
-    },
-    {
-      chainId: chainId.hardhat,
-      url: 'http://localhost:8545/'
-    }
-  ],
-  theme: 'light'
-};
-
-// Mix the default config with the metadao config
-const siteConfig: SiteConfig = {
-  ...defaultConfig,
-  ...metadaoConfig
-};
+import { defaultConfig as siteConfig } from '../default-config';
 
 // Default user config
 const defaultUserConfig: UserConfig = {
@@ -56,21 +12,20 @@ const defaultUserConfig: UserConfig = {
 };
 
 export interface ConfigContextProps {
-  config: SiteConfig;
+  siteConfig: SiteConfig;
   userConfig: UserConfig;
   updateRPC: (rpc: RPC) => void;
   getRPCForChainId: (id: number) => RPC | undefined;
 }
 
 export const ConfigContext = React.createContext<ConfigContextProps>({
-  config: siteConfig,
+  siteConfig: siteConfig,
   userConfig: defaultUserConfig,
   updateRPC: () => {},
   getRPCForChainId: () => undefined
 });
 
 export const ConfigProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  const [config, setConfig] = React.useState<SiteConfig>(siteConfig);
   const [userConfig, setUserConfig] = React.useState<UserConfig>(defaultUserConfig);
 
   // Check the user settings on load
@@ -110,13 +65,13 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
       return userRPC;
     }
 
-    return config.rpcs.find(i => i.chainId === id && i.url.length > 0);
+    return siteConfig.rpcs.find(i => i.chainId === id && i.url.length > 0);
   };
 
   return (
     <ConfigContext.Provider
       value={{
-        config,
+        siteConfig,
         userConfig,
         updateRPC,
         getRPCForChainId

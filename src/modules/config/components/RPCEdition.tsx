@@ -14,9 +14,9 @@ export function RPCEdition({
   const [val, setVal] = useState(url);
 
   useEffect(() => {
-    setVal(url)
-  }, [url])
-  
+    setVal(url);
+  }, [url]);
+
   return (
     <Box>
       <Text>Chain: {chainId}</Text>

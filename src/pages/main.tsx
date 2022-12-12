@@ -46,15 +46,14 @@ const router = createHashRouter([
 ]);
 
 const App = () => {
-  const { config, getRPCForChainId } = useContext(ConfigContext);
+  const { siteConfig, userConfig, getRPCForChainId } = useContext(ConfigContext);
 
   // Chains should be regenerated each time the config.rpcs change
-  const { chains, wagmiClient } = getWagmiClient(getRPCForChainId, config.name);
-  console.log('APP CHAINS', chains);
+  const { chains, wagmiClient } = getWagmiClient(getRPCForChainId, siteConfig.name);
 
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={config.theme === 'light' ? lightTheme() : darkTheme()}>
+      <RainbowKitProvider chains={chains} theme={userConfig.theme === 'light' ? lightTheme() : darkTheme()}>
         <ThemeProvider theme={theme}>
           <RouterProvider router={router} />
         </ThemeProvider>

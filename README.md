@@ -35,7 +35,7 @@ The list of releases can be found [here](https://github.com/makerdao-dux/metadao
 
 ### Running the project locally:
 
-The Metadao frontend is customizable by editing the file `metadao.config.json`. In here you will be able to change things like:
+The Metadao frontend is customizable by editing the file `modules/config/default.config.ts`. In here you will be able to change things like:
 
 - logo
 - site name and description
