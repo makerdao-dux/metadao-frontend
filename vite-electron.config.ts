@@ -5,6 +5,8 @@ import { customStart, loadViteEnv } from 'vite-electron-plugin/plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  envPrefix: 'PUBLIC_',
+  envDir: __dirname,
   plugins: [
     react(),
     electron({
