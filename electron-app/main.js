@@ -54,8 +54,9 @@ async function launchApp() {
     win.center();
     splash.close();
     win.show();
-    // TODO remove this line or only open in dev mode
-    win.webContents.openDevTools();
+    if (isDev) {
+      win.webContents.openDevTools();
+    }
   }, 2000);
 }
 
