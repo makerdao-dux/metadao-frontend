@@ -5,13 +5,13 @@ import { Flex } from 'theme-ui';
 import { ConfigContext } from '../../config/context/ConfigContext';
 
 export function Header(): React.ReactElement {
-  const { config } = useContext(ConfigContext);
+  const { siteConfig } = useContext(ConfigContext);
 
   return (
     <Flex sx={{ justifyContent: 'space-between', padding: 3 }}>
       <Link to="/" title="Home page">
         <div style={{ marginLeft: '5px' }}>
-          <img src={config.logo} alt="logo" width={35} height={35} />
+          <img src={siteConfig.logo} alt="logo" width={35} height={35} />
         </div>
       </Link>
       <Flex sx={{ justifyContent: 'space-between' }}>

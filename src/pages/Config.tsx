@@ -5,13 +5,13 @@ import { ConfigContext } from '../modules/config/context/ConfigContext';
 import { RPCEdition } from '../modules/config/components/RPCEdition';
 
 function Config(): React.ReactElement {
-  const { userConfig, updateRPC, config } = React.useContext(ConfigContext);
+  const { userConfig, updateRPC, siteConfig } = React.useContext(ConfigContext);
 
   return (
     <Layout>
       <Heading>CONFIG</Heading>
       <div>RPCS</div>
-      {config.rpcs.map(rpc => {
+      {siteConfig.rpcs.map(rpc => {
         const userRPC = userConfig.rpcs.find(i => i.chainId === rpc.chainId);
 
         return (
@@ -19,6 +19,7 @@ function Config(): React.ReactElement {
             <RPCEdition
               chainId={rpc.chainId}
               url={userRPC ? userRPC.url : rpc.url}
+              defaultRPC={rpc.url}
               onChange={(url: string) => {
                 updateRPC({
                   chainId: rpc.chainId,

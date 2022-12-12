@@ -16,19 +16,19 @@ export const defaultConfig: SiteConfig = {
   rpcs: [
     {
       chainId: chainId.mainnet,
-      url: import.meta.env.RPC_PROVIDER_MAINNET || ''
+      url: import.meta.env.PUBLIC_RPC_PROVIDER_MAINNET || ''
     },
     {
       chainId: chainId.goerli,
-      url: import.meta.env.RPC_PROVIDER_GOERLI || ''
+      url: import.meta.env.PUBLIC_RPC_PROVIDER_GOERLI || ''
     },
     {
       chainId: chainId.optimism,
-      url: import.meta.env.RPC_PROVIDER_OPTIMISM || ''
+      url: import.meta.env.PUBLIC_RPC_PROVIDER_OPTIMISM || ''
     },
     {
       chainId: chainId.arbitrum,
-      url: import.meta.env.RPC_PROVIDER_ARBITRUM || ''
+      url: import.meta.env.PUBLIC_RPC_PROVIDER_ARBITRUM || ''
     },
     {
       chainId: chainId.hardhat,

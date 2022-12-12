@@ -53,9 +53,9 @@ To run the project locally:
 
 4. Fill in the environment variables
 
-- RPC_PROVIDER_ARBITRUM
-- RPC_PROVIDER_MAINNET
-- RPC_PROVIDER_OPTIMISM
+- PUBLIC_RPC_PROVIDER_ARBITRUM
+- PUBLIC_RPC_PROVIDER_MAINNET
+- PUBLIC_RPC_PROVIDER_OPTIMISM
 
 5. Execute `yarn dev` or `npm run dev` to start the project.
 6. Visit `http://localhost:3000`

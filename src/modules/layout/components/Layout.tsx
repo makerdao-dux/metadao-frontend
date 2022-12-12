@@ -13,15 +13,15 @@ export function Layout({
   children: React.ReactNode;
   metaDescription?: string;
 }): React.ReactElement {
-  const { config } = useContext(ConfigContext);
+  const { siteConfig } = useContext(ConfigContext);
   return (
     <div>
       <Helmet>
         <title>
-          {config.name} | {metaDescription || config.description}
+          {siteConfig.name} | {metaDescription || siteConfig.description}
         </title>
-        <meta name="description" content={metaDescription || config.description} />
-        <link rel="icon" href={config.favicon} />
+        <meta name="description" content={metaDescription || siteConfig.description} />
+        <link rel="icon" href={siteConfig.favicon} />
       </Helmet>
 
       <Box as="body" sx={{ variant: 'layout.body' }}>

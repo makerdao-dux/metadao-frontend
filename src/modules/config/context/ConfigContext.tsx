@@ -30,6 +30,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
 
   // Check the user settings on load
   React.useEffect(() => {
+    console.log(siteConfig, userConfig)
     const settings = window.localStorage.getItem('user-settings');
     if (settings) {
       try {
