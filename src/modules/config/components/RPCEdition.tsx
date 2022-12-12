@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Heading, Input, Label, Button, Text, Box } from 'theme-ui';
 
 export function RPCEdition({
@@ -12,6 +12,11 @@ export function RPCEdition({
 }): React.ReactElement {
   // TODO: Add chain name and logo.
   const [val, setVal] = useState(url);
+
+  useEffect(() => {
+    setVal(url)
+  }, [url])
+  
   return (
     <Box>
       <Text>Chain: {chainId}</Text>

@@ -21,19 +21,19 @@ const defaultConfig: SiteConfig = {
   rpcs: [
     {
       chainId: chainId.mainnet,
-      url: import.meta.env.RPC_PROVIDER_MAINNET
+      url: import.meta.env.RPC_PROVIDER_MAINNET || ''
     },
     {
       chainId: chainId.goerli,
-      url: import.meta.env.RPC_PROVIDER_GOERLI
+      url: import.meta.env.RPC_PROVIDER_GOERLI || ''
     },
     {
       chainId: chainId.optimism,
-      url: import.meta.env.RPC_PROVIDER_OPTIMISM
+      url: import.meta.env.RPC_PROVIDER_OPTIMISM || ''
     },
     {
       chainId: chainId.arbitrum,
-      url: import.meta.env.RPC_PROVIDER_ARBITRUM
+      url: import.meta.env.RPC_PROVIDER_ARBITRUM || ''
     },
     {
       chainId: chainId.hardhat,
@@ -95,12 +95,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
   const updateRPC = (rpc: RPC) => {
     const newUserConfig = {
       ...userConfig,
-      rpcs: userConfig.rpcs.map(prev => {
-        if (prev.chainId === rpc.chainId) {
-          return rpc;
-        }
-        return prev;
-      })
+      rpcs: [...userConfig.rpcs.filter(i => i.chainId !== rpc.chainId), rpc]
     };
     setUserConfig(newUserConfig);
     window.localStorage.setItem('user-settings', JSON.stringify(newUserConfig));

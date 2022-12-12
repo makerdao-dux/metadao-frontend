@@ -19,12 +19,12 @@ function Config(): React.ReactElement {
             <RPCEdition
               chainId={rpc.chainId}
               url={userRPC ? userRPC.url : rpc.url}
-              onChange={(url: string) =>
+              onChange={(url: string) => {
                 updateRPC({
                   chainId: rpc.chainId,
                   url
-                })
-              }
+                });
+              }}
             />
           </Box>
         );
