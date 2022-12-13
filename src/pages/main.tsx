@@ -15,6 +15,7 @@ import Vaults from './Vaults';
 import Delegates from './Delegates';
 import Farms from './Farms';
 import Config from './Config';
+import Styles from './Styles';
 import { ConfigContext, ConfigProvider } from '../modules/config/context/ConfigContext';
 
 const router = createHashRouter([
@@ -41,6 +42,11 @@ const router = createHashRouter([
   {
     path: '/config',
     element: <Config />
+    //errorElement: <ErrorPage />,
+  },
+  {
+    path: '/styles',
+    element: <Styles />
     //errorElement: <ErrorPage />,
   }
 ]);
