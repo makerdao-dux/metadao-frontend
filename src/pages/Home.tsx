@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout } from '../modules/layout/components/Layout';
 import { useAccount, useNetwork } from 'wagmi';
-import { getTokensByNetworkAsList } from '../modules/tokens/helpers/getAllowedTokensByNetwork';
-import TokenIcon from '../modules/tokens/component/TokenIcon';
-import TokenBalance from '../modules/tokens/component/TokenBalance';
+import { getTokensByNetworkAsList } from '../modules/web3/tokens/helpers/getAllowedTokensByNetwork';
+import TokenIcon from '../modules/web3/tokens/component/TokenIcon';
+import TokenBalance from '../modules/web3/tokens/component/TokenBalance';
 import { Text, Heading } from 'theme-ui';
 
 // TODO delete this Component, using temporarily to provide network info for debugging

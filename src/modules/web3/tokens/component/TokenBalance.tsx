@@ -2,7 +2,7 @@ import { BigNumber } from 'ethers';
 import React, { useState } from 'react';
 import { useBalance } from 'wagmi';
 import { Token } from '../types/token';
-import LoadingPlaceholder from '../../ui/components/LoadingPlaceholder';
+import LoadingPlaceholder from '../../../ui/components/LoadingPlaceholder';
 
 export default function TokenBalance({
   token,
