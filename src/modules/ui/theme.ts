@@ -1,10 +1,10 @@
 import type { Theme } from 'theme-ui';
-import { makeTheme } from '@theme-ui/css/utils'
+import { makeTheme } from '@theme-ui/css/utils';
 
 export const theme: Theme = makeTheme({
   config: {
     initialColorModeName: 'light',
-    useColorSchemeMediaQuery: true,
+    useColorSchemeMediaQuery: true
   },
   fonts: {
     body: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu',
@@ -13,16 +13,53 @@ export const theme: Theme = makeTheme({
   },
   fontSizes: [10, 12, 14, 16, 18, 20, 24, 32, 48, 64, 96],
   colors: {
+    // Main text color
     text: '#231536',
+
+    // Alt Text is used on components with a bright background, like warnings
+    altText: '#fff',
+
+    // Page background
     background: '#fff',
+
+    // Main brand color
     primary: '#1AAB9B',
+
+    // Main brand color, a bit more dark, used for hovers
     primaryEmphasis: '#008E7B',
+
+    // Secondary color
     secondary: '#D5D9E0',
+
+    // secondary color, a bit more dark, used for hovers
     secondaryEmphasis: '#c1c5cc',
+
+    // Used for links
     accent: '#447AFB',
+
     highlight: '#FFFBEF',
+
     muted: '#D5D9E0',
+    // Warning color
     warning: '#F75524',
+
+    // General shadow color
+    shadow: '#dbe3ed66'
+  },
+  modes: {
+    dark: {
+      text: '#fff',
+      background: 'black',
+      primary: '#1AAB9B',
+      primaryEmphasis: '#008E7B',
+      secondary: '#D5D9E0',
+      secondaryEmphasis: '#c1c5cc',
+      accent: '#447AFB',
+      highlight: '#FFFBEF',
+      muted: '#D5D9E0',
+      warning: '#F75524',
+      shadow: '#dbe3ed1a'
+    }
   },
   fontWeights: {
     body: 400,
@@ -80,7 +117,7 @@ export const theme: Theme = makeTheme({
   badges: {
     primary: {
       color: 'background',
-      bg: 'primary',
+      bg: 'primary'
     },
     warning: {
       bg: 'warning',
@@ -89,13 +126,13 @@ export const theme: Theme = makeTheme({
     outline: {
       color: 'primary',
       bg: 'transparent',
-      boxShadow: 'inset 0 0 0 1px',
-    },
+      boxShadow: 'inset 0 0 0 1px'
+    }
   },
   alerts: {
     primary: {
       color: 'background',
-      bg: 'primary',
+      bg: 'primary'
     },
     warning: {
       bg: 'warning',
@@ -104,8 +141,35 @@ export const theme: Theme = makeTheme({
     outline: {
       color: 'primary',
       bg: 'transparent',
-      boxShadow: 'inset 0 0 0 1px',
+      boxShadow: 'inset 0 0 0 1px'
+    }
+  },
+  cards: {
+    clear: {
+      border: 'none',
+      boxShadow: theme => `0px 20px 40px ${theme.colors?.shadow}, 0px 1px 3px #bebebe40`,
+      borderRadius: '4px'
     },
+    emphasized: {
+      variant: 'cards.clear',
+      border: '1px solid',
+      borderColor: 'secondary'
+    },
+    warning: {
+      variant: 'cards.clear',
+      background: 'warning',
+      color: 'altText'
+    },
+    outline: {
+      variant: 'cards.clear',
+      border: '1px solid',
+      borderColor: 'primary'
+    },
+    primary: {
+      variant: 'cards.clear',
+      background: 'primary',
+      color: 'altText'
+    }
   },
   layout: {
     body: {

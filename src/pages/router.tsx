@@ -7,37 +7,38 @@ import Farms from './Farms';
 import Dsr from './Dsr';
 import Config from './Config';
 import Styles from './Styles';
+import ErrorPage from './ErrorPage';
 
 export const router = createHashRouter([
   {
     path: '/',
-    element: <Home />
-    //errorElement: <ErrorPage />,
+    element: <Home />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/vaults',
-    element: <Vaults />
-    //errorElement: <ErrorPage />,
+    element: <Vaults />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/delegates',
-    element: <Delegates />
-    //errorElement: <ErrorPage />,
+    element: <Delegates />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/farms',
-    element: <Farms />
-    //errorElement: <ErrorPage />,
+    element: <Farms />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/dsr',
-    element: <Dsr />
-    //errorElement: <ErrorPage />,
+    element: <Dsr />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/config',
-    element: <Config />
-    //errorElement: <ErrorPage />,
+    element: <Config />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/styles',

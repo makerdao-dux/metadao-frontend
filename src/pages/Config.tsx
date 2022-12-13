@@ -10,7 +10,7 @@ function Config(): React.ReactElement {
   return (
     <Layout>
       <Heading>Settings</Heading>
-      
+
       {siteConfig.rpcs.map(rpc => {
         const userRPC = userConfig.rpcs.find(i => i.chainId === rpc.chainId);
 

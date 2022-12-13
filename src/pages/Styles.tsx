@@ -170,19 +170,26 @@ function Styles(): React.ReactElement {
 
       <Box sx={{ mt: 3 }}>
         <Heading>Card</Heading>
-        <Card
-          mb={5}
-          sx={{
-            maxWidth: 400,
-            padding: '30px'
-          }}
-        >
-          <Paragraph>
-            Cupcake ipsum dolor sit amet chocolate bar. Apple pie macaroon muffin jelly candy cake soufflé
-            muffin croissant. Gummies jelly beans cotton candy fruitcake. Wafer lemon drops soufflé cookie.
-            Sesame snaps fruitcake cheesecake danish toffee marzipan biscuit.
-          </Paragraph>
-        </Card>
+        {Object.keys(theme.cards || {}).map(key => {
+          return (
+            <Card
+              key={`card_${key}`}
+              mb={5}
+              variant={key}
+              sx={{
+                maxWidth: 400,
+                padding: '30px'
+              }}
+            >
+              <Text>Variant: {key}</Text>
+              <Paragraph>
+                Cupcake ipsum dolor sit amet chocolate bar. Apple pie macaroon muffin jelly candy cake soufflé
+                muffin croissant. Gummies jelly beans cotton candy fruitcake. Wafer lemon drops soufflé
+                cookie. Sesame snaps fruitcake cheesecake danish toffee marzipan biscuit.
+              </Paragraph>
+            </Card>
+          );
+        })}
       </Box>
       <Box sx={{ mt: 3 }}></Box>
     </Layout>

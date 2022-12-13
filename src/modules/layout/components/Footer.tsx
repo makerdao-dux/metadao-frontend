@@ -6,8 +6,13 @@ export function Footer(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
   return (
     <Box>
-      <Box className="footer">
-        <Text>
+      <Box my={5}>
+        <Text
+          as="p"
+          sx={{
+            textAlign: 'center'
+          }}
+        >
           {new Date().getFullYear()} - {siteConfig.name}
         </Text>
       </Box>
