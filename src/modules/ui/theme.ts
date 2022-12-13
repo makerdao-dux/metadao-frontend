@@ -1,5 +1,6 @@
 import type { Theme } from 'theme-ui';
 import { makeTheme } from '@theme-ui/css/utils';
+import React from 'react';
 
 export const theme: Theme = makeTheme({
   config: {

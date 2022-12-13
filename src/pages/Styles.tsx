@@ -2,6 +2,9 @@ import React from 'react';
 import { Layout } from '../modules/layout/components/Layout';
 import { Heading, useThemeUI } from 'theme-ui';
 import { TypeScale, TypeStyle, HeadingStyle, ColorPalette, FontFamily } from '@theme-ui/style-guide';
+import icons from '../modules/ui/components/icons';
+import Icon from '../modules/ui/components/Icon';
+
 import {
   Message,
   NavLink,
@@ -191,7 +194,19 @@ function Styles(): React.ReactElement {
           );
         })}
       </Box>
-      <Box sx={{ mt: 3 }}></Box>
+      <Box sx={{ mt: 3 }}>
+        <Heading>Icons</Heading>
+        {Object.keys(icons).map(icon => {
+          return (
+            <Box key={`icon_${icon}`}>
+              <Icon name={icon} size={20} sx={{ margin: 'auto' }} />
+              <Text variant="microText" sx={{ margin: 'auto' }}>
+                {icon}
+              </Text>
+            </Box>
+          );
+        })}
+      </Box>
     </Layout>
   );
 }
