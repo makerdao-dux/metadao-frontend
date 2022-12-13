@@ -35,7 +35,7 @@ The list of releases can be found [here](https://github.com/makerdao-dux/metadao
 
 ### Running the project locally:
 
-The Metadao frontend is customizable by editing the file `metadao.config.json`. In here you will be able to change things like:
+The Metadao frontend is customizable by editing the file `modules/config/default.config.ts`. In here you will be able to change things like:
 
 - logo
 - site name and description
@@ -53,9 +53,9 @@ To run the project locally:
 
 4. Fill in the environment variables
 
-- RPC_PROVIDER_ARBITRUM
-- RPC_PROVIDER_MAINNET
-- RPC_PROVIDER_OPTIMISM
+- PUBLIC_RPC_PROVIDER_ARBITRUM
+- PUBLIC_RPC_PROVIDER_MAINNET
+- PUBLIC_RPC_PROVIDER_OPTIMISM
 
 5. Execute `yarn dev` or `npm run dev` to start the project.
 6. Visit `http://localhost:3000`

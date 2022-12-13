@@ -1,52 +1,41 @@
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { chain, chainId, configureChains, createClient } from 'wagmi';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { chain, configureChains, createClient } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import config from '../config';
+import { RPC } from '../config/types/rpc';
 
-// Returns the RPC for the network. If it's not configured return undefined
-function getRPCforChainId(id: number): string | undefined {
-  switch (id) {
-    case chainId.mainnet:
-      return import.meta.env.RPC_PROVIDER_MAINNET;
-    case chainId.goerli:
-      return import.meta.env.RPC_PROVIDER_GOERLI;
-    case chainId.optimism:
-      return import.meta.env.RPC_PROVIDER_OPTIMISM;
-    case chainId.arbitrum:
-      return import.meta.env.RPC_PROVIDER_ARBITRUM;
-    case chainId.hardhat:
-      return 'http://localhost:8545/';
-    default:
-      return undefined;
-  }
-}
+export const getWagmiClient = (getRPCByChainId: (id: number) => RPC | undefined, appName: string) => {
+  const { chains, provider } = configureChains(
+    [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
+    [
+      jsonRpcProvider({
+        rpc: chain => {
+          const rpc = getRPCByChainId(chain.id);
 
-export const { chains, provider } = configureChains(
-  [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
-  [
-    jsonRpcProvider({
-      rpc: chain => {
-        const rpc = getRPCforChainId(chain.id);
+          return rpc
+            ? {
+                http: rpc.url
+              }
+            : null;
+        }
+      }),
+      publicProvider()
+    ]
+  );
 
-        return rpc
-          ? {
-              http: rpc
-            }
-          : null;
-      }
-    }),
-    publicProvider()
-  ]
-);
+  const { connectors } = getDefaultWallets({
+    appName,
+    chains
+  });
 
-const { connectors } = getDefaultWallets({
-  appName: config.name,
-  chains
-});
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors,
+    provider
+  });
 
-export const wagmiClient = createClient({
-  autoConnect: true,
-  connectors,
-  provider
-});
+  return {
+    chains,
+    wagmiClient
+  };
+};

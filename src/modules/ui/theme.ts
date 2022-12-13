@@ -72,7 +72,7 @@ export const theme: Theme = {
       '&:hover': {
         borderColor: 'green'
       }
-    },
+    }
   },
   links: {
     nostyle: {
