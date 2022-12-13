@@ -30,6 +30,11 @@ export function Header(): React.ReactElement {
           </Link>
         </Flex>
         <Flex sx={{ mr: 3 }}>
+          <Link variant="nav" href="#/dsr" title="dsr">
+            DSR
+          </Link>
+        </Flex>
+        <Flex sx={{ mr: 3 }}>
           <Link variant="nav" href="#/config" title="config">
             Config
           </Link>
