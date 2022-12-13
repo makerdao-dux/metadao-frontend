@@ -9,47 +9,10 @@ import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowki
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { createHashRouter, RouterProvider } from 'react-router-dom';
-import Home from './Home';
-import Vaults from './Vaults';
-import Delegates from './Delegates';
-import Farms from './Farms';
-import Config from './Config';
-import Styles from './Styles';
+import { RouterProvider } from 'react-router-dom';
 import { ConfigContext, ConfigProvider } from '../modules/config/context/ConfigContext';
 
-const router = createHashRouter([
-  {
-    path: '/',
-    element: <Home />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/vaults',
-    element: <Vaults />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/delegates',
-    element: <Delegates />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/farms',
-    element: <Farms />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/config',
-    element: <Config />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/styles',
-    element: <Styles />
-    //errorElement: <ErrorPage />,
-  }
-]);
+import { router } from './router';
 
 const App = () => {
   const { siteConfig, userConfig, getRPCForChainId } = useContext(ConfigContext);
