@@ -1,6 +1,11 @@
 import type { Theme } from 'theme-ui';
+import { makeTheme } from '@theme-ui/css/utils'
 
-export const theme: Theme = {
+export const theme: Theme = makeTheme({
+  config: {
+    initialColorModeName: 'light',
+    useColorSchemeMediaQuery: true,
+  },
   fonts: {
     body: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu',
     heading: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu',
@@ -16,7 +21,8 @@ export const theme: Theme = {
     secondaryEmphasis: '#c1c5cc',
     accent: '#447AFB',
     highlight: '#FFFBEF',
-    muted: '#D5D9E0'
+    muted: '#D5D9E0',
+    warning: '#F75524',
   },
   fontWeights: {
     body: 400,
@@ -32,6 +38,7 @@ export const theme: Theme = {
     tight: 1.05,
     loose: 1.2
   },
+
   styles: {
     root: {
       fontFamily: 'body',
@@ -69,6 +76,36 @@ export const theme: Theme = {
       textDecoration: 'none',
       cursor: 'pointer'
     }
+  },
+  badges: {
+    primary: {
+      color: 'background',
+      bg: 'primary',
+    },
+    warning: {
+      bg: 'warning',
+      color: 'background'
+    },
+    outline: {
+      color: 'primary',
+      bg: 'transparent',
+      boxShadow: 'inset 0 0 0 1px',
+    },
+  },
+  alerts: {
+    primary: {
+      color: 'background',
+      bg: 'primary',
+    },
+    warning: {
+      bg: 'warning',
+      color: 'background'
+    },
+    outline: {
+      color: 'primary',
+      bg: 'transparent',
+      boxShadow: 'inset 0 0 0 1px',
+    },
   },
   layout: {
     body: {
@@ -120,4 +157,4 @@ export const theme: Theme = {
       }
     }
   }
-};
+});
