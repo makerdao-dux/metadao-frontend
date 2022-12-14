@@ -34,19 +34,21 @@ function Styles(): React.ReactElement {
 
   return (
     <Layout>
-      {/* TODO make these a cards component */}
-      <Box sx={{ mt: 3 }}>
+      <Box sx={{ my: 3 }}>
         <Heading>Buttons</Heading>
         {Object.keys(theme.buttons || {}).map(key => (
-          <Button key={`button_${key}`} variant={key} m={10}>
+          <Button key={`button_${key}`} variant={key} mt={3} mr={3}>
             {key}
           </Button>
         ))}
       </Box>
 
-      <Box sx={{ mt: 3 }}>
+      <Box sx={{ my: 3 }}>
         <Heading>Colors</Heading>
         <ColorPalette omit={['modes', 'header']} />
+      </Box>
+
+      <Box sx={{ my: 3 }}>
         <Heading>Typography</Heading>
         <TypeStyle fontSize={7}>
           Body: <FontFamily name="body" />
@@ -54,10 +56,15 @@ function Styles(): React.ReactElement {
         <HeadingStyle fontFamily="heading" fontWeight="heading" lineHeight="heading" fontSize={7}>
           Heading: <FontFamily name="heading" />
         </HeadingStyle>
+      </Box>
+
+      <Box sx={{ my: 3 }}>
         <Heading>Type Scale</Heading>
         <TypeScale />
+      </Box>
 
-        <Heading id="json">Raw JSON</Heading>
+      <Box sx={{ my: 3 }}>
+        <Heading id="json">Code block</Heading>
         <Textarea
           value={JSON.stringify({ hey: 'e' }, null, 2)}
           rows={16}
@@ -68,7 +75,8 @@ function Styles(): React.ReactElement {
             fontFamily: 'monospace',
             bg: 'muted',
             border: 0,
-            borderRadius: 4
+            borderRadius: 4,
+            mt: 3
           }}
         />
       </Box>

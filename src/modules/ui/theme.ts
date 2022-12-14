@@ -82,20 +82,21 @@ export const theme: Theme = makeTheme({
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body'
+    },
+    // default link style
+    a: {
+      color: 'text',
+      '@media (hover: hover) and (pointer: fine)': {
+        '&:active': {
+          color: 'text'
+        },
+        '&:hover': {
+          color: 'primary'
+        }
+      },
+      textDecoration: 'none',
+      cursor: 'pointer'
     }
-    // a: {
-    //   color: 'text',
-    //   '@media (hover: hover) and (pointer: fine)': {
-    //     '&:active': {
-    //       color: 'text'
-    //     },
-    //     '&:hover': {
-    //       color: 'primary'
-    //     }
-    //   },
-    //   textDecoration: 'none',
-    //   cursor: 'pointer'
-    // }
   },
   links: {
     nav: {
@@ -160,11 +161,6 @@ export const theme: Theme = makeTheme({
       variant: 'cards.clear',
       background: 'warning',
       color: 'altText'
-    },
-    outline: {
-      variant: 'cards.clear',
-      border: '1px solid',
-      borderColor: 'primary'
     },
     primary: {
       variant: 'cards.clear',
