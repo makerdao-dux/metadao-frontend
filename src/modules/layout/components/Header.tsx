@@ -2,6 +2,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import React, { useContext } from 'react';
 import { Flex, Link } from 'theme-ui';
 import { ConfigContext } from '../../config/context/ConfigContext';
+import ThemeSwitch from '../../ui/components/ThemeSwitch';
 
 export function Header(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
@@ -46,6 +47,7 @@ export function Header(): React.ReactElement {
         </Flex>
       </Flex>
       <Flex>
+        <ThemeSwitch />
         <ConnectButton
           accountStatus={{
             smallScreen: 'avatar',

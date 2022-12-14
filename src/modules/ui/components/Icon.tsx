@@ -13,7 +13,7 @@ export default function Icon({
   size: number;
   color?: string;
   role?: string;
-  sx: ThemeUIStyleObject;
+  sx?: ThemeUIStyleObject;
 }): React.ReactElement | null {
   if (!icons[name]) {
     console.error(`No icon found with name ${name}`);

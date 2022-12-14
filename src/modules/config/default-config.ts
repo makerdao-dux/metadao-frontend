@@ -34,6 +34,5 @@ export const defaultConfig: SiteConfig = {
       chainId: chainId.hardhat,
       url: 'http://localhost:8545/'
     }
-  ],
-  theme: 'light'
+  ]
 };

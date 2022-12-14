@@ -45,21 +45,21 @@ export const theme: Theme = makeTheme({
     warning: '#F75524',
 
     // General shadow color
-    shadow: '#dbe3ed66'
-  },
-  modes: {
-    dark: {
-      text: '#fff',
-      background: 'black',
-      primary: '#1AAB9B',
-      primaryEmphasis: '#008E7B',
-      secondary: '#D5D9E0',
-      secondaryEmphasis: '#c1c5cc',
-      accent: '#447AFB',
-      highlight: '#FFFBEF',
-      muted: '#D5D9E0',
-      warning: '#F75524',
-      shadow: '#dbe3ed1a'
+    shadow: '#dbe3ed66',
+    modes: {
+      dark: {
+        text: '#fff',
+        background: 'black',
+        primary: '#1AAB9B',
+        primaryEmphasis: '#008E7B',
+        secondary: '#D5D9E0',
+        secondaryEmphasis: '#c1c5cc',
+        accent: '#447AFB',
+        highlight: '#FFFBEF',
+        muted: '#D5D9E0',
+        warning: '#F75524',
+        shadow: '#dbe3ed1a'
+      }
     }
   },
   fontWeights: {

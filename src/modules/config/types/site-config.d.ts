@@ -10,5 +10,4 @@ export type SiteConfig = {
   logo: string;
   favicon: string;
   rpcs: RPC[];
-  theme: 'light' | 'dark';
 };

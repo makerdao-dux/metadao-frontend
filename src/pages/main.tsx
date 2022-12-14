@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider, useColorMode } from 'theme-ui';
 import { theme } from '../modules/ui/theme';
 
 import { WagmiConfig } from 'wagmi';
-import { getWagmiClient } from '../modules/providers/wagmi';
+import { getChainsAndProvider, getWagmiClient } from '../modules/providers/wagmi';
 import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 import '@rainbow-me/rainbowkit/styles.css';
@@ -15,17 +15,21 @@ import { ConfigContext, ConfigProvider } from '../modules/config/context/ConfigC
 import { router } from './router';
 
 const App = () => {
-  const { siteConfig, userConfig, getRPCForChainId } = useContext(ConfigContext);
+  const { siteConfig, rpcs } = useContext(ConfigContext);
 
   // Chains should be regenerated each time the config.rpcs change
-  const { chains, wagmiClient } = getWagmiClient(getRPCForChainId, siteConfig.name);
+  const { wagmiClient, chains } = useMemo(() => {
+    const { chains, provider } = getChainsAndProvider(rpcs);
+    const wagmiClient = getWagmiClient(chains, provider, siteConfig.name);
+    return { chains, wagmiClient };
+  }, [rpcs]);
+
+  const [mode] = useColorMode();
 
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={userConfig.theme === 'light' ? lightTheme() : darkTheme()}>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+      <RainbowKitProvider chains={chains} theme={mode === 'light' ? lightTheme() : darkTheme()}>
+        <RouterProvider router={router} />
       </RainbowKitProvider>
     </WagmiConfig>
   );
@@ -34,7 +38,9 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ConfigProvider>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </ConfigProvider>
   </React.StrictMode>
 );

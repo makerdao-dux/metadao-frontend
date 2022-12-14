@@ -8,6 +8,7 @@ import Dsr from './Dsr';
 import Config from './Config';
 import Styles from './Styles';
 import ErrorPage from './ErrorPage';
+import Faqs from './Faqs';
 
 export const router = createHashRouter([
   {
@@ -42,7 +43,12 @@ export const router = createHashRouter([
   },
   {
     path: '/styles',
-    element: <Styles />
-    //errorElement: <ErrorPage />,
+    element: <Styles />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/faq',
+    element: <Faqs />,
+    errorElement: <ErrorPage />
   }
 ]);

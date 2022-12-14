@@ -1,16 +1,16 @@
 import { getDefaultWallets } from '@rainbow-me/rainbowkit';
-import { chain, configureChains, createClient } from 'wagmi';
+import { Chain, chain, configureChains, createClient } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 import { RPC } from '../config/types/rpc';
 
-export const getWagmiClient = (getRPCByChainId: (id: number) => RPC | undefined, appName: string) => {
-  const { chains, provider } = configureChains(
+export const getChainsAndProvider = (rpcs: RPC[]) => {
+  return configureChains(
     [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
     [
       jsonRpcProvider({
         rpc: chain => {
-          const rpc = getRPCByChainId(chain.id);
+          const rpc = rpcs.find(i => i.chainId === chain.id);
 
           return rpc
             ? {
@@ -22,7 +22,9 @@ export const getWagmiClient = (getRPCByChainId: (id: number) => RPC | undefined,
       publicProvider()
     ]
   );
+};
 
+export const getWagmiClient = (chains: Chain[], provider, appName: string) => {
   const { connectors } = getDefaultWallets({
     appName,
     chains
@@ -34,8 +36,5 @@ export const getWagmiClient = (getRPCByChainId: (id: number) => RPC | undefined,
     provider
   });
 
-  return {
-    chains,
-    wagmiClient
-  };
+  return wagmiClient;
 };

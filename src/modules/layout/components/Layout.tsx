@@ -35,7 +35,7 @@ export function Layout({
               top: '-200px',
               right: '0px',
               zIndex: '-1',
-              backgroundColor: 'white',
+              backgroundColor: 'background',
               overflow: 'hidden'
             }}
           >

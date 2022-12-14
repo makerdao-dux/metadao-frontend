@@ -7,22 +7,21 @@ import { defaultConfig as siteConfig } from '../default-config';
 
 // Default user config
 const defaultUserConfig: UserConfig = {
-  rpcs: [],
-  theme: siteConfig.theme
+  rpcs: []
 };
 
 export interface ConfigContextProps {
   siteConfig: SiteConfig;
   userConfig: UserConfig;
+  rpcs: RPC[];
   updateRPC: (rpc: RPC) => void;
-  getRPCForChainId: (id: number) => RPC | undefined;
 }
 
 export const ConfigContext = React.createContext<ConfigContextProps>({
   siteConfig: siteConfig,
   userConfig: defaultUserConfig,
-  updateRPC: () => {},
-  getRPCForChainId: () => undefined
+  rpcs: [],
+  updateRPC: () => {}
 });
 
 export const ConfigProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
@@ -56,25 +55,20 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
     window.localStorage.setItem('user-settings', JSON.stringify(newUserConfig));
   };
 
-  // Returns the right RPC for a chain ID, if the user one is not configured or not well formatted,
-  // then default to the site config ones
-  const getRPCForChainId = (id: number) => {
-    const userRPC = userConfig.rpcs.find(i => i.chainId === id && i.url.length > 0);
-
-    if (userRPC) {
-      return userRPC;
-    }
-
-    return siteConfig.rpcs.find(i => i.chainId === id && i.url.length > 0);
-  };
-
   return (
     <ConfigContext.Provider
       value={{
         siteConfig,
         userConfig,
         updateRPC,
-        getRPCForChainId
+        rpcs: siteConfig.rpcs.map(siteRPC => {
+          const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
+
+          if (userRPC) {
+            return userRPC;
+          }
+          return siteRPC;
+        })
       }}
     >
       {children}
