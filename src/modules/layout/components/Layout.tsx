@@ -28,19 +28,7 @@ export function Layout({
         <Header />
         <Box as="main" sx={{ width: '100%', flex: '1 1 auto', variant: 'layout.main' }}>
           {children}
-          <Box
-            sx={{
-              position: 'absolute',
-              left: 'calc((100% - 1882px) / 2)',
-              top: '-200px',
-              right: '0px',
-              zIndex: '-1',
-              backgroundColor: 'background',
-              overflow: 'hidden'
-            }}
-          >
-            <Decoration />
-          </Box>
+         
         </Box>
         <Footer />
       </Box>
