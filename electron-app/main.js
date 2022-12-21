@@ -41,7 +41,7 @@ async function launchApp() {
     icon: logo,
     show: false,
     webPreferences: {
-      nodeIntegration: false,
+      nodeIntegration: true,
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     }

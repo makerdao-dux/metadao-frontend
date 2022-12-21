@@ -3,7 +3,7 @@ import { Header } from './Header';
 import { Footer } from './Footer';
 import { Helmet } from 'react-helmet';
 import { Box } from 'theme-ui';
-import Decoration from './Decoration';
+
 import { ConfigContext } from '../../config/context/ConfigContext';
 
 export function Layout({
