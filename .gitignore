@@ -61,9 +61,5 @@ dist-ssr
 *.sw?
 
 hardhat/cache
-<<<<<<< Updated upstream
-.env
-=======
 .env
 dev-dist.gitsigners
->>>>>>> Stashed changes
