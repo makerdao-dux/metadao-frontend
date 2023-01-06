@@ -1,15 +1,21 @@
-import React from 'react';
-import config from '../../config';
+import React, { useContext } from 'react';
+import { ConfigContext } from '../../config/context/ConfigContext';
+import { Box, Text } from 'theme-ui';
 
 export function Footer(): React.ReactElement {
+  const { siteConfig } = useContext(ConfigContext);
   return (
-    <div>
-      <div className="footer">
-        <div className="link">
-          <a href="/about">About</a>
-        </div>
-      </div>
-      <div style={{ padding: '30px', textAlign: 'center' }}>2022 - {config.name}</div>
-    </div>
+    <Box>
+      <Box my={5}>
+        <Text
+          as="p"
+          sx={{
+            textAlign: 'center'
+          }}
+        >
+          {new Date().getFullYear()} - {siteConfig.name}
+        </Text>
+      </Box>
+    </Box>
   );
 }

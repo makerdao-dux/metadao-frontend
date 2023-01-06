@@ -1,6 +1,6 @@
-import config from '../../../metadao.config.json';
+import { RPC } from './rpc';
 
-type Config = {
+export type SiteConfig = {
   name: string;
   description: string;
   palette: {
@@ -9,6 +9,5 @@ type Config = {
   };
   logo: string;
   favicon: string;
+  rpcs: RPC[];
 };
-
-export default config as Config;

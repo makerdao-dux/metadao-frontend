@@ -1,52 +1,46 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider, useColorMode } from 'theme-ui';
 import { theme } from '../modules/ui/theme';
-// import './index.css';
 
 import { WagmiConfig } from 'wagmi';
-import { chains, wagmiClient } from '../modules/providers/wagmi';
-import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getChainsAndProvider, getWagmiClient } from '../modules/providers/wagmi';
+import { darkTheme, lightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
-import { createHashRouter, RouterProvider } from 'react-router-dom';
-import Home from './Home';
-import Vaults from './Vaults';
-import Delegates from './Delegates';
-import Farms from './Farms';
+import { RouterProvider } from 'react-router-dom';
+import { ConfigContext, ConfigProvider } from '../modules/config/context/ConfigContext';
 
-const router = createHashRouter([
-  {
-    path: '/',
-    element: <Home />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/vaults',
-    element: <Vaults />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/delegates',
-    element: <Delegates />
-    //errorElement: <ErrorPage />,
-  },
-  {
-    path: '/farms',
-    element: <Farms />
-    //errorElement: <ErrorPage />,
-  }
-]);
+import { router } from './router';
+
+const App = () => {
+  const { siteConfig, rpcs } = useContext(ConfigContext);
+
+  // Chains should be regenerated each time the config.rpcs change
+  const { wagmiClient, chains } = useMemo(() => {
+    const { chains, provider } = getChainsAndProvider(rpcs);
+    const wagmiClient = getWagmiClient(chains, provider, siteConfig.name);
+    return { chains, wagmiClient };
+  }, [rpcs]);
+
+  const [mode] = useColorMode();
+
+  return (
+    <WagmiConfig client={wagmiClient}>
+      <RainbowKitProvider chains={chains} theme={mode === 'light' ? lightTheme() : darkTheme()}>
+        <RouterProvider router={router} />
+      </RainbowKitProvider>
+    </WagmiConfig>
+  );
+};
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} theme={darkTheme()}>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+    <ConfigProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ConfigProvider>
   </React.StrictMode>
 );

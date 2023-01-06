@@ -18,19 +18,3 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-
-      - name: Build/release Electron app
-        uses: samuelmeuli/action-electron-builder@v1
-        with:
-          build_script_name: electron:build
-          # Disable snap release (needs snapcraft configured to be able to release on snap store)
-          # (see https://github.com/samuelmeuli/action-electron-builder/issues/71)
-          # args: "-c.snap.publish=github -p always"
-          args: "-c.snap.publish=github"
-          # GitHub token, automatically provided to the action
-          # (No need to define this secret in the repo settings)
-          github_token: ${{ secrets.github_token }}
-
-          # If the commit is tagged with a version (e.g. "v1.0.0"),
-          # release the app after building
-          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
