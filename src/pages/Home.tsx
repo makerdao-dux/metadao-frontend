@@ -7,7 +7,7 @@ import TokenBalance from '../modules/tokens/component/TokenBalance';
 import { Text, Heading } from 'theme-ui';
 
 // TODO delete this Component, using temporarily to provide network info for debugging
-const Balances = ({}) => {
+const Balances = () => {
   const network = useNetwork();
   const chainId = network.chain?.id;
   const { address } = useAccount();

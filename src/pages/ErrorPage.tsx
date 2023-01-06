@@ -20,7 +20,7 @@ function ErrorPage(): React.ReactElement {
             m: 3
           }}
         >
-          Don't find what you where looking for? Go back to our <Link to="/">Homepage</Link>
+          Don&apos;t find what you where looking for? Go back to our <Link to="/">Homepage</Link>
         </Text>
       </Box>
     </Layout>
