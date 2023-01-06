@@ -29,7 +29,6 @@ This app is an installer that allows you to access the core features of Maker me
   - MacOS
   - Ubuntu
 
-Releases are bundled with [Electron](https://www.electronjs.org/).
 
 The list of releases can be found [here](https://github.com/makerdao-dux/metadao-frontend/releases).
 
@@ -70,8 +69,6 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 - `yarn build` builds a static distribution of the project that can be hosted on IPFS.
 - `yarn prettier` cleans the formatting of the code files.
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
-- `yarn electron:package` builds and bundles a downlodable/executable version of the app.
-- `yarn electron:app` launches the application in the electron wrapper.
 - `yarn hardhat:mainnet` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`.
 - `yarn hardhat:mainnet:fund  --address 0x0000` Funds the address passed as parameter with test MKR, ETH and stETH. For more information, please check [running a test network](#running-on-test-mode).
 - `yarn storybook`. Launches the react storybook, for more information check [theming](#theming).
@@ -113,22 +110,6 @@ If you hosted your website on IPFS you can point your decentralized domain name 
 - [Unstoppabble domains](https://docs.unstoppabledomains.com/d-websites/connect-ipfs/)
 - [Handshake](https://docs.ipfs.tech/how-to/websites-on-ipfs/link-a-domain/#handshake)
 - ## or alternatively [Ethstorage](https://www.youtube.com/watch?v=rRI-3RV_JHw)
-
-### Building the downlodable application
-
-The MetaDAO frontend uses [electronJS builder](https://www.electron.build/) to create a downlodable/installable application for Windows, Linux and MacOS.
-
-To build the application yourself, run the command: `yarn electron:package`. You might need to update the file `package.json` with the new configuration. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
-
-Do not expect building the application for all platforms from one platform. To build on Mac you need to be on a MacOS (for example). In order to build automatically for all platforms you can use tooling and automation like Github Actions or Travis. [See more info](https://www.electron.build/multi-platform-build.html).
-
-This project is also configured with a Github Action that will build automatically the images for Windows, Mac and Linux when doing a new commit on the repo. For more information, check `.github/workflows/build.yml`, more information on how it works can be found [on this post](https://samuelmeuli.com/blog/2019-11-17-automating-the-release-of-electron-apps/).
-
-#### Auto updating releases
-
-The electron script located at `electron-app/main.js` includes the package electron-updater, that automatically checks for new versions of the application and notifies the user.
-
-For auto-updating to work on macOS, your code needs to be signed. For more information check [this post](https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/).
 
 ---
 
