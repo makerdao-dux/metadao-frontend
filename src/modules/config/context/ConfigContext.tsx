@@ -21,7 +21,9 @@ export const ConfigContext = React.createContext<ConfigContextProps>({
   siteConfig: siteConfig,
   userConfig: defaultUserConfig,
   rpcs: [],
-  updateRPC: () => {}
+  updateRPC: () => {
+    // do nothing.
+  }
 });
 
 export const ConfigProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {

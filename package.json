@@ -7,7 +7,8 @@
     "build": "tsc --project src/tsconfig.json && vite build --config vite.config.ts",
     "preview": "yarn build && vite preview  --config vite.config.ts",
     "start": "vite src --host --config vite.config.ts",
-    "prettier": "prettier --config .prettierrc --write src/pages src/modules",
+    "prettier": "prettier --config .prettierrc --write src/pages src/modules src/stories",
+    "lint": "eslint --ext .tsx,.ts src/pages/ src/modules/ src/stories",
     "hardhat:mainnet": "npx hardhat node --config hardhat/mainnet.config.js",
     "hardhat:arbitrum": "npx hardhat node --config hardhat/arbitrum.config.js",
     "hardhat:optimism": "npx hardhat node --config hardhat/optimism.config.js",
@@ -16,7 +17,8 @@
     "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run"
+    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -62,6 +64,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-testing-library": "^5.9.1",
     "hardhat": "^2.12.3",
+    "husky": "^8.0.3",
     "prettier": "^2.8.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4",
