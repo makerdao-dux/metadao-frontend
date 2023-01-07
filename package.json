@@ -17,7 +17,8 @@
     "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run",
+    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run --configFile tests/e2e/synpress.config.js",
+    "synpress": "synpress run --configFile tests/e2e/synpress.config.js",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -66,6 +67,7 @@
     "hardhat": "^2.12.3",
     "husky": "^8.0.3",
     "prettier": "^2.8.1",
+    "start-server-and-test": "^1.15.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.2",
