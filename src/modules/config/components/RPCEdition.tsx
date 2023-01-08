@@ -9,7 +9,7 @@ export function RPCEdition({
 }: {
   chainId: number;
   url: string;
-  defaultRPC: string,
+  defaultRPC: string;
   onChange: (val: string) => void;
 }): React.ReactElement {
   // TODO: Add chain name and logo.
@@ -26,9 +26,7 @@ export function RPCEdition({
       <Input placeholder="Enter RPC URL" onChange={e => setVal(e.target.value)} value={val} />
       <Button onClick={() => onChange(val)}>Update RPC URL</Button>
       <Box>
-        <Text>
-          If you leave this field empty it will use the default RPC {defaultRPC ? defaultRPC: ''}
-        </Text>
+        <Text>If you leave this field empty it will use the default RPC {defaultRPC ? defaultRPC : ''}</Text>
       </Box>
     </Box>
   );
