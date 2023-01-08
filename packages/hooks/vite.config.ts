@@ -8,8 +8,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'subdao-hooks',
-      fileName: 'subdao-hooks',
-    },
+      fileName: 'subdao-hooks'
+    }
   },
-  plugins: [dts()],
+  plugins: [dts()]
 });

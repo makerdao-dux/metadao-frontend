@@ -1,6 +1,5 @@
 # MetaDAO app
 
-
 ## High level specs
 
 - Access to MetaDAO farms
@@ -22,7 +21,6 @@ This app is an installer that allows you to access the core features of Maker me
   - Windows
   - MacOS
   - Ubuntu
-
 
 The list of releases can be found [here](https://github.com/makerdao-dux/metadao-frontend/releases).
 
@@ -77,6 +75,7 @@ If you want to upload manually this application to IPFS, you can do it by runnin
 Once you optain the ipfs hash, you can introduce that in a decentralized name server like ENS.
 
 #### Deploying on Vercel
+
 1. Visit https://vercel.com/ and create an account
 2. Import the project from Github.
 3. Configure the list of environment variables, see [running the project locally](#running-the-project-locally) for a list of environment variables.

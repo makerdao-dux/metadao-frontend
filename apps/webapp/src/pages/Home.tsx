@@ -14,7 +14,7 @@ const ORACLE = '0xf185d0682d50819263941e5f4EacC763CC5C6C42'; // PIP_RETH
 const PRICE_STORAGE_LOCATION = 3;
 
 // TODO delete this Component, using temporarily to provide network info for debugging
-const Balances = ({}) => {
+const Balances = () => {
   const provider = useProvider();
 
   const network = useNetwork();

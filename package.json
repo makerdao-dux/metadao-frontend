@@ -8,7 +8,8 @@
     "lint": "eslint --cache .",
     "build": "pnpm -r  run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
-    "webapp": "pnpm --filter='./apps/webapp' dev"
+    "webapp": "pnpm --filter='./apps/webapp' dev",
+    "prepare": "husky install"
   },
   "main": "index.js",
   "directories": {
@@ -17,7 +18,8 @@
   "dependencies": {
     "pnpm": "^7.22.0",
     "prettier": "2.8.1",
-    "eslint": "^8.31.0"
+    "eslint": "^8.31.0",
+    "husky": "^8.0.3"
   },
   "repository": {
     "type": "git",

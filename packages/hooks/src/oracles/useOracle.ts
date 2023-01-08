@@ -1,3 +1,3 @@
 export function useOracle() {
-    return 'test'
+  return 'test';
 }
