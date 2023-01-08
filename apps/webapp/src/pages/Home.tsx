@@ -16,6 +16,7 @@ const PRICE_STORAGE_LOCATION = 3;
 // TODO delete this Component, using temporarily to provide network info for debugging
 const Balances = ({}) => {
   const provider = useProvider();
+
   const network = useNetwork();
   const chainId = network.chain?.id;
   const { address } = useAccount();

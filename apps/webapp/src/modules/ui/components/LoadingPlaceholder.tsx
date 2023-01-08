@@ -19,7 +19,7 @@ export default function LoadingPlaceholder({
           width: width,
           height: height,
           borderRadius,
-          background: `linear-gradient(-45deg,grey,black,grey,black)`,
+          background: 'linear-gradient(-45deg,grey,black,grey,black)',
           backgroundSize: '400% 400%',
           opacity: '0.4',
           animation: 'gradient 10s ease infinite'

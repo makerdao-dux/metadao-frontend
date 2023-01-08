@@ -4,7 +4,7 @@
   "description": "Monorepo for Maker's subdaos frontends",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "format": "prettier --write --cache .",
+    "prettier": "prettier --write --cache .",
     "lint": "eslint --cache .",
     "build": "pnpm -r  run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
