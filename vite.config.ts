@@ -4,6 +4,10 @@ import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    // TODO: would like to change this back to 5173 but first need to change cypress default baseUrl
+    port: 3000
+  },
   root: 'src',
   build: {
     outDir: '../dist'
