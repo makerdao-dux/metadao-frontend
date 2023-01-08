@@ -6,8 +6,9 @@
     "preinstall": "npx only-allow pnpm",
     "format": "prettier --write --cache .",
     "lint": "eslint --cache .",
-    "build": "pnpm -r --filter='./packages/*' run build",
-    "dev": "pnpm -r --parallel --filter='./packages/*' run dev"
+    "build": "pnpm -r  run build",
+    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
+    "app": "pnpm dev && pnpm --filter app dev"
   },
   "main": "index.js",
   "directories": {

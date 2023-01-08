@@ -27,7 +27,6 @@
     "ethers": ">=5.5.1",
     "react": ">=17.0.0"
   },
-  
   "dependencies": {
     "wagmi": "^0.8.5"
   },
