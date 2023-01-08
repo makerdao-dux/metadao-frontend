@@ -29,6 +29,9 @@ This repository contains a web app that can be reutilized by any Maker Subdao to
 
 The webapp is built with React and utilizes the other subdao packages as dependencies. Please check [Starting the web app](#starting-the-webapp) for more information.
 
+To run the webapp locally execute:
+`pnpm webapp`
+
 ## Installation & Development
 
 ## Commands
@@ -37,7 +40,7 @@ Please refer to [Installing Node.js and pnpm](#installing-nodejs-and-pnpm) to in
 
 ```
 pnpm build -> Builds all packages.
-pnpm app -> Starts the development server for the web app.
+pnpm webapp -> Starts the development server for the web app.
 pnpm test -> Runs the unit tests suite across the different packages.
 pnpm e2e -> Runs web app e2e tests.
 ```

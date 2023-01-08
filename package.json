@@ -8,7 +8,7 @@
     "lint": "eslint --cache .",
     "build": "pnpm -r  run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
-    "app": "pnpm dev && pnpm --filter app dev"
+    "webapp": "pnpm --filter='./apps/webapp' dev"
   },
   "main": "index.js",
   "directories": {
