@@ -22,11 +22,3 @@ export default defineConfig({
     })
   ]
 });
-
-// Previous config
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-//   envPrefix: 'PUBLIC_',
-//   envDir: __dirname
-// })

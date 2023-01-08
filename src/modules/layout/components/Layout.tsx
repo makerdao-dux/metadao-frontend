@@ -28,7 +28,6 @@ export function Layout({
         <Header />
         <Box as="main" sx={{ width: '100%', flex: '1 1 auto', variant: 'layout.main' }}>
           {children}
-         
         </Box>
         <Footer />
       </Box>

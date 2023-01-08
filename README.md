@@ -29,7 +29,6 @@ This app is an installer that allows you to access the core features of Maker me
   - MacOS
   - Ubuntu
 
-
 The list of releases can be found [here](https://github.com/makerdao-dux/metadao-frontend/releases).
 
 ### Running the project locally:
@@ -147,3 +146,15 @@ This project is configured with [Theme UI](https://theme-ui.com/). Theme-UI allo
 We try to use a modular approach of components, following a design system that allows us to create complex UIs by combining existing components.
 
 You can visualize a list of the available components by runnign our Storybook with the command: `yarn storybook`
+
+# Building a Web Bundle
+
+First you must install `go/bundle`, follow [these steps](https://github.com/WICG/webpackage/tree/main/go/bundle#getting-started) to install (note: this will require you to install Go as well).
+
+Next, build the application with `yarn build`, this will create a `dist` folder.
+
+Now we will use the `gen-bundle` tool to build the web bundle, enter the following command:
+
+`gen-bundle -dir dist -baseURL https://example.com/ -primaryURL https://example.com/ -o metadaoapp.wbn`
+
+This takes our `dist` directory and bundles it into a file called `metadaoapp.wbn`. Since we are not using a resource URL we simply enter a dummy URL and the bundler will use the local files specified in `dist`. For more information see the `go/bundle` [documentation](https://github.com/WICG/webpackage/tree/main/go/bundle#from-a-url-list).
