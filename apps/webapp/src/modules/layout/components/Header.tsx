@@ -16,8 +16,8 @@ export function Header(): React.ReactElement {
       </Link>
       <Flex sx={{ justifyContent: 'space-between' }}>
         <Flex sx={{ mr: 3 }}>
-          <Link variant="nav" href="#/vaults" title="Vaults">
-            Vaults
+          <Link variant="nav" href="#/dsr" title="dsr">
+            DSR
           </Link>
         </Flex>
         <Flex sx={{ mr: 3 }}>
@@ -26,13 +26,8 @@ export function Header(): React.ReactElement {
           </Link>
         </Flex>
         <Flex sx={{ mr: 3 }}>
-          <Link variant="nav" href="#/farms" title="farms">
-            Farms
-          </Link>
-        </Flex>
-        <Flex sx={{ mr: 3 }}>
-          <Link variant="nav" href="#/dsr" title="dsr">
-            DSR
+          <Link variant="nav" href="#/oracles" title="farms">
+            Oracles
           </Link>
         </Flex>
         <Flex sx={{ mr: 3 }}>

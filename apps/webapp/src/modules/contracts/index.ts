@@ -12,7 +12,11 @@ import mainnetPipEthAbi from './abis/mainnet/PIP_ETH.json';
 import mainnetPipWstethAbi from './abis/mainnet/PIP_WSTETH.json';
 import mainnetPipWbtcAbi from './abis/mainnet/PIP_WBTC.json';
 
-export const ORACLE_CONTRACTS = ['PIP_ETH', 'PIP_WSTETH', 'PIP_WBTC'];
+export const ORACLE_CONTRACTS = [
+  { contractName: 'PIP_ETH', collateral: 'ETH' },
+  { contractName: 'PIP_WSTETH', collateral: 'WSTETH' },
+  { contractName: 'PIP_WBTC', collateral: 'BTC' }
+];
 
 export const contracts = {
   [chainId.mainnet]: {
