@@ -7,162 +7,77 @@
 
 [![Github All Releases](https://img.shields.io/github/downloads/makerdao-dux/metadao-frontend/total.svg)](https://GitHub.com/makerdao-dux/metadao-frontend/releases/)
 
-## High level specs
+## Packages
 
-- Access to MetaDAO farms
-- Ability to open and manage Maker vaults
-- Ability to delegate MKR
+- app: WebApp built with react that serves as interface
+- hooks: React hooks to interact with the maker protocol
+- contracts: Contracts and network configurations for the maker protocol
 
----
+### Using Maker's subdao packages
 
-## Using the MetaDAO frontend
+```
+npm install maker-hooks
+npm install maker-contracts
+```
 
-You have 3 options to utilize this frontend: you can download one of the [app releases](https://github.com/makerdao-dux/metadao-frontend/releases), run the project locally or host a web version.
-To build your own downlodoable application, please refer to [Building the application](#building)
+Check the [documentation]() for detailed usage.
 
-### Downloading the MetaDAO frontend app:
+### Using Maker's Subdao web app
 
-This app is an installer that allows you to access the core features of Maker metadaos, it will also allow you to configure your own RPC or local node to access your data.
+This repository contains a web app that can be reutilized by any Maker Subdao to launch a decentralized frontend. The webapp is located under ["apps/webapp"](./apps/webapp).
 
-- Latest Release: v0.0.0
-  - Windows
-  - MacOS
-  - Ubuntu
+The webapp is built with React and utilizes the other subdao packages as dependencies. Please check [Starting the web app](#starting-the-webapp) for more information.
 
-Releases are bundled with [Electron](https://www.electronjs.org/).
+To run the webapp locally execute:
+`pnpm webapp`
 
-The list of releases can be found [here](https://github.com/makerdao-dux/metadao-frontend/releases).
+## Installation & Development
 
-### Running the project locally:
+### Commands
 
-The Metadao frontend is customizable by editing the file `modules/config/default.config.ts`. In here you will be able to change things like:
+Please refer to [Installing Node.js and pnpm](#installing-nodejs-and-pnpm) to install the required dependencies first.
 
-- logo
-- site name and description
-- basic color palette
+```
+pnpm build -> Builds all packages.
+pnpm webapp -> Starts the development server for the web app.
+pnpm test -> Runs the unit tests suite across the different packages.
+pnpm e2e -> Runs web app e2e tests.
+```
 
-> In order to perform other structural changes you will need to edit the codebase. Please refer to the section [Code Structure](#code-structure).
+### Installing Node.js and pnpm
 
-To run the project locally:
+This repository uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple projects. You need to install **Node.js v16 or higher** and **pnpm v7 or higher**.
 
-1. Install Node in your computer
-2. Clone or download this repositoty
-3. Install dependencies
+You can run the following commands in your terminal to check your local Node.js and npm versions:
 
-- `yarn` or `npm install` to install the dependencies
+```bash
+node -v
+pnpm -v
+```
 
-4. Fill in the environment variables
+If the versions are not correct or you don't have Node.js or pnpm installed, download and follow their setup instructions:
 
-- PUBLIC_RPC_PROVIDER_ARBITRUM
-- PUBLIC_RPC_PROVIDER_MAINNET
-- PUBLIC_RPC_PROVIDER_OPTIMISM
+- Install Node.js using [fnm](https://github.com/Schniz/fnm) or from the [official website](https://nodejs.org)
+- Install [pnpm](https://pnpm.io/installation)
 
-5. Execute `yarn dev` or `npm run dev` to start the project.
-6. Visit `http://localhost:3000`
+### Installing dependencies
 
-To see more information about other available commands, check [Development Commands](#development-commands)
+Once in the project's root directory, run the following command to install the project's dependencies:
 
-#### Development commands
+```bash
+pnpm install
+```
 
-This project is built on top of [ReactJS](https://reactjs.org/).
+### Starting the webapp
 
-- `yarn dev` starts the development server locally.
-- `yarn build` builds a static distribution of the project that can be hosted on IPFS.
-- `yarn prettier` cleans the formatting of the code files.
-- `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
-- `yarn electron:package` builds and bundles a downlodable/executable version of the app.
-- `yarn electron:app` launches the application in the electron wrapper.
-- `yarn hardhat:mainnet` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`.
-- `yarn hardhat:mainnet:fund  --address 0x0000` Funds the address passed as parameter with test MKR, ETH and stETH. For more information, please check [running a test network](#running-on-test-mode).
-- `yarn storybook`. Launches the react storybook, for more information check [theming](#theming).
+To start the local development webapp, run the following. This will run a [React](https://reactjs.org/) app (located at [`packages/webapp`](./packages/webapp)) that is set up for interacting with code while making changes.
 
-### Deploying the application on a server
+```bash
+pnpm webapp
+```
 
-There are different ways to deploy the Metada frontend. It can be deployed on decentralized file systems like IPFS or Arweave, or using traditional infrastructure.
+Once the React dev server is running, you can make changes to any of the package source files (e.g. `packages/hooks`) and it will automatically update the app. (If the web app isn't automatically updating, try running `pnpm dev` to relink packages in development mode.)
 
-If you want to deploy the portal easily, we recommend using services like [Fleek](https://fleek.co/)(Decentralized), [4Everland](https://www.4everland.org/)(Decentralized) or [Vercel](https://vercel.org)(Centralized).
-
-If you want to upload manually this application to IPFS, you can do it by running `yarn ipfs` - This requires setting the IPFS pinner sdk correctly (see the file `scripts/ipfs` for more information) - or alternatively running `yarn build` and then uploading the dist folder to IPFS.
-Once you optain the ipfs hash, you can introduce that in a decentralized name server like ENS.
-
-#### Deploying on Vercel
-
-1. Visit https://vercel.com/ and create an account
-2. Import the project from Github.
-3. Configure the list of environment variables, see [running the project locally](#running-the-project-locally) for a list of environment variables.
-4. Configure the custom commands to use the `src` subfolder.
-
-- Build: `yarn build`
-- Output directory: `src/dist`
-- Development command : `yarn dev`
-
-#### Deploying on Fleek
-
-1. Visit https://app.fleek.co/#/
-2. Import the project from Github.
-3. Choose a file hosting (IPFS or ICP)
-4. Configure the output directory: `src/dist`.
-
-You can now configure an ENS, HNS or custom domain through the Fleek interface, under the settings tab.
-
-#### Configuring a decentralized DNS.
-
-If you hosted your website on IPFS you can point your decentralized domain name to it. Click on the following links for more information:
-
-- [ENS](https://docs.ipfs.tech/how-to/websites-on-ipfs/link-a-domain/) (.eth domains)
-- [Unstoppabble domains](https://docs.unstoppabledomains.com/d-websites/connect-ipfs/)
-- [Handshake](https://docs.ipfs.tech/how-to/websites-on-ipfs/link-a-domain/#handshake)
-- ## or alternatively [Ethstorage](https://www.youtube.com/watch?v=rRI-3RV_JHw)
-
-### Building the downlodable application
-
-The MetaDAO frontend uses [electronJS builder](https://www.electron.build/) to create a downlodable/installable application for Windows, Linux and MacOS.
-
-To build the application yourself, run the command: `yarn electron:package`. You might need to update the file `package.json` with the new configuration. For more information about the configuration options, check out [Electron builder documentation](https://www.electron.build/configuration/configuration)
-
-Do not expect building the application for all platforms from one platform. To build on Mac you need to be on a MacOS (for example). In order to build automatically for all platforms you can use tooling and automation like Github Actions or Travis. [See more info](https://www.electron.build/multi-platform-build.html).
-
-This project is also configured with a Github Action that will build automatically the images for Windows, Mac and Linux when doing a new commit on the repo. For more information, check `.github/workflows/build.yml`, more information on how it works can be found [on this post](https://samuelmeuli.com/blog/2019-11-17-automating-the-release-of-electron-apps/).
-
-#### Auto updating releases
-
-The electron script located at `electron-app/main.js` includes the package electron-updater, that automatically checks for new versions of the application and notifies the user.
-
-For auto-updating to work on macOS, your code needs to be signed. For more information check [this post](https://samuelmeuli.com/blog/2019-04-07-packaging-and-publishing-an-electron-app/).
-
----
-
-## Running on test mode.
-
-The application can be run locally on test mode. This is done by forking mainnet using Hardhat and Alchemy.
-
-1. Make sure you have set the following environmental variables in your `.env` file:
-
-`TESTNET_ALCHEMY_KEY=<my_key>` - Replace `<my_key>` with a valid API key which is used for forking mainnet with hardhat.
-
-2. Run the command `yarn hardhat:mainnet` to spin up the local hardhat testnet.
-
-3. Next, in a new terminal window, run the command `yarn hardhat:mainnet:fund --address <my_address>` replacing `<my_address>` with the address you wish to connect your wallet to the app with. This task will send all the necessary tokens to interact with the app to your address.
-
-4. Run the app in development mode with `yarn dev`.
-
-5. Make sure your wallet is connected to the testnet. For example, if using MetaMask, go to the network settings and make sure the chain ID is set to `31337` and the RPC URL is set to `http://localhost:8545`.
-
-6. Click the address dropdown and select `Hardhat` from the list of networks to choose from. You should now see your testnet balance displayed.
-
-### List of available commands
-
-- `hardhat:mainnet` Forks ethereum mainnet
-- `hardhat:optimism` Forks optimism
-- `hardhat:arbitrum` Forks arbitrum
-- `hardhat:mainnet:fund` Sends funds on the ethereum fork
-- `hardhat:arbitrum:fund` Sends funds on the arbitrum fork
-- `hardhat:optimism:fund` Sends funds on the optimism fork
-
-## Theming
-
-This project is configured with [Theme UI](https://theme-ui.com/). Theme-UI allows to define a theme configuration that is used by the whole application. To edit the base theme, go to `modules/ui/theme.ts`.
-
-We try to use a modular approach of components, following a design system that allows us to create complex UIs by combining existing components.
-
-You can visualize a list of the available components by runnign our Storybook with the command: `yarn storybook`
+<div align="right">
+  <a href="#basic-guide">&uarr; back to top</a></b>
+</div>

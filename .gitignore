@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/cypress/videos
+/cypress/screenshots
+/tests/e2e/videos
 
 # production
 /build
@@ -60,5 +63,8 @@ dist-ssr
 *.sln
 *.sw?
 
-hardhat/cache
+packages/app/hardhat/cache
 .env
+dev-dist
+dev-dist.gitsigners
+cache
