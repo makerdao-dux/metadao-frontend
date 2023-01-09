@@ -13,7 +13,7 @@
 - hooks: React hooks to interact with the maker protocol
 - contracts: Contracts and network configurations for the maker protocol
 
-## Using Maker's subdao packages
+### Using Maker's subdao packages
 
 ```
 npm install maker-hooks
@@ -22,7 +22,7 @@ npm install maker-contracts
 
 Check the [documentation]() for detailed usage.
 
-## Using Maker's Subdao web app
+### Using Maker's Subdao web app
 
 This repository contains a web app that can be reutilized by any Maker Subdao to launch a decentralized frontend. The webapp is located under ["apps/webapp"](./apps/webapp).
 
@@ -33,7 +33,7 @@ To run the webapp locally execute:
 
 ## Installation & Development
 
-## Commands
+### Commands
 
 Please refer to [Installing Node.js and pnpm](#installing-nodejs-and-pnpm) to install the required dependencies first.
 
@@ -70,10 +70,10 @@ pnpm install
 
 ### Starting the webapp
 
-To start the local development webapp, run the following. This will run a [React](https://reactjs.org/) app (located at [`packages/app`](./packages/app)) that is set up for interacting with code while making changes.
+To start the local development webapp, run the following. This will run a [React](https://reactjs.org/) app (located at [`packages/webapp`](./packages/webapp)) that is set up for interacting with code while making changes.
 
 ```bash
-pnpm app
+pnpm webapp
 ```
 
 Once the React dev server is running, you can make changes to any of the package source files (e.g. `packages/hooks`) and it will automatically update the app. (If the web app isn't automatically updating, try running `pnpm dev` to relink packages in development mode.)
