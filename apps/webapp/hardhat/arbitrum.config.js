@@ -49,8 +49,6 @@ task('fund', 'Funds the specified wallet with MKR and ETH')
       ethers.utils.formatEther(await ethers.provider.getBalance(address))
     );
 
-
-
     // Send DAI
     const daiSender = await ethers.getSigner(addressWithDAI);
 

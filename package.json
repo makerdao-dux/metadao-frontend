@@ -1,76 +1,37 @@
 {
-  "name": "metadao-frontend",
-  "version": "0.1.4",
-  "private": true,
+  "name": "subdao-frontend-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Maker's subdaos frontends",
   "scripts": {
-    "dev": "vite src --host --config vite.config.ts",
-    "build": "tsc --project src/tsconfig.json && vite build --config vite.config.ts",
-    "preview": "yarn build && vite preview  --config vite.config.ts",
-    "start": "vite src --host --config vite.config.ts",
-    "prettier": "prettier --config .prettierrc --write src/pages src/modules src/stories",
-    "lint": "eslint --ext .tsx,.ts src/pages/ src/modules/ src/stories",
-    "hardhat:mainnet": "npx hardhat node --config hardhat/mainnet.config.js",
-    "hardhat:arbitrum": "npx hardhat node --config hardhat/arbitrum.config.js",
-    "hardhat:optimism": "npx hardhat node --config hardhat/optimism.config.js",
-    "hardhat:mainnet:fund": "npx hardhat fund --network localhost --config hardhat/mainnet.config.js",
-    "hardhat:arbitrum:fund": "npx hardhat fund --network localhost --config hardhat/arbitrum.config.js",
-    "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run --configFile tests/e2e/synpress.config.js",
-    "synpress": "synpress run --configFile tests/e2e/synpress.config.js",
+    "preinstall": "npx only-allow pnpm",
+    "prettier": "prettier --write --cache .",
+    "lint": "eslint --cache .",
+    "build": "pnpm -r  run build",
+    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
+    "webapp": "pnpm --filter='./apps/webapp' dev",
     "prepare": "husky install"
   },
-  "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@rainbow-me/rainbowkit": "^0.8.0",
-    "@theme-ui/style-guide": "^0.15.4",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "app-root-path": "^3.1.0",
-    "ethers": "^5.7.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-helmet": "^6.1.0",
-    "react-router-dom": "^6.4.4",
-    "swr": "^1.3.0",
-    "theme-ui": "^0.15.4",
-    "wagmi": "^0.8.5",
-    "workbox-build": "^6.5.4",
-    "workbox-core": "^6.5.4",
-    "workbox-precaching": "^6.5.4"
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
   },
-  "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@nomiclabs/hardhat-ethers": "^2.2.1",
-    "@storybook/addon-actions": "^6.5.14",
-    "@storybook/addon-essentials": "^6.5.14",
-    "@storybook/addon-interactions": "^6.5.14",
-    "@storybook/addon-links": "^6.5.14",
-    "@storybook/builder-vite": "^0.2.5",
-    "@storybook/react": "^6.5.14",
-    "@storybook/testing-library": "^0.0.13",
-    "@synthetixio/synpress": "^3.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
-    "@vitejs/plugin-react": "^2.2.0",
-    "babel-loader": "^8.3.0",
-    "dotenv": "^16.0.3",
+  "dependencies": {
+    "pnpm": "^7.22.0",
+    "prettier": "2.8.1",
     "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-jest-dom": "^4.0.3",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-testing-library": "^5.9.1",
-    "hardhat": "^2.12.3",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.1",
-    "start-server-and-test": "^1.15.2",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.4",
-    "vite": "^4.0.2",
-    "vite-plugin-pwa": "^0.14.1"
-  }
+    "husky": "^8.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makerdao-dux/metadao-frontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makerdao-dux/metadao-frontend/issues"
+  },
+  "homepage": "https://github.com/makerdao-dux/metadao-frontend#readme",
+  "workspaces": [
+    "packages/*"
+  ]
 }

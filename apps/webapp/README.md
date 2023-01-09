@@ -1,82 +1,75 @@
-# Maker MetaDAO frontend
+# MetaDAO app
 
-[![GitHub release](https://img.shields.io/github/release/makerdao-dux/metadao-frontend.svg)](https://GitHub.com/makerdao-dux/metadao-frontend/releases/)
-[![GitHub commits](https://img.shields.io/github/commits-since/makerdao-dux/metadao-frontend/latest.svg)](https://GitHub.com/makerdao-dux/metadao-frontend/commit/)
+## High level specs
 
-[![GitHub contributors](https://img.shields.io/github/contributors/makerdao-dux/metadao-frontend.svg?style=flat)](https://github.com/makerdao-dux/metadao-frontend/graphs/contributors)
+- Access to MetaDAO farms
+- Ability to open and manage Maker vaults
+- Ability to delegate MKR
 
-[![Github All Releases](https://img.shields.io/github/downloads/makerdao-dux/metadao-frontend/total.svg)](https://GitHub.com/makerdao-dux/metadao-frontend/releases/)
+---
 
-## Packages
+## Using the MetaDAO frontend
 
-- app: WebApp built with react that serves as interface
-- hooks: React hooks to interact with the maker protocol
-- contracts: Contracts and network configurations for the maker protocol
+You have 3 options to utilize this frontend: you can download one of the [app releases](https://github.com/makerdao-dux/metadao-frontend/releases), run the project locally or host a web version.
+To build your own downlodoable application, please refer to [Building the application](#building)
 
-### Using Maker's subdao packages
+### Downloading the MetaDAO frontend app:
 
-```
-npm install maker-hooks
-npm install maker-contracts
-```
+This app is an installer that allows you to access the core features of Maker metadaos, it will also allow you to configure your own RPC or local node to access your data.
 
-Check the [documentation]() for detailed usage.
+- Latest Release: v0.0.0
+  - Windows
+  - MacOS
+  - Ubuntu
 
-### Using Maker's Subdao web app
+The list of releases can be found [here](https://github.com/makerdao-dux/metadao-frontend/releases).
 
-This repository contains a web app that can be reutilized by any Maker Subdao to launch a decentralized frontend. The webapp is located under ["apps/webapp"](./apps/webapp).
+### Running the project locally:
 
-The webapp is built with React and utilizes the other subdao packages as dependencies. Please check [Starting the web app](#starting-the-webapp) for more information.
+The Metadao frontend is customizable by editing the file `modules/config/default.config.ts`. In here you will be able to change things like:
 
-To run the webapp locally execute:
-`pnpm webapp`
+- logo
+- site name and description
+- basic color palette
 
-## Installation & Development
+> In order to perform other structural changes you will need to edit the codebase. Please refer to the section [Code Structure](#code-structure).
 
-### Commands
+To run the project locally:
 
-Please refer to [Installing Node.js and pnpm](#installing-nodejs-and-pnpm) to install the required dependencies first.
+1. Install Node in your computer
+2. Clone or download this repositoty
+3. Install dependencies
 
-```
-pnpm build -> Builds all packages.
-pnpm webapp -> Starts the development server for the web app.
-pnpm test -> Runs the unit tests suite across the different packages.
-pnpm e2e -> Runs web app e2e tests.
-```
+- `yarn` or `npm install` to install the dependencies
 
-### Installing Node.js and pnpm
+4. Fill in the environment variables
 
-This repository uses [pnpm workspaces](https://pnpm.io/workspaces) to manage multiple projects. You need to install **Node.js v16 or higher** and **pnpm v7 or higher**.
+- PUBLIC_RPC_PROVIDER_ARBITRUM
+- PUBLIC_RPC_PROVIDER_MAINNET
+- PUBLIC_RPC_PROVIDER_OPTIMISM
 
-You can run the following commands in your terminal to check your local Node.js and npm versions:
+5. Execute `yarn dev` or `npm run dev` to start the project.
+6. Visit `http://localhost:3000`
 
-```bash
-node -v
-pnpm -v
-```
+To see more information about other available commands, check [Development Commands](#development-commands)
 
-If the versions are not correct or you don't have Node.js or pnpm installed, download and follow their setup instructions:
+#### Development commands
 
-- Install Node.js using [fnm](https://github.com/Schniz/fnm) or from the [official website](https://nodejs.org)
-- Install [pnpm](https://pnpm.io/installation)
+This project is built on top of [ReactJS](https://reactjs.org/).
 
-### Installing dependencies
+- `yarn dev` starts the development server locally.
+- `yarn build` builds a static distribution of the project that can be hosted on IPFS.
+- `yarn prettier` cleans the formatting of the code files.
+- `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
+- `yarn hardhat:mainnet` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`.
+- `yarn hardhat:mainnet:fund  --address 0x0000` Funds the address passed as parameter with test MKR, ETH and stETH. For more information, please check [running a test network](#running-on-test-mode).
+- `yarn storybook`. Launches the react storybook, for more information check [theming](#theming).
 
-Once in the project's root directory, run the following command to install the project's dependencies:
+### Deploying the application on a server
 
-```bash
-pnpm install
-```
+There are different ways to deploy the Metada frontend. It can be deployed on decentralized file systems like IPFS or Arweave, or using traditional infrastructure.
 
-### Starting the webapp
-
-To start the local development webapp, run the following. This will run a [React](https://reactjs.org/) app (located at [`packages/webapp`](./packages/webapp)) that is set up for interacting with code while making changes.
-
-```bash
-pnpm webapp
-```
-
-Once the React dev server is running, you can make changes to any of the package source files (e.g. `packages/hooks`) and it will automatically update the app. (If the web app isn't automatically updating, try running `pnpm dev` to relink packages in development mode.)
+If you want to deploy the portal easily, we recommend using services like [Fleek](https://fleek.co/)(Decentralized), [4Everland](https://www.4everland.org/)(Decentralized) or [Vercel](https://vercel.org)(Centralized).
 
 If you want to upload manually this application to IPFS, you can do it by running `yarn ipfs` - This requires setting the IPFS pinner sdk correctly (see the file `scripts/ipfs` for more information) - or alternatively running `yarn build` and then uploading the dist folder to IPFS.
 Once you optain the ipfs hash, you can introduce that in a decentralized name server like ENS.
@@ -157,8 +150,4 @@ Now we will use the `gen-bundle` tool to build the web bundle, enter the followi
 
 `gen-bundle -dir dist -baseURL https://example.com/ -primaryURL https://example.com/ -o metadaoapp.wbn`
 
-This takes our `dist` directory and bundles it into a file called `metadaoapp.wbn`. Since we are not using a resource URL we simply enter a dummy URL and the bundler will use the local files specified in `dist`. For more information see the `go/bundle` [documentation](https://github.com/WICG/webpackage/tree/main/go/bundle#from-a-local-directory).
-
-<div align="right">
-  <a href="#basic-guide">&uarr; back to top</a></b>
-</div>
+This takes our `dist` directory and bundles it into a file called `metadaoapp.wbn`. Since we are not using a resource URL we simply enter a dummy URL and the bundler will use the local files specified in `dist`. For more information see the `go/bundle` [documentation](https://github.com/WICG/webpackage/tree/main/go/bundle#from-a-url-list).

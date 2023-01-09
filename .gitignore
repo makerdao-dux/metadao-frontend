@@ -63,7 +63,8 @@ dist-ssr
 *.sln
 *.sw?
 
-hardhat/cache
+packages/app/hardhat/cache
 .env
 dev-dist
 dev-dist.gitsigners
+cache
