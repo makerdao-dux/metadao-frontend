@@ -23,6 +23,12 @@ Primary.args = {
   variant: 'primary'
 };
 
+export const Secondary = Template.bind({});
+Secondary.args = {
+  children: 'Button',
+  variant: 'secondary'
+};
+
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Button',
