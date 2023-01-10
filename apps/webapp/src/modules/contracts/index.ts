@@ -37,17 +37,6 @@ import optimismOPAbi from './abis/optimism/op.json';
 // arbitrum
 import arbitrummwstETHAbi from './abis/arbitrumOne/stETH.json';
 
-export const ORACLE_CONTRACTS = [
-  { contractName: 'PIP_ETH', collateral: 'ETH' },
-  { contractName: 'PIP_WSTETH', collateral: 'WSTETH' },
-  { contractName: 'PIP_WBTC', collateral: 'BTC' },
-  { contractName: 'PIP_LINK', collateral: 'LINK' },
-  { contractName: 'PIP_MANA', collateral: 'MANA' },
-  { contractName: 'PIP_MATIC', collateral: 'MATIC' },
-  { contractName: 'PIP_RETH', collateral: 'RETH' },
-  { contractName: 'PIP_YFI', collateral: 'YFI' }
-];
-
 export const contracts = {
   [chainId.mainnet]: {
     MCD_POT: {

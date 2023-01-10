@@ -4,7 +4,7 @@ import { Layout } from '../modules/layout/components/Layout';
 import { Heading, Box, Text } from 'theme-ui';
 import { formatEther, hexDataSlice } from 'ethers/lib/utils.js';
 import { BigNumber } from 'ethers';
-import { ORACLE_CONTRACTS } from '../modules/contracts';
+import { ORACLE_CONTRACTS } from '../modules/oracles/constants/oracles.constants';
 import { contracts } from '../modules/contracts';
 import useSWR from 'swr';
 
