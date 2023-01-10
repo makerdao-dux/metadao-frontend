@@ -60,11 +60,13 @@ export enum CONTRACT_NAMES {
   OP = 'OP'
 }
 
+export type Contract = {
+  address: string;
+  abi: any;
+}
+
 type NetworkContractData = {
-  [key in CONTRACT_NAMES]?: {
-    address: string;
-    abi: any;
-  };
+  [key in CONTRACT_NAMES]?: Contract;
 };
 
 export const contracts: { [key: number]: NetworkContractData | undefined } = {
