@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Heading, Input, Label, Button, Text, Box } from 'theme-ui';
+import { Input, Label, Button, Text, Box } from 'theme-ui';
 
 export function RPCEdition({
   chainId,

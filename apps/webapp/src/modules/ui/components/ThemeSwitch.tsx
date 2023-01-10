@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useColorMode, IconButton } from 'theme-ui';
-import { ConfigContext } from '../../config/context/ConfigContext';
 import Icon from './Icon';
 
 const ThemeSwitch = (): React.ReactElement => {

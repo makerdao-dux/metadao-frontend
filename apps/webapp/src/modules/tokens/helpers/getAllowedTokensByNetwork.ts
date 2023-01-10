@@ -1,4 +1,3 @@
-import { chainId } from 'wagmi';
 import { TOKENS } from '../constants/tokens.constants';
 import { Token } from '../types/token';
 
