@@ -7,8 +7,6 @@ import ThemeSwitch from '../../ui/components/ThemeSwitch';
 export function Header(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
 
-  something = 'somethinge';
-
   return (
     <Flex sx={{ justifyContent: 'space-between', padding: 3 }}>
       <Link href="/" title="Home page">
