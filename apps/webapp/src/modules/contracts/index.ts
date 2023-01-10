@@ -139,37 +139,49 @@ export const contracts = {
       address: '0xF7F0de3744C82825D77EdA8ce78f07A916fB6bE7',
       abi: goerliDsrManagerAbi
     },
+    DAI: {
+      address: '0x11fE4B6AE13d2a6055C8D9cF65c55bac32B5d844',
+      abi: goerliDAIAbi
+    },
+    MKR: {
+      address: '0xc5E4eaB513A7CD12b2335e8a0D57273e13D499f7',
+      abi: goerliMKRAbi
+    },
+    STETH: {
+      address: '0x1643E812aE58766192Cf7D2Cf9567dF2C37e9B7F',
+      abi: goerlistETHAbi
+    },
     PIP_ETH: {
       address: '0x94588e35fF4d2E99ffb8D5095F35d1E37d6dDf12',
-      abi: mainnetPipEthAbi
+      abi: goerliPipEthAbi
     },
     PIP_WSTETH: {
       address: '0x323eac5246d5BcB33d66e260E882fC9bF4B6bf41',
-      abi: mainnetPipWstethAbi
+      abi: goerliPipWstethAbi
     },
     PIP_WBTC: {
       address: '0xE7de200a3a29E9049E378b52BD36701A0Ce68C3b',
-      abi: mainnetPipWbtcAbi
+      abi: goerliPipWbtcAbi
     },
     PIP_LINK: {
       address: '0x75B4e743772D25a7998F4230cb016ddCF2c52629',
-      abi: mainnetPipLinkAbi
+      abi: goerliPipLinkAbi
     },
     PIP_MANA: {
       address: '0x001eDD66a5Cc9268159Cf24F3dC0AdcE456AAAAb',
-      abi: mainnetPipManaAbi
+      abi: goerliPipManaAbi
     },
     PIP_MATIC: {
       address: '0xDe112F61b823e776B3439f2F39AfF41f57993045',
-      abi: mainnetPipMaticAbi
+      abi: goerliPipMaticAbi
     },
     PIP_RETH: {
       address: '0x27a25935D8b0006A97E11cAdDc2b3bf3a6721c13',
-      abi: mainnetPipRethAbi
+      abi: goerliPipRethAbi
     },
     PIP_YFI: {
       address: '0xAafF0066D05cEe0D6a38b4dac77e73d9E0a5Cf46',
-      abi: mainnetPipYfiAbi
+      abi: goerliPipYfiAbi
     }
   }
 };
