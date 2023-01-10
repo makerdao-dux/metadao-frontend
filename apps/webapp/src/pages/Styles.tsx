@@ -6,17 +6,12 @@ import icons from '../modules/ui/components/icons';
 import Icon from '../modules/ui/components/Icon';
 
 import {
-  Message,
   NavLink,
-  Divider,
-  Container,
   Box,
   Button,
   Card,
   Text,
   Paragraph,
-  Image,
-  Slider,
   Label,
   Flex,
   Checkbox,
@@ -25,7 +20,6 @@ import {
   Radio,
   Input,
   Link,
-  Progress,
   Badge,
   Alert
 } from 'theme-ui';
