@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'makerdao-dux-hooks',
-      fileName: 'makerdao-dux-hooks'
+      name: 'makerdao-dux-contracts',
+      fileName: 'makerdao-dux-contracts'
     }
   },
   plugins: [dts()]

@@ -38,7 +38,9 @@
     "wagmi": "^0.8.5",
     "workbox-build": "^6.5.4",
     "workbox-core": "^6.5.4",
-    "workbox-precaching": "^6.5.4"
+    "workbox-precaching": "^6.5.4",
+    "@makerdao-dux/contracts": "workspace:^",
+    "@makerdao-dux/hooks": "workspace:^"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
