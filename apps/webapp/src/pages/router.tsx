@@ -1,14 +1,13 @@
 import React from 'react';
 import { createHashRouter } from 'react-router-dom';
 import Home from './Home';
-import Vaults from './Vaults';
 import Delegates from './Delegates';
-import Farms from './Farms';
 import Dsr from './Dsr';
 import Config from './Config';
 import Styles from './Styles';
 import ErrorPage from './ErrorPage';
 import Faqs from './Faqs';
+import Oracles from './Oracles';
 
 export const router = createHashRouter([
   {
@@ -17,18 +16,13 @@ export const router = createHashRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: '/vaults',
-    element: <Vaults />,
+    path: '/oracles',
+    element: <Oracles />,
     errorElement: <ErrorPage />
   },
   {
     path: '/delegates',
     element: <Delegates />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/farms',
-    element: <Farms />,
     errorElement: <ErrorPage />
   },
   {
