@@ -6,8 +6,6 @@ import ThemeSwitch from '../../ui/components/ThemeSwitch';
 
 export function Header(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
-  // some comment
-  console.log('some console.log');
 
   something = 'somethinge';
 
