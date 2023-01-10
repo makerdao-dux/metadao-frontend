@@ -7,7 +7,7 @@ import ThemeSwitch from '../../ui/components/ThemeSwitch';
 export function Header(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
 
-  something = 'somethinge';
+  const something = 'somethinge';
 
   return (
     <Flex sx={{ justifyContent: 'space-between', padding: 3 }}>
