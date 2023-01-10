@@ -68,3 +68,5 @@ packages/app/hardhat/cache
 dev-dist
 dev-dist.gitsigners
 cache
+
+.eslintcache
