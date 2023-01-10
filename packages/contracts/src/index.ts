@@ -63,7 +63,7 @@ export enum CONTRACT_NAMES {
 export type Contract = {
   address: string;
   abi: any;
-}
+};
 
 type NetworkContractData = {
   [key in CONTRACT_NAMES]?: Contract;

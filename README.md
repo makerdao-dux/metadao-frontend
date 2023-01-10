@@ -39,6 +39,7 @@ Please refer to [Installing Node.js and pnpm](#installing-nodejs-and-pnpm) to in
 
 ```
 pnpm build -> Builds all packages.
+pnpm dev -> Runs dev mode.
 pnpm webapp -> Starts the development server for the web app.
 pnpm test -> Runs the unit tests suite across the different packages.
 pnpm e2e -> Runs web app e2e tests.
