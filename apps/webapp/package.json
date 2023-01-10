@@ -17,7 +17,7 @@
     "hardhat:optimism:fund": "npx hardhat fund --network localhost --config hardhat/optimism.config.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' synpress run --configFile tests/e2e/synpress.config.js",
+    "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm synpress'",
     "synpress": "synpress run --configFile tests/e2e/synpress.config.js"
   },
   "dependencies": {

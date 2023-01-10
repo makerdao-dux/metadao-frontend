@@ -9,6 +9,7 @@
     "build": "pnpm -r  run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
     "webapp": "pnpm --filter='./apps/webapp' dev",
+    "webapp:e2e": "pnpm --filter='./apps/webapp' test:e2e:local",
     "prepare": "husky install"
   },
   "main": "index.js",
