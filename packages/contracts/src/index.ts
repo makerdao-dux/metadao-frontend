@@ -65,7 +65,7 @@ export type Contract = {
   abi: any;
 };
 
-type NetworkContractData = {
+export type NetworkContractData = {
   [key in CONTRACT_NAMES]?: Contract;
 };
 
