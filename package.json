@@ -7,7 +7,7 @@
     "prettier": "prettier --write --cache .",
     "lint": "eslint --cache .",
     "build": "pnpm -r  run build",
-    "dev": "pnpm -r --parallel --filter='./packages/*' run dev",
+    "dev": "pnpm -r --parallel run dev",
     "webapp": "pnpm --filter='./apps/webapp' dev",
     "webapp:e2e": "pnpm --filter='./apps/webapp' test:e2e:local",
     "prepare": "husky install"
@@ -20,7 +20,11 @@
     "pnpm": "^7.22.0",
     "prettier": "2.8.1",
     "eslint": "^8.31.0",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "vite": "^4.0.2",
+    "typescript": "^4.9.3",
+    "ethers": "^5.7.2",
+    "react": "18.2.0"
   },
   "repository": {
     "type": "git",
