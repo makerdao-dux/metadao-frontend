@@ -69,4 +69,9 @@ dev-dist
 dev-dist.gitsigners
 cache
 .eslintcache
+
+# E2e videos
 apps/webapp/tests/e2e/videos/*
+
+# coverage results
+coverage

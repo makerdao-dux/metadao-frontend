@@ -5,3 +5,4 @@ node_modules
 .github
 hardhat/cache
 pnpm-lock.yaml
+coverage
