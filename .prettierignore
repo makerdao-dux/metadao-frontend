@@ -3,3 +3,5 @@ dev-dist
 build
 node_modules
 .github
+hardhat/cache
+pnpm-lock.yaml

@@ -37,6 +37,7 @@ importers:
       '@storybook/react': ^6.5.14
       '@storybook/testing-library': ^0.0.13
       '@synthetixio/synpress': ^3.0.5
+      '@testing-library/cypress': ^9.0.0
       '@theme-ui/css': ^0.15.4
       '@theme-ui/style-guide': ^0.15.4
       '@types/node': 18.11.9
@@ -102,6 +103,7 @@ importers:
       '@storybook/react': 6.5.15_yjis5jp2ibog2l5e456dmaxyna
       '@storybook/testing-library': 0.0.13_react-dom@18.2.0
       '@synthetixio/synpress': 3.0.5_jxj7qa4bspgv5su7ysqq67qhie
+      '@testing-library/cypress': 9.0.0
       '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
       '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
       '@vitejs/plugin-react': 2.2.0_vite@4.0.4
@@ -6497,6 +6499,19 @@ packages:
       '@babel/runtime': 7.20.7
       '@testing-library/dom': 8.19.1
       cypress: 11.2.0
+    dev: true
+
+  /@testing-library/cypress/9.0.0:
+    resolution:
+      {
+        integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==
+      }
+    engines: { node: '>=12', npm: '>=6' }
+    peerDependencies:
+      cypress: ^12.0.0
+    dependencies:
+      '@babel/runtime': 7.20.7
+      '@testing-library/dom': 8.19.1
     dev: true
 
   /@testing-library/dom/7.31.2:
