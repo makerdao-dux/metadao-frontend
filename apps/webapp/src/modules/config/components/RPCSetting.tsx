@@ -22,29 +22,40 @@ export function RPCSetting({
   return (
     <Flex sx={{ alignItems: 'center', my: 3 }}>
       <Flex sx={{ flexDirection: 'column' }}>
-        <Heading as="h4">Chain: {chainId}</Heading>
-        <Select
-          value={option}
-          onChange={() => {
-            if (option === 'custom') {
-              handleRpcChange(defaultRPC);
-            }
-            setOption(option == 'custom' ? 'public' : 'custom');
-          }}
-          sx={{ minWidth: '225px' }}
-        >
-          <option value={'public'}>Public provider (default)</option>
-          <option value={'custom'}>Custom RPC URL</option>
-        </Select>
-      </Flex>
-      {option === 'custom' && (
-        <Flex sx={{ ml: 3 }}>
-          <Flex sx={{ flexDirection: 'column', alignItems: 'center', width: '500px' }}>
-            <Label>RPC URL</Label>
-            <Input placeholder="Enter RPC URL" onChange={e => handleRpcChange(e.target.value)} value={url} />
+        <Heading as="h4" sx={{ mb: 1 }}>
+          Chain: {chainId}
+        </Heading>
+        <Flex>
+          <Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
+            <Label>RPC SETTING</Label>
+            <Select
+              value={option}
+              onChange={() => {
+                if (option === 'custom') {
+                  handleRpcChange(defaultRPC);
+                }
+                setOption(option == 'custom' ? 'public' : 'custom');
+              }}
+              sx={{ minWidth: '225px' }}
+            >
+              <option value={'public'}>Public provider (default)</option>
+              <option value={'custom'}>Custom RPC URL</option>
+            </Select>
           </Flex>
+          {option === 'custom' && (
+            <Flex sx={{ ml: 3 }}>
+              <Flex sx={{ flexDirection: 'column', alignItems: 'center', width: '500px' }}>
+                <Label>RPC URL</Label>
+                <Input
+                  placeholder="Enter RPC URL"
+                  onChange={e => handleRpcChange(e.target.value)}
+                  value={url}
+                />
+              </Flex>
+            </Flex>
+          )}
         </Flex>
-      )}
+      </Flex>
     </Flex>
   );
 }
