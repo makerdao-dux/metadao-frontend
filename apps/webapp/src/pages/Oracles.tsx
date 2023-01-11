@@ -5,10 +5,7 @@ import { Heading, Box, Text } from 'theme-ui';
 import { useOracles } from '@makerdao-dux/hooks';
 
 function Oracles(): React.ReactElement {
-  // TODO move to hooks package
-
   const oracleData = useOracles();
-
   return (
     <Layout>
       <Heading>Oracles</Heading>

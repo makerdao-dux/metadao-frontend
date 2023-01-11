@@ -59,6 +59,7 @@ This project is built on top of [ReactJS](https://reactjs.org/).
 
 - `yarn dev` starts the development server locally.
 - `yarn build` builds a static distribution of the project that can be hosted on IPFS.
+- `yarn test` Runs test suite.
 - `yarn prettier` cleans the formatting of the code files.
 - `yarn ipfs` deploys the portal to IPFS. Depends on setting correctly the environment variables for IPFS. See `scripts/ipfs` implementation if you want to change the IPFS pinner.
 - `yarn hardhat:mainnet` launches a hardhat fork of mainnet on the block specified under `hardhat/mainnet.config.js`.

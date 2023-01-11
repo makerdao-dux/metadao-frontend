@@ -8,6 +8,9 @@
     "lint": "eslint --cache .",
     "build": "pnpm -r  run build",
     "dev": "pnpm -r --parallel run dev",
+    "test": "pnpm -r --parallel run test",
+    "test:coverage": "pnpm -r --parallel run test:coverage",
+    "test:hooks": "pnpm --filter='./packages/hooks' run test",
     "webapp": "pnpm --filter='./apps/webapp' dev",
     "webapp:e2e": "pnpm --filter='./apps/webapp' test:e2e:local",
     "prepare": "husky install"
