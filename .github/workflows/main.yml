@@ -161,15 +161,7 @@ jobs:
             references/packages/**/node_modules
           key: modules-${{ hashFiles('pnpm-lock.yaml') }}
 
-      - name: Test `hooks` (React 18)
-        run: pnpm test:hooks
-        env:
-          REACT_VERSION: ${{ matrix.react-version }}
-      - name: Test types
-        run: pnpm test:typecheck
-        env:
-          REACT_VERSION: ${{ matrix.react-version }}
-      - name: Test app
-        run: pnpm test:app
+      - name: Test packages
+        run: pnpm test:coverage
         env:
           REACT_VERSION: ${{ matrix.react-version }}
