@@ -19,6 +19,7 @@ const App = () => {
 
   // Chains should be regenerated each time the config.rpcs change
   const { wagmiClient, chains } = useMemo(() => {
+    console.log('wagmi reload');
     const { chains, provider } = getChainsAndProvider(rpcs);
     const wagmiClient = getWagmiClient(chains, provider, siteConfig.name);
     return { chains, wagmiClient };
