@@ -150,4 +150,4 @@ Now we will use the `gen-bundle` tool to build the web bundle, enter the followi
 
 `gen-bundle -dir dist -baseURL https://example.com/ -primaryURL https://example.com/ -o metadaoapp.wbn`
 
-This takes our `dist` directory and bundles it into a file called `metadaoapp.wbn`. Since we are not using a resource URL we simply enter a dummy URL and the bundler will use the local files specified in `dist`. For more information see the `go/bundle` [documentation](https://github.com/WICG/webpackage/tree/main/go/bundle#from-a-url-list).
+This takes our `dist` directory and bundles it into a file called `metadaoapp.wbn`. Since we are not using a resource URL we simply enter a dummy URL and the bundler will use the local files specified in `dist`. For more information see the `go/bundle` [documentation](https://github.com/WICG/webpackage/tree/main/go/bundle#from-a-local-directory).
