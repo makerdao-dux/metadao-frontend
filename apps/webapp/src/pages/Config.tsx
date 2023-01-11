@@ -11,8 +11,7 @@ function Config(): React.ReactElement {
   const provider = useProvider();
   const account = useAccount();
 
-  console.log({ provider });
-  console.log({ account });
+  console.log({ provider, account, userConfig });
 
   return (
     <Layout>
@@ -33,6 +32,7 @@ function Config(): React.ReactElement {
               url={userRPC ? userRPC.url : rpc.url}
               defaultRPC={rpc.url}
               onChange={(url: string) => {
+                console.log('onChange called');
                 updateRPC({
                   chainId: rpc.chainId,
                   url

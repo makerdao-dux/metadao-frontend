@@ -36,6 +36,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
     if (settings) {
       try {
         const parsed = JSON.parse(settings);
+        console.log({ parsed });
         // TODO: We should verify the structure and integrity of the settings.
         setUserConfig({
           ...userConfig,
@@ -50,6 +51,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
 
   // Handle the Update of RPCS from the user
   const updateRPC = (rpc: RPC) => {
+    console.log('updating rpc');
     const newUserConfig = {
       ...userConfig,
       rpcs: [...userConfig.rpcs.filter(i => i.chainId !== rpc.chainId), rpc]

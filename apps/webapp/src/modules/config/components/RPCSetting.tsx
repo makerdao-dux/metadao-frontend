@@ -15,19 +15,11 @@ export function RPCSetting({
   // TODO: Add chain name and logo.
   const [val, setVal] = useState(url);
   const [option, setOption] = useState(url === '' ? 'public' : 'custom');
-
-  console.log({ url, defaultRPC, chainId });
-  console.log(url === defaultRPC);
+  console.log({ chainId, url, option });
 
   useEffect(() => {
     setVal(url);
   }, [url]);
-
-  useEffect(() => {
-    if (option === 'public') {
-      onChange(defaultRPC);
-    }
-  }, [option]);
 
   return (
     <Flex sx={{ alignItems: 'center', my: 3 }}>
@@ -45,7 +37,7 @@ export function RPCSetting({
           <option value={'custom'}>Custom RPC URL</option>
         </Select>
       </Flex>
-      {option === 'custom' && (
+      {(url !== '' || option === 'custom') && (
         <Flex sx={{ ml: 3 }}>
           <Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
             <Label>RPC URL</Label>
@@ -56,7 +48,7 @@ export function RPCSetting({
               sx={{ maxWidth: '300px', mr: 3 }}
             />
           </Flex>
-          <Button onClick={() => onChange(val)} disabled={val === defaultRPC}>
+          <Button onClick={() => onChange(val)} disabled={val === defaultRPC || val === url}>
             Update RPC URL
           </Button>
         </Flex>

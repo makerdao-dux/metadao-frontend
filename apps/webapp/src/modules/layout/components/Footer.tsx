@@ -6,12 +6,11 @@ import { useProvider } from 'wagmi';
 export function Footer(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
   const provider = useProvider();
-  console.log({ provider });
+
   return (
     <Flex sx={{ justifyContent: 'space-between' }}>
       <Box m={3}>
         <Text
-          as="p"
           sx={{
             textAlign: 'center'
           }}
@@ -22,7 +21,6 @@ export function Footer(): React.ReactElement {
       <Box m={3}>
         <Link href="#/config" title="config">
           <Text
-            as="p"
             sx={{
               textAlign: 'center'
             }}
