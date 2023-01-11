@@ -1,8 +1,9 @@
 import { useContractRead as wagmiUseContractRead } from 'wagmi';
-import { contracts } from '../../contracts';
+import { contracts } from '@makerdao-dux/contracts';
 
 export function useContractRead(name: string, chainId: number, functionName: string, ...args) {
-  const contract = contracts[chainId][name];
+  const networkData = contracts[chainId];
+  const contract = networkData ? networkData[name] : null;
   if (!contract) {
     throw new Error('Unsupported contract');
   }

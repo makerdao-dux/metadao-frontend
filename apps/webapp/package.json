@@ -1,5 +1,5 @@
 {
-  "name": "subdao-frontend",
+  "name": "@makerdao-dux/webapp",
   "version": "0.1.4",
   "private": true,
   "scripts": {
@@ -22,14 +22,15 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
+    "@makerdao-dux/contracts": "workspace:^",
+    "@makerdao-dux/hooks": "workspace:^",
     "@rainbow-me/rainbowkit": "^0.8.0",
+    "@theme-ui/css": "^0.15.4",
     "@theme-ui/style-guide": "^0.15.4",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "app-root-path": "^3.1.0",
-    "ethers": "^5.7.2",
-    "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.4.4",
@@ -39,6 +40,10 @@
     "workbox-build": "^6.5.4",
     "workbox-core": "^6.5.4",
     "workbox-precaching": "^6.5.4"
+  },
+  "peerDependencies": {
+    "ethers": "^5.7.2",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

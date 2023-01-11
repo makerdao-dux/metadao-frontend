@@ -1,11 +1,15 @@
-# SubDAO Hooks
+# MakerDAO Hooks
 
 ## Installation
 
 ```
-npm install subdao-hooks
+npm install @makerdao-dux/hooks
 ```
 
 ## Documentation
 
-TODO
+```
+import { useOracle } from '@makerdao-dux/hooks';
+
+const { data, isLoading, error } = useOracle(contracts.ETH)
+```

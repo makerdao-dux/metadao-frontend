@@ -1,19 +1,19 @@
 {
-  "name": "hooks",
-  "version": "1.0.0",
+  "name": "@makerdao-dux/hooks",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "./dist/subdao-hooks.umd.cjs",
-  "module": "./dist/subdao-hooks.js",
+  "main": "./dist/makerdao-dux-hooks.js",
+  "module": "./dist/makerdao-dux-hooks.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/subdao-hooks.js",
-      "require": "./dist/subdao-hooks.umd.cjs"
+      "import": "./dist/makerdao-dux-hooks.js",
+      "require": "./dist/makerdao-dux-hooks.umd.cjs"
     }
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "tsc && vite build --watch",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest"
@@ -24,11 +24,13 @@
   "private": true,
   "sideEffects": false,
   "peerDependencies": {
-    "ethers": ">=5.5.1",
+    "ethers": "^5.7.2",
     "react": ">=17.0.0"
   },
   "dependencies": {
-    "wagmi": "^0.8.5"
+    "wagmi": "^0.8.5",
+    "swr": "^1.3.0",
+    "@makerdao-dux/contracts": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
