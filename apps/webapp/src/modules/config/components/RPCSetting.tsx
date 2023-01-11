@@ -5,20 +5,18 @@ export function RPCSetting({
   chainId,
   url,
   defaultRPC,
-  onChange
+  handleRpcChange
 }: {
   chainId: number;
   url: string;
   defaultRPC: string;
-  onChange: (val: string) => void;
+  handleRpcChange: (val: string) => void;
 }): React.ReactElement {
   // TODO: Add chain name and logo.
-  const [val, setVal] = useState(url);
   const [option, setOption] = useState(url === '' ? 'public' : 'custom');
-  console.log({ chainId, url, option });
 
   useEffect(() => {
-    setVal(url);
+    setOption(url === '' ? 'public' : 'custom');
   }, [url]);
 
   return (
@@ -26,31 +24,25 @@ export function RPCSetting({
       <Flex sx={{ flexDirection: 'column' }}>
         <Heading as="h4">Chain: {chainId}</Heading>
         <Select
-          defaultValue={url === '' ? 'public' : 'custom'}
-          onChange={e => {
-            console.log(e);
-            setOption(e.target.value);
+          value={option}
+          onChange={() => {
+            if (option === 'custom') {
+              handleRpcChange(defaultRPC);
+            }
+            setOption(option == 'custom' ? 'public' : 'custom');
           }}
-          sx={{ maxWidth: '300px' }}
+          sx={{ minWidth: '225px' }}
         >
           <option value={'public'}>Public provider (default)</option>
           <option value={'custom'}>Custom RPC URL</option>
         </Select>
       </Flex>
-      {(url !== '' || option === 'custom') && (
+      {option === 'custom' && (
         <Flex sx={{ ml: 3 }}>
-          <Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
+          <Flex sx={{ flexDirection: 'column', alignItems: 'center', width: '500px' }}>
             <Label>RPC URL</Label>
-            <Input
-              placeholder="Enter RPC URL"
-              onChange={e => setVal(e.target.value)}
-              value={val}
-              sx={{ maxWidth: '300px', mr: 3 }}
-            />
+            <Input placeholder="Enter RPC URL" onChange={e => handleRpcChange(e.target.value)} value={url} />
           </Flex>
-          <Button onClick={() => onChange(val)} disabled={val === defaultRPC || val === url}>
-            Update RPC URL
-          </Button>
         </Flex>
       )}
     </Flex>

@@ -7,6 +7,8 @@ export function Footer(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
   const provider = useProvider();
 
+  console.log({ provider });
+
   return (
     <Flex sx={{ justifyContent: 'space-between' }}>
       <Box m={3}>

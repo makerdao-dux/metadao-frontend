@@ -5,7 +5,6 @@ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
 import { RPC } from '../config/types/rpc';
 
 export const getChainsAndProvider = (rpcs: RPC[]) => {
-  console.log('getting chains and providers');
   return configureChains(
     [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
     [
@@ -13,7 +12,6 @@ export const getChainsAndProvider = (rpcs: RPC[]) => {
         priority: 0,
         weight: 2,
         rpc: chain => {
-          console.log('rpcs', rpcs);
           const rpc = rpcs.find(i => i.chainId === chain.id);
 
           return rpc

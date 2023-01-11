@@ -14,14 +14,14 @@ export interface ConfigContextProps {
   siteConfig: SiteConfig;
   userConfig: UserConfig;
   rpcs: RPC[];
-  updateRPC: (rpc: RPC) => void;
+  updateUserConfig: (config: UserConfig) => void;
 }
 
 export const ConfigContext = React.createContext<ConfigContextProps>({
   siteConfig: siteConfig,
   userConfig: defaultUserConfig,
   rpcs: [],
-  updateRPC: () => {
+  updateUserConfig: () => {
     // do nothing.
   }
 });
@@ -31,33 +31,24 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
 
   // Check the user settings on load
   React.useEffect(() => {
-    console.log('getting user settings');
     const settings = window.localStorage.getItem('user-settings');
     if (settings) {
       try {
         const parsed = JSON.parse(settings);
-        console.log({ parsed });
         // TODO: We should verify the structure and integrity of the settings.
         setUserConfig({
           ...userConfig,
           ...parsed
         });
       } catch (e) {
-        console.log('Invalid user settings, deleting');
         window.localStorage.setItem('user-settings', JSON.stringify(userConfig));
       }
     }
   }, []);
 
-  // Handle the Update of RPCS from the user
-  const updateRPC = (rpc: RPC) => {
-    console.log('updating rpc');
-    const newUserConfig = {
-      ...userConfig,
-      rpcs: [...userConfig.rpcs.filter(i => i.chainId !== rpc.chainId), rpc]
-    };
-    setUserConfig(newUserConfig);
-    window.localStorage.setItem('user-settings', JSON.stringify(newUserConfig));
+  const updateUserConfig = (config: UserConfig) => {
+    setUserConfig(config);
+    window.localStorage.setItem('user-settings', JSON.stringify(config));
   };
 
   return (
@@ -65,7 +56,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
       value={{
         siteConfig,
         userConfig,
-        updateRPC,
+        updateUserConfig,
         rpcs: siteConfig.rpcs.map(siteRPC => {
           const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
 
