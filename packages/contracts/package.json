@@ -1,0 +1,36 @@
+{
+  "name": "@makerdao-dux/contracts",
+  "version": "0.0.1",
+  "description": "",
+  "type": "module",
+  "main": "./dist/makerdao-dux-contracts.js",
+  "module": "./dist/makerdao-dux-contracts.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/makerdao-dux-contracts.js",
+      "require": "./dist/makerdao-dux-contracts.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "tsc && vite build --watch",
+    "build": "tsc && vite build",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.0.2",
+    "vite-plugin-dts": "^1.7.1"
+  },
+  "keywords": [
+    "contracts",
+    "makerdao"
+  ],
+  "author": "",
+  "license": "ISC"
+}

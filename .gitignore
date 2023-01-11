@@ -69,3 +69,4 @@ dev-dist
 dev-dist.gitsigners
 cache
 .eslintcache
+apps/webapp/tests/e2e/videos/*

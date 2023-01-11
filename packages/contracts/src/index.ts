@@ -1,5 +1,3 @@
-import { chainId } from 'wagmi';
-
 // mainnet
 import mainnetDsrManagerAbi from './abis/mainnet/DSR_MANAGER.json';
 import mainnetMcdPotAbi from './abis/mainnet/MCD_POT.json';
@@ -37,7 +35,41 @@ import optimismOPAbi from './abis/optimism/op.json';
 // arbitrum
 import arbitrummwstETHAbi from './abis/arbitrumOne/stETH.json';
 
-export const contracts = {
+export const chainId = {
+  mainnet: 1,
+  arbitrum: 42161,
+  goerli: 5,
+  optimism: 10
+};
+
+export enum CONTRACT_NAMES {
+  MCD_POT = 'MCD_POT',
+  DSR_MANAGER = 'DSR_MANAGER',
+  DAI = 'DAI',
+  MKR = 'MKR',
+  STETH = 'STETH',
+  PIP_ETH = 'PIP_ETH',
+  PIP_WSTETH = 'PIP_WSTETH',
+  PIP_WBTC = 'PIP_WBTC',
+  PIP_LINK = 'PIP_LINK',
+  PIP_MANA = 'PIP_MANA',
+  PIP_MATIC = 'PIP_MATIC',
+  PIP_YFI = 'PIP_YFI',
+  PIP_RETH = 'PIP_RETH',
+  WSTETH = 'WSTETH',
+  OP = 'OP'
+}
+
+export type Contract = {
+  address: string;
+  abi: any;
+};
+
+export type NetworkContractData = {
+  [key in CONTRACT_NAMES]?: Contract;
+};
+
+export const contracts: { [key: number]: NetworkContractData | undefined } = {
   [chainId.mainnet]: {
     MCD_POT: {
       address: '0x197E90f9FAD81970bA7976f33CbD77088E5D7cf7',
