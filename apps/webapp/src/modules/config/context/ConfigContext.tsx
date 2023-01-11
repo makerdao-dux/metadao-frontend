@@ -49,6 +49,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
   const updateUserConfig = (config: UserConfig) => {
     setUserConfig(config);
     window.localStorage.setItem('user-settings', JSON.stringify(config));
+    window.location.reload();
   };
 
   return (
