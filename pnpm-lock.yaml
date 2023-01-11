@@ -5224,7 +5224,7 @@ packages:
       '@tanstack/react-query': 4.20.9
     dependencies:
       '@tanstack/query-persist-client-core': 4.20.9
-      '@tanstack/react-query': 4.20.9_react-dom@18.2.0
+      '@tanstack/react-query': 4.20.9_biqbaboplfbrettd7655fr4n2y
     transitivePeerDependencies:
       - '@tanstack/query-core'
     dev: false
@@ -6429,7 +6429,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.20.12
       magic-string: 0.26.7
       react-refresh: 0.14.0
-      vite: 4.0.4_@types+node@18.11.9
+      vite: 4.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true

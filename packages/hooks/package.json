@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "./dist/makerdao-dux-hooks.js",
-  "module": "./dist/makerdao-dux-hooks.js",
+  "main": "./dist/makerdao-dux-hooks.umd.cjs",
   "types": "./dist/index.d.ts",
+  "module": "./dist/makerdao-dux-hooks.js",
   "exports": {
     ".": {
       "import": "./dist/makerdao-dux-hooks.js",

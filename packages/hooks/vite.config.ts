@@ -11,6 +11,19 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'makerdao-dux-hooks',
       fileName: 'makerdao-dux-hooks'
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['react', 'wagmi'],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          react: 'React',
+          wagmi: 'wagmi'
+        }
+      }
     }
   },
   test: {
