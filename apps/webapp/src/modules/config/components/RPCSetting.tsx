@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Label, Button, Heading, Box, Flex, Select } from 'theme-ui';
+import { Input, Label, Heading, Flex, Select } from 'theme-ui';
 
 export function RPCSetting({
   chainId,
