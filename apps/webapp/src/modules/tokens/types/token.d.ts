@@ -1,7 +1,7 @@
 export type Token = {
   address?: string;
   chainId: number;
-  abi: any;
+  abi?: any;
   name: string;
   logo: string;
 };

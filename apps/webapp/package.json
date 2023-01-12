@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite src --host --config vite.config.ts",
-    "build": "tsc --project src/tsconfig.json && vite build --config vite.config.ts",
+    "build": "tsc --project tsconfig.json && vite build --config vite.config.ts",
     "preview": "yarn build && vite preview  --config vite.config.ts",
     "start": "vite src --host --config vite.config.ts",
     "prettier": "prettier --config .prettierrc --write src/pages src/modules src/stories",
