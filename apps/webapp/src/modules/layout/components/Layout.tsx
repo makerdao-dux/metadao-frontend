@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+// @ts-ignore
+//TODO fix the type error with react-helmet
 import { Helmet } from 'react-helmet';
 import { Box } from 'theme-ui';
 
