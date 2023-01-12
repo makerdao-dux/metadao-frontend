@@ -6,7 +6,7 @@
     "preinstall": "npx only-allow pnpm",
     "prettier": "prettier --write --cache .",
     "lint": "eslint --cache .",
-    "build": "pnpm -r  run build",
+    "build": "pnpm -r run build",
     "dev": "pnpm -r --parallel run dev",
     "test": "pnpm -r --parallel run test",
     "test:coverage": "pnpm -r --parallel run test:coverage",
