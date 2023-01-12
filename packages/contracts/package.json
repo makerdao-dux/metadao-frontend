@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "./dist/makerdao-dux-contracts.js",
   "module": "./dist/makerdao-dux-contracts.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -17,7 +16,8 @@
     "build": "tsc && vite build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"

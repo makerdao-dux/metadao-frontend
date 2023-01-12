@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "./dist/makerdao-dux-hooks.umd.cjs",
-  "types": "./dist/index.d.ts",
   "module": "./dist/makerdao-dux-hooks.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/makerdao-dux-hooks.js",
@@ -18,7 +17,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist"

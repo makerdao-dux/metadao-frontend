@@ -8,7 +8,7 @@ import useSWR from 'swr';
 type UseOraclesResponse = {
   isLoading: boolean;
   error: Error | null;
-  data: any;
+  data?: ({ token: string; price: string } | undefined)[];
 };
 
 export function useOracles(): UseOraclesResponse {
