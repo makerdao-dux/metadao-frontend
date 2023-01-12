@@ -21,7 +21,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm synpress'",
-    "synpress": "synpress run --configFile tests/e2e/synpress.config.js"
+    "synpress": "synpress run --configFile tests/e2e/synpress.config.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
