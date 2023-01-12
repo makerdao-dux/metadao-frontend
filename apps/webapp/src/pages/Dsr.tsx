@@ -6,11 +6,12 @@ import { chainId } from 'wagmi';
 import LoadingPlaceholder from '../modules/ui/components/LoadingPlaceholder';
 import { formatUnits } from 'ethers/lib/utils.js';
 import { BigNumberish } from 'ethers';
+import { CONTRACT_NAMES } from '@makerdao-dux/contracts';
 
 function Dsr(): React.ReactElement {
   // const { chain } = useNetwork();
   // For now hardcode to mainnet
-  const potChi = useContractRead('MCD_POT', chainId.mainnet, 'chi');
+  const potChi = useContractRead(CONTRACT_NAMES.MCD_POT, chainId.mainnet, 'chi');
 
   return (
     <Layout>

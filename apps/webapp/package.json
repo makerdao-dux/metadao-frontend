@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite src --host --config vite.config.ts",
-    "build": "tsc --project src/tsconfig.json && vite build --config vite.config.ts",
+    "build": "tsc --project tsconfig.json && vite build --config vite.config.ts",
     "preview": "yarn build && vite preview  --config vite.config.ts",
     "start": "vite src --host --config vite.config.ts",
     "prettier": "prettier --config .prettierrc --write src/pages src/modules src/stories",
@@ -21,7 +21,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e:local": "SECRET_WORDS='test test test test test test test test test test test junk' start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm synpress'",
-    "synpress": "synpress run --configFile tests/e2e/synpress.config.js"
+    "synpress": "synpress run --configFile tests/e2e/synpress.config.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -62,6 +63,7 @@
     "@synthetixio/synpress": "^3.0.5",
     "@testing-library/cypress": "^9.0.0",
     "@testing-library/react": "^13.3.0",
+    "@types/react-helmet": "^6.1.6",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-react": "^2.2.0",
