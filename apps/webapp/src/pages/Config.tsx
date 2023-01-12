@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from '../modules/layout/components/Layout';
-import { Heading, Box } from 'theme-ui';
+import { Heading, Box, Text, Button } from 'theme-ui';
 import { ConfigContext } from '../modules/config/context/ConfigContext';
-import { RPCEdition } from '../modules/config/components/RPCEdition';
+import { RPCSetting } from '../modules/config/components/RPCSetting';
+import { RPC } from '../modules/config/types/rpc';
 
 function Config(): React.ReactElement {
-  const { userConfig, updateRPC, siteConfig } = React.useContext(ConfigContext);
+  const { userConfig, updateUserConfig, siteConfig } = React.useContext(ConfigContext);
+
+  const [localConfigState, setLocalConfigState] = React.useState(userConfig);
+
+  useEffect(() => {
+    setLocalConfigState({ ...userConfig });
+  }, [userConfig, siteConfig]);
+
+  const handleRpcChange = (rpc: RPC) => {
+    const newUserConfig = {
+      ...userConfig,
+      rpcs: [...userConfig.rpcs.filter(i => i.chainId !== rpc.chainId), rpc]
+    };
+    setLocalConfigState(newUserConfig);
+  };
+
+  const handleRpcSave = () => {
+    updateUserConfig(localConfigState);
+  };
 
   return (
     <Layout>
-      <Heading>Settings</Heading>
+      <Heading as="h1">Settings</Heading>
 
+      <Heading as="h3" mt={3}>
+        RPC settings
+      </Heading>
+      <Text>
+        If no wallet is connected, a public RPC connection will be used. You can override the default value
+        here. If a wallet is connected, the RPC connection configured within the wallet will be used.
+      </Text>
       {siteConfig.rpcs.map(rpc => {
-        const userRPC = userConfig.rpcs.find(i => i.chainId === rpc.chainId);
+        const userRPC = localConfigState.rpcs.find(i => i.chainId === rpc.chainId);
 
         return (
           <Box key={`user-rpc-${rpc.chainId}`}>
-            <RPCEdition
+            <RPCSetting
               chainId={rpc.chainId}
               url={userRPC ? userRPC.url : rpc.url}
               defaultRPC={rpc.url}
-              onChange={(url: string) => {
-                updateRPC({
+              handleRpcChange={url => {
+                handleRpcChange({
                   chainId: rpc.chainId,
                   url
                 });
@@ -30,6 +56,12 @@ function Config(): React.ReactElement {
           </Box>
         );
       })}
+      <Button
+        onClick={handleRpcSave}
+        disabled={JSON.stringify(localConfigState) === JSON.stringify(userConfig)}
+      >
+        Save RPC settings
+      </Button>
     </Layout>
   );
 }

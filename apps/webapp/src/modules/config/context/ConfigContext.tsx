@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SiteConfig } from '../types/site-config';
 import { UserConfig } from '../types/user-config';
 
@@ -14,14 +14,14 @@ export interface ConfigContextProps {
   siteConfig: SiteConfig;
   userConfig: UserConfig;
   rpcs: RPC[];
-  updateRPC: (rpc: RPC) => void;
+  updateUserConfig: (config: UserConfig) => void;
 }
 
 export const ConfigContext = React.createContext<ConfigContextProps>({
   siteConfig: siteConfig,
   userConfig: defaultUserConfig,
   rpcs: [],
-  updateRPC: () => {
+  updateUserConfig: () => {
     // do nothing.
   }
 });
@@ -41,36 +41,38 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
           ...parsed
         });
       } catch (e) {
-        console.log('Invalid user settings, deleting');
         window.localStorage.setItem('user-settings', JSON.stringify(userConfig));
       }
     }
   }, []);
 
-  // Handle the Update of RPCS from the user
-  const updateRPC = (rpc: RPC) => {
-    const newUserConfig = {
-      ...userConfig,
-      rpcs: [...userConfig.rpcs.filter(i => i.chainId !== rpc.chainId), rpc]
-    };
-    setUserConfig(newUserConfig);
-    window.localStorage.setItem('user-settings', JSON.stringify(newUserConfig));
+  const updateUserConfig = (config: UserConfig) => {
+    setUserConfig(config);
+    window.localStorage.setItem('user-settings', JSON.stringify(config));
+
+    // TODO: Remove this reload once the wagmi client regeneration do not block the rainbow kit buttons
+    // https://github.com/rainbow-me/rainbowkit/issues/953
+    window.location.reload();
   };
+
+  const rpcs = useMemo(() => {
+    return siteConfig.rpcs.map(siteRPC => {
+      const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
+
+      if (userRPC) {
+        return userRPC;
+      }
+      return siteRPC;
+    });
+  }, [userConfig, siteConfig]);
 
   return (
     <ConfigContext.Provider
       value={{
         siteConfig,
         userConfig,
-        updateRPC,
-        rpcs: siteConfig.rpcs.map(siteRPC => {
-          const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
-
-          if (userRPC) {
-            return userRPC;
-          }
-          return siteRPC;
-        })
+        updateUserConfig,
+        rpcs
       }}
     >
       {children}

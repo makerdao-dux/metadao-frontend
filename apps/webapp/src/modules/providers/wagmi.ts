@@ -9,6 +9,8 @@ export const getChainsAndProvider = (rpcs: RPC[]) => {
     [chain.mainnet, chain.goerli, chain.optimism, chain.arbitrum, chain.hardhat],
     [
       jsonRpcProvider({
+        priority: 0,
+        weight: 2,
         rpc: chain => {
           const rpc = rpcs.find(i => i.chainId === chain.id);
 
@@ -19,7 +21,7 @@ export const getChainsAndProvider = (rpcs: RPC[]) => {
             : null;
         }
       }),
-      publicProvider()
+      publicProvider({ priority: 10, weight: 1 })
     ]
   );
 };

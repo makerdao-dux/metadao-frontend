@@ -28,7 +28,7 @@
     "@emotion/react": "^11.10.5",
     "@makerdao-dux/contracts": "workspace:^",
     "@makerdao-dux/hooks": "workspace:^",
-    "@rainbow-me/rainbowkit": "^0.8.0",
+    "@rainbow-me/rainbowkit": "^0.8.1",
     "@theme-ui/css": "^0.15.4",
     "@theme-ui/style-guide": "^0.15.4",
     "@types/node": "18.11.9",
@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
+    "@ethersproject/providers": "^5.7.2",
     "@nomiclabs/hardhat-ethers": "^2.2.1",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",

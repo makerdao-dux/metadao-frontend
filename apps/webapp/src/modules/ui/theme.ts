@@ -1,7 +1,6 @@
 import type { Theme } from 'theme-ui';
-import { makeTheme } from '@theme-ui/css/utils';
 
-export const theme: Theme = makeTheme({
+export const theme: Theme = {
   config: {
     initialColorModeName: 'light',
     useColorSchemeMediaQuery: true
@@ -149,7 +148,8 @@ export const theme: Theme = makeTheme({
     clear: {
       border: 'none',
       boxShadow: theme => `0px 20px 40px ${theme.colors?.shadow}, 0px 1px 3px #bebebe40`,
-      borderRadius: '4px'
+      borderRadius: '4px',
+      padding: 3
     },
     emphasized: {
       variant: 'cards.clear',
@@ -196,6 +196,13 @@ export const theme: Theme = makeTheme({
       transition: 'border-color 0.25s',
       '&:hover': {
         bg: 'primaryEmphasis'
+      },
+      '&:disabled': {
+        bg: 'muted',
+        cursor: 'not-allowed',
+        '&:hover': {
+          bg: 'muted'
+        }
       }
     },
     secondary: {
@@ -216,5 +223,11 @@ export const theme: Theme = makeTheme({
         borderColor: 'text'
       }
     }
+  },
+  forms: {
+    label: {
+      fontSize: 2,
+      fontWeight: 'semiBold'
+    }
   }
-});
+};

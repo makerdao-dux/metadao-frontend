@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { ConfigContext } from '../../config/context/ConfigContext';
-import { Box, Text } from 'theme-ui';
+import { Box, Text, Flex } from 'theme-ui';
+import { RPCStatus } from '../../providers/components/RPCStatus';
 
 export function Footer(): React.ReactElement {
   const { siteConfig } = useContext(ConfigContext);
+
   return (
-    <Box>
-      <Box my={5}>
+    <Flex sx={{ justifyContent: 'space-between' }}>
+      <Box m={3}>
         <Text
-          as="p"
           sx={{
             textAlign: 'center'
           }}
@@ -16,6 +17,7 @@ export function Footer(): React.ReactElement {
           {new Date().getFullYear()} - {siteConfig.name}
         </Text>
       </Box>
-    </Box>
+      <RPCStatus />
+    </Flex>
   );
 }
