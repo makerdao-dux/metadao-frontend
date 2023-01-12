@@ -24,9 +24,14 @@ export const getChainsAndProvider = (rpcs: RPC[]) => {
   );
 };
 
-// @ts-ignore
-//TODO fix the type error with provider
-export const getWagmiClient = (chains: Chain[], provider, appName: string) => {
+// Returned types from wagmi
+type ConfigureChainsReturnType = ReturnType<typeof configureChains>;
+
+export const getWagmiClient = (
+  chains: Chain[],
+  provider: ConfigureChainsReturnType['provider'],
+  appName: string
+) => {
   const { connectors } = getDefaultWallets({
     appName,
     chains

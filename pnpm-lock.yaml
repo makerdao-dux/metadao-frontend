@@ -48,6 +48,7 @@ importers:
       '@types/node': 18.11.9
       '@types/react': 18.0.25
       '@types/react-dom': 18.0.9
+      '@types/react-helmet': ^6.1.6
       '@typescript-eslint/eslint-plugin': ^5.48.0
       '@typescript-eslint/parser': ^5.48.0
       '@vitejs/plugin-react': ^2.2.0
@@ -112,6 +113,7 @@ importers:
       '@synthetixio/synpress': 3.0.5_ynvxhb26crvus6nixu2awpwaxy
       '@testing-library/cypress': 9.0.0
       '@testing-library/react': 13.4.0_react-dom@18.2.0
+      '@types/react-helmet': 6.1.6
       '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
       '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
       '@vitejs/plugin-react': 2.2.0_vite@4.0.4
@@ -6051,6 +6053,12 @@ packages:
     resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.25
+
+  /@types/react-helmet/6.1.6:
+    resolution: {integrity: sha512-ZKcoOdW/Tg+kiUbkFCBtvDw0k3nD4HJ/h/B9yWxN4uDO8OkRksWTO+EL+z/Qu3aHTeTll3Ro0Cc/8UhwBCMG5A==}
+    dependencies:
+      '@types/react': 18.0.26
+    dev: true
 
   /@types/react/18.0.25:
     resolution: {integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==}
