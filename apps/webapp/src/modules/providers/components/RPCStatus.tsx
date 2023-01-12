@@ -2,23 +2,22 @@ import React from 'react';
 import { Box, NavLink, Text, Flex } from 'theme-ui';
 import { useProvider } from 'wagmi';
 import { FallbackProvider } from '@ethersproject/providers';
-
-type RpcStatus = 'Public RPC' | 'No RPC connection' | 'Custom RPC';
+import { RpcStatus } from '../../config/types/rpc';
 
 export function RPCStatus() {
   const provider = useProvider();
 
-  const [rpcStatus, setRpcStatus] = React.useState<RpcStatus>('No RPC connection');
+  const [rpcStatus, setRpcStatus] = React.useState<RpcStatus>(RpcStatus.NoConnection);
 
   React.useEffect(() => {
     if (provider) {
       if (provider instanceof FallbackProvider) {
-        setRpcStatus('Custom RPC');
+        setRpcStatus(RpcStatus.Custom);
       } else {
-        setRpcStatus('Public RPC');
+        setRpcStatus(RpcStatus.Public);
       }
     } else {
-      setRpcStatus('No RPC connection');
+      setRpcStatus(RpcStatus.NoConnection);
     }
   }, [provider]);
 
@@ -40,7 +39,7 @@ export function RPCStatus() {
               width: '16px',
               height: '16px',
               // TODO add better colors?
-              backgroundColor: rpcStatus === 'No RPC connection' ? 'red' : 'primary',
+              backgroundColor: rpcStatus === RpcStatus.NoConnection ? 'red' : 'primary',
               borderRadius: '50%'
             }}
           ></Box>

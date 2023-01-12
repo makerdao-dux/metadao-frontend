@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Input, Label, Heading, Flex, Select } from 'theme-ui';
+import { RpcStatus } from '../types/rpc';
 
 export function RPCSetting({
   chainId,
@@ -13,10 +14,10 @@ export function RPCSetting({
   handleRpcChange: (val: string) => void;
 }): React.ReactElement {
   // TODO: Add chain name and logo.
-  const [option, setOption] = useState(url === '' ? 'public' : 'custom');
+  const [option, setOption] = useState(url === '' ? RpcStatus.Public : RpcStatus.Custom);
 
   useEffect(() => {
-    setOption(url === '' ? 'public' : 'custom');
+    setOption(url === '' ? RpcStatus.Public : RpcStatus.Custom);
   }, [url]);
 
   return (
@@ -31,18 +32,18 @@ export function RPCSetting({
             <Select
               value={option}
               onChange={() => {
-                if (option === 'custom') {
+                if (option === RpcStatus.Custom) {
                   handleRpcChange(defaultRPC);
                 }
-                setOption(option == 'custom' ? 'public' : 'custom');
+                setOption(option == RpcStatus.Custom ? RpcStatus.Public : RpcStatus.Custom);
               }}
               sx={{ minWidth: '225px' }}
             >
               <option value={'public'}>Public provider (default)</option>
-              <option value={'custom'}>Custom RPC URL</option>
+              <option value={RpcStatus.Custom}>Custom RPC URL</option>
             </Select>
           </Flex>
-          {option === 'custom' && (
+          {option === RpcStatus.Custom && (
             <Flex sx={{ ml: 3 }}>
               <Flex sx={{ flexDirection: 'column', alignItems: 'center', width: '500px' }}>
                 <Label>RPC URL</Label>
