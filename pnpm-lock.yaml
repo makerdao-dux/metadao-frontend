@@ -33,7 +33,7 @@ importers:
       '@makerdao-dux/contracts': workspace:^
       '@makerdao-dux/hooks': workspace:^
       '@nomiclabs/hardhat-ethers': ^2.2.1
-      '@rainbow-me/rainbowkit': ^0.8.0
+      '@rainbow-me/rainbowkit': ^0.8.1
       '@storybook/addon-actions': ^6.5.14
       '@storybook/addon-essentials': ^6.5.14
       '@storybook/addon-interactions': ^6.5.14
@@ -1857,7 +1857,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.7
       '@types/react': 18.0.25
-      clsx: 1.1.0
+      clsx: 1.2.1
       focus-lock: 0.8.1
       react-dom: 18.2.0
       react-merge-refs: 1.1.0

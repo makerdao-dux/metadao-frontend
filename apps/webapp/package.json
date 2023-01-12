@@ -28,7 +28,7 @@
     "@emotion/react": "^11.10.5",
     "@makerdao-dux/contracts": "workspace:^",
     "@makerdao-dux/hooks": "workspace:^",
-    "@rainbow-me/rainbowkit": "^0.8.0",
+    "@rainbow-me/rainbowkit": "^0.8.1",
     "@theme-ui/css": "^0.15.4",
     "@theme-ui/style-guide": "^0.15.4",
     "@types/node": "18.11.9",

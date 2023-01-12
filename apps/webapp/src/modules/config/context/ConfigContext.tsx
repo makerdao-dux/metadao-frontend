@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { SiteConfig } from '../types/site-config';
 import { UserConfig } from '../types/user-config';
 
@@ -49,8 +49,22 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
   const updateUserConfig = (config: UserConfig) => {
     setUserConfig(config);
     window.localStorage.setItem('user-settings', JSON.stringify(config));
+
+    // TODO: Remove this reload once the wagmi client regeneration do not block the rainbow kit buttons
+    // https://github.com/rainbow-me/rainbowkit/issues/953
     window.location.reload();
   };
+
+  const rpcs = useMemo(() => {
+    return siteConfig.rpcs.map(siteRPC => {
+      const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
+
+      if (userRPC) {
+        return userRPC;
+      }
+      return siteRPC;
+    });
+  }, [userConfig, siteConfig]);
 
   return (
     <ConfigContext.Provider
@@ -58,14 +72,7 @@ export const ConfigProvider = ({ children }: { children: React.ReactNode }): Rea
         siteConfig,
         userConfig,
         updateUserConfig,
-        rpcs: siteConfig.rpcs.map(siteRPC => {
-          const userRPC = userConfig.rpcs.find(i => i.chainId === siteRPC.chainId && i.url.length > 0);
-
-          if (userRPC) {
-            return userRPC;
-          }
-          return siteRPC;
-        })
+        rpcs
       }}
     >
       {children}
